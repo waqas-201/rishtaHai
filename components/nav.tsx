@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { JSX, SVGProps } from "react";
+
 import { MenuIcon } from "./ui/menuIcon";
+import Image from 'next/image'
 
 export function Nav() {
   return (
     <header className="flex h-16 w-full items-center  bg-background">
       <div className="mx-auto max-w-7xl flex w-full items-center px-4 md:px-6">
         <Link href="#" className="mr-6 flex items-center" prefetch={false}>
-          <MountainIcon className="h-6 w-6 text-primary" />
+          <Image
+            src="/logo.svg"
+            width={100}
+            height={100}
+            alt="Picture of the author"
+          />
           <span className="sr-only">Acme Inc</span>
         </Link>
         <nav className="hidden lg:flex items-center space-x-6">
@@ -66,21 +72,3 @@ export function Nav() {
 
 
 
-function MountainIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-  );
-}

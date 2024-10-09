@@ -16,6 +16,7 @@ const initialState: FormState = {
     gender: "male",
     GroomName: "",
     phone: "",
+    termsAccepted: false,
   },
   addressInfo: { city: "" },
 };
@@ -43,6 +44,7 @@ const formSlice = createSlice({
         gender: "male",
         GroomName: "",
         phone: "",
+        termsAccepted: false,
       };
       state.addressInfo = { city: "" };
     },

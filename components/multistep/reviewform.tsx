@@ -19,7 +19,7 @@ const ReviewForm: React.FC = () => {
         <Card>
 
             <CardContent>
-                <p><strong>Name:</strong> {personalInfo.name}</p>
+                <p><strong>Name:</strong> {personalInfo.GroomName}</p>
                 <p><strong>City:</strong> {addressInfo.city}</p>
             </CardContent>
             <div className="flex gap-2">

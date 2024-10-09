@@ -32,6 +32,7 @@ type PhoneInputProps = Omit<
 const PhoneInput = React.forwardRef<React.ElementRef<typeof RPNInput.default>, PhoneInputProps>(
     ({ className, onChange, error, ...props }, ref) => {
         // Set default country to Pakistan (PK)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [country, setCountry] = React.useState<RPNInput.Country>("PK");
 
         return (

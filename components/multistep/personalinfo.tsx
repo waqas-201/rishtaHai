@@ -52,7 +52,7 @@ const PersonalInfoForm = () => {
 
     return (
         <div className="p-5">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex items-center justify-between gap-28">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex items-center justify-between gap-10">
                 {/* left section */}
                 <div className="flex flex-col items-start justify-start gap-10">
                     {/* Profile Selection */}

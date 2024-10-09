@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 326 100% 50%;
+    --primary: 330 100% 50%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 199 89% 68%;
@@ -94,4 +94,40 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+body {
+  font-family: var(--font-playfair), sans-serif; /* Default font for body */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lora), serif; /* Use Lora for headings */
+}
+
+
+@font-face {
+  font-family: 'Lora';
+  font-weight: 400;
+  src: url('/fonts/Lora/Lora-Regular.woff2') format('woff2'),
+       url('/fonts/Lora/Lora-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-weight: 700;
+  src: url('/fonts/Lora/Lora-Bold.woff2') format('woff2'),
+       url('/fonts/Lora/Lora-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 400;
+  src: url('/fonts/Merriweather/Merriweather-Regular.woff2') format('woff2'),
+       url('/fonts/Merriweather/Merriweather-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 700;
+  src: url('/fonts/Merriweather/Merriweather-Bold.woff2') format('woff2'),
+       url('/fonts/Merriweather/Merriweather-Bold.woff') format('woff');
 }

@@ -8,7 +8,7 @@ import ReviewForm from "./reviewform";
 
 export const MultiStepForm = () => {
     return (
-        <div className=" bg-slate-100 rounded-sm  p-5   flex flex-col items-start justify-start  ">
+        <div className=" bg-slate-100 rounded-sm  md:p-5 p-2   flex flex-col items-start justify-start  ">
 
 
 

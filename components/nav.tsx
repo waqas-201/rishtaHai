@@ -29,18 +29,25 @@ const navItemVariants = {
 
 export function Nav() {
   return (
-    <header className="flex h-16 w-full items-center bg-background">
-      <div className="mx-auto max-w-7xl flex w-full items-center px-4 md:px-6">
-        <Link href="#" className="mr-6 flex items-center" prefetch={false}>
+    <header className="flex h-16 w-full items-center  md:sticky  fixed z-50 bg-white ">
+
+
+      <div className="mx-auto max-w-7xl flex justify-center  w-full md:px-6 px-2  ">
+
+        {/* logo */}
+        <Link href="#" className="mr-6 flex items-center mx-[-30px]" prefetch={false}>
           <Image
             src="/logo.svg"
-            width={150}
-            height={150}
-            alt="Picture of the author"
+            width={150} // Provide default width for Next.js optimization
+            height={150} // Provide default height for Next.js optimization
+            alt="RishtaHai logo"
+            className="w-24 h-24 md:w-36 md:h-36" // Responsive sizes: w-24 for 100px on mobile, w-36 for 150px on larger screens
           />
           <span className="sr-only">RishtaHai</span>
         </Link>
-        <nav className="hidden lg:flex items-center space-x-6">
+
+        {/* nav items  */}
+        <nav className="hidden lg:flex items-center space-x-6  ">
           {["Home", "About", "Services", "Contact"].map((item, index) => (
             <motion.div
               key={index}
@@ -52,7 +59,7 @@ export function Nav() {
             >
               <Link
                 href="#"
-                className="text-sm font-medium text-foreground hover:text-primary"
+                className="text-md font-medium text-foreground hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}
@@ -60,10 +67,10 @@ export function Nav() {
             </motion.div>
           ))}
         </nav>
-        <div className="ml-auto flex items-center space-x-4">
-          {/* <button className="inline-flex h-12 items-center justify-center rounded-lg bg-[#f5f5f5] bg-[linear-gradient(110deg,#ff007f,45%,#ff77a0,55%,#ff007f)] bg-[length:200%_100%] bg-[position:0%_0%] animate-shimmer px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            Get Started
-          </button> */}
+
+        {/* CTA */}
+        <div className="ml-auto   flex items-center space-x-4">
+
           <button className="md:inline-flex h-12 items-center hidden justify-center rounded-lg bg-[#114bdf] bg-[linear-gradient(110deg,#FF007F,45%,#FF77A0,55%,#FF007F)] bg-[length:200%_100%] bg-[position:0%_0%] animate-shimmer px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             Get Started
           </button>
@@ -97,6 +104,8 @@ export function Nav() {
             </SheetContent>
           </Sheet>
         </div>
+
+
       </div>
     </header>
   );

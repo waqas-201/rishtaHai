@@ -54,29 +54,30 @@ export function Hero() {
 
 
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8 bg-black bg-opacity-40">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center sm:px-6 lg:px-8 bg-black bg-opacity-40">
                 {/* Content overlay */}
                 <div className='flex  items-center justify-around flex-col md:mt-[-100px]  md:flex-row gap-8'>
                     {/* lefte secion  */}
 
-                    <div className='md:w-[40%] w-[80%] px-2'>
+                    {/* <div className='md:w-[40%] w-[100%]  text-center flex flex-col justify-center items-center gap-2'>
 
-                        <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90 tracking-tight lg:text-6xl">
+                        <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-[#FF308D]'> perfect</span> match await&apos;s here!
                         </h1>
 
-                        <blockquote className="mt-6 border-[#FF308D] text-xl leading-10  text-white  border-l-2 pl-6 italic">
+
+                        <blockquote className=" border-[#FF308D] md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
-                            <blockquote className='text-[#FF308D] text-2xl'>
-                                {qoute}
-                            </blockquote>
                         </blockquote>
-                    </div>
+                        <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl '>
+                            {qoute}
+                        </blockquote>
+                    </div> */}
 
 
                     {/* form section  */}
                     <div className='p-10'>
-                        <MultiStepForm />
+                        <MultiStepForm />  
                     </div>
                 </div>
             </div>

@@ -1,15 +1,22 @@
 // store/formSlice.ts
+import { personalInfoSchema } from "@/components/multistep/personalinfo";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { z } from "zod";
 
 interface FormState {
   currentStep: number;
-  personalInfo: { name: string };
+  personalInfo: z.infer<typeof personalInfoSchema>;
   addressInfo: { city: string };
 }
 
 const initialState: FormState = {
   currentStep: 0,
-  personalInfo: { name: "" },
+  personalInfo: {
+    profileFor: "",
+    gender: "male",
+    GroomName: "",
+    phone: "",
+  },
   addressInfo: { city: "" },
 };
 
@@ -20,7 +27,10 @@ const formSlice = createSlice({
     setCurrentStep(state, action: PayloadAction<number>) {
       state.currentStep = action.payload;
     },
-    setPersonalInfo(state, action: PayloadAction<{ name: string }>) {
+    setPersonalInfo(
+      state,
+      action: PayloadAction<z.infer<typeof personalInfoSchema>>
+    ) {
       state.personalInfo = action.payload;
     },
     setAddressInfo(state, action: PayloadAction<{ city: string }>) {
@@ -28,7 +38,12 @@ const formSlice = createSlice({
     },
     resetForm(state) {
       state.currentStep = 0;
-      state.personalInfo = { name: "" };
+      state.personalInfo = {
+        profileFor: "",
+        gender: "male",
+        GroomName: "",
+        phone: "",
+      };
       state.addressInfo = { city: "" };
     },
   },

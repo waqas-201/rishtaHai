@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { MultiStepForm } from './multistep/parent';
 
 const images = [
-    // '/image1.jpg',
-    // '/image2.jpg',
-    // '/image3.jpg',
-    // '/image4.jpg',
-    // '/image5.jpg'
+    '/image1.jpg',
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
+    '/image5.jpg'
 ];
 
 const message = `RishtaHai platform is dedicated to helping individuals connect with compatible partners and make it easier to Meet and Interact with Them. Start Your Search Today Because "Yahi'n Aap Ka RishtaHai".`;
@@ -45,16 +45,18 @@ export function Hero() {
             {/* Registration form */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6 lg:px-8 bg-black bg-opacity-40">
                 {/* Content overlay */}
-                <div className='flex items-center justify-center flex-col md:flex-row gap-8'>
+                <div className='flex items-center justify-center flex-col md:mt-[-100px]  md:flex-row gap-8'>
                     <div className='w-full md:w-1/2'>
-                        <h1 className='text-4xl font-bold text-white mb-4'>
-                            Join No.1 Muslim Matrimonial
+
+                        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+                            Your perfect match awaits here!
                         </h1>
-                        <p className='text-lg text-gray-300'>
+
+                        <blockquote className="mt-6 border-accent    border-l-2 pl-6 italic">
                             {message}
-                        </p>
+                        </blockquote>
                     </div>
-                    <div className='w-full md:w-1/2'>
+                    <div className='p-10'>
                         <MultiStepForm />
                     </div>
                 </div>

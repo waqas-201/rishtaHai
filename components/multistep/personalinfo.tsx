@@ -144,12 +144,13 @@ const PersonalInfoForm = () => {
                                     control={control}
                                     render={({ field }) => (
                                         <RadioGroup onValueChange={field.onChange} value={field.value} className="w-full">
-                                            <div className="flex gap-2 w-full">
-                                                <div className="flex items-center justify-start gap-1 w-1/2">
-                                                    <RadioGroupItem className="h-3 w-3" value="male" id="male" />
+                                            <div className="flex gap-4">
+                                                <div className="flex items-center justify-start gap-1 ">
+                                                    <RadioGroupItem className="h-3 w-3 " value="male" id="male" />
                                                     <Label className="md:text-[12px] text-[10px] text-gray-500" htmlFor="male">Male</Label>
                                                 </div>
-                                                <div className="flex items-center justify-start gap-1 w-1/2">
+
+                                                <div className="flex items-center justify-start gap-1">
                                                     <RadioGroupItem className="h-3 w-3" value="female" id="female" />
                                                     <Label className="md:text-[12px] text-[10px] text-gray-500" htmlFor="female">Female</Label>
                                                 </div>
@@ -172,6 +173,7 @@ const PersonalInfoForm = () => {
                                             id="terms"
                                             checked={field.value}
                                             onCheckedChange={(checked) => field.onChange(checked)}
+                                            className=" w-3 h-3"
                                         />
                                     )}
                                 />
@@ -181,7 +183,7 @@ const PersonalInfoForm = () => {
                         </div>
 
                         {/* Get Started Button */}
-                        <Button className="w-full" type="submit">Get Started</Button>
+                        <Button className="w-full" type="submit">Register Now</Button>
                     </div>
                 </div>
             </form>

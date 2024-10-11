@@ -39,7 +39,7 @@ const PhoneInput = React.forwardRef<React.ElementRef<typeof RPNInput.default>, P
             <div>
                 <RPNInput.default
                     ref={ref}
-                    className={cn("flex  border border-red-400", className)}
+                    className={cn("flex", className)}
                     flagComponent={FlagComponent}
                     countrySelectComponent={CountrySelect}
                     inputComponent={InputComponent}
@@ -61,7 +61,7 @@ PhoneInput.displayName = "PhoneInput";
 const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, ...props }, ref) => (
         <Input
-            className={cn("rounded-e-lg rounded-s-none w-full ", className)}
+            className={cn("rounded-e-lg rounded-s-none w-full min- w[300px]", className)}
             {...props}
             ref={ref}
         />

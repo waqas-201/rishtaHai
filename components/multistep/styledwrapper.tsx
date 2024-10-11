@@ -15,13 +15,13 @@ const StyledInputWrapper: React.FC<StyledInputWrapperProps> = ({
     children,
 }) => {
     return (
-        <div className="border border-red-700 flex items-start flex-col gap-1">
+        <div className=" flex items-start flex-col gap-1">
             <Label className="md:text-[12px] text-[10px] text-gray-500">
                 {label}
                 {required && <span>*</span>}
             </Label>
             {children}
-            {error && <p className="text-[12px] text-red-600">{error}</p>}
+            {error && <p className="md:text-[12px] text-[8px] text-red-600">{error}</p>}
         </div>
     );
 };

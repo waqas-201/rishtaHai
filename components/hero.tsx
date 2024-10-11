@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { MultiStepForm } from './multistep/parent';
 
 const images = [
-    // '/image1.jpg',
-    // '/image2.jpg',
-    // '/image3.jpg',
-    // '/image4.jpg',
-    // '/image5.jpg'
+    '/image1.jpg',
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
+    '/image5.jpg'
 ];
 
 const message = `RishtaHai platform is dedicated to helping individuals connect with compatible partners and make it easier to Meet and Interact with Them. Start Your Search Today Because `;
@@ -54,12 +54,15 @@ export function Hero() {
 
 
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center sm:px-6 lg:px-8 bg-black bg-opacity-40">
-                {/* Content overlay */}
-                <div className='flex  items-center justify-around flex-col md:mt-[-100px]  md:flex-row gap-8'>
+            <div className="relative z-10 flex flex-col items-center justify-center md:justify-center h-full text-center lg:px-8 bg-black bg-opacity-40  ">
+                {/* Content overlay */} 
+
+
+
+                <div className='flex   items-center md:justify-around flex-col md:mt-[-100px]  md:flex-row md:gap-8'>
                     {/* lefte secion  */}
 
-                    {/* <div className='md:w-[40%] w-[100%]  text-center flex flex-col justify-center items-center gap-2'>
+                    <div className='md:w-[40%] w-[100%]  text-center flex flex-col justify-center items-center gap-2'>
 
                         <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-[#FF308D]'> perfect</span> match await&apos;s here!
@@ -72,7 +75,7 @@ export function Hero() {
                         <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl '>
                             {qoute}
                         </blockquote>
-                    </div> */}
+                    </div> 
 
 
                     {/* form section  */}

@@ -13,8 +13,8 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import StyledInputWrapper from "./styledwrapper";
 
-// Define the Zod schema
 export const personalInfoSchema = z.object({
     profileFor: z.string().min(1, { message: "You must select a profile type." }),
     phone: z.string().refine(isValidPhoneNumber, { message: "Invalid phone number." }),
@@ -48,16 +48,16 @@ const PersonalInfoForm = () => {
         nextStep();
     };
 
-
-
     return (
-        <div className="p-10">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex items-center justify-between gap-10">
-                {/* left section */}
-                <div className="flex flex-col items-start justify-start gap-10">
-                    {/* Profile Selection */}
-                    <div className="flex flex-col items-start justify-center gap-1">
-                        <Label className="text-[12px] text-muted-foreground" htmlFor="profileFor">
+        <div className="" >
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex flex-wrap">
+                    {/* right section */}
+                    <div className=" md:w-[50%] w-full md:p-6 py-4 flex flex-col justify-center
+                     md:gap-4 gap-2"  >
+                        {/* profile input */}
+                        <div className="border border-red-700 flex items-start flex-col gap-1 ">
+                            <Label className="md:text-[12px] text-[10px] text-gray-500" htmlFor="profileFor">
                             Create profile for <span>*</span>
                         </Label>
                         <Controller
@@ -65,7 +65,7 @@ const PersonalInfoForm = () => {
                             control={control}
                             render={({ field }) => (
                                 <Select onValueChange={field.onChange} value={field.value}>
-                                    <SelectTrigger className="w-[180px]">
+                                    <SelectTrigger>
                                         <SelectValue placeholder="Select" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -80,32 +80,32 @@ const PersonalInfoForm = () => {
                                 </Select>
                             )}
                         />
-                        {errors.profileFor && <p className="text-red-500 text-[10px]">{errors.profileFor.message}</p>}
+                            {errors.profileFor && <p className="text-[12px] text-red-600" >{errors.profileFor.message}</p>}
                     </div>
 
-                    {/* Phone Number */}
-                    <div className="flex flex-col items-start justify-center gap-1">
-                        <Label className="text-[12px] text-gray-600" htmlFor="phone">
-                            Phone Number <span>*</span>
-                        </Label>
-                        <Controller
-                            name="phone"
-                            control={control}
-                            render={({ field }) => (
-                                <PhoneInput
-                                    value={field.value}
-                                    onChange={(value) => field.onChange(value || "")}
-                                    placeholder="Enter a phone number"
-                                    defaultCountry="PK"
-                                />
-                            )}
-                        />
-                        {errors.phone && <p className="text-red-500 text-[10px]">{errors.phone.message}</p>}
-                    </div>
+                        {/* phone number */}
 
-                    {/* Terms and Conditions */}
-                    <div className="flex items-start justify-start flex-col gap-1">
-                        <div className="flex items-start justify-start space-x-2">
+                        <StyledInputWrapper label="Phone Number" error={errors.phone?.message} required='Phone Number' >
+
+                            <Controller
+                                name="phone"
+                                control={control}
+                                render={({ field }) => (
+                                    <PhoneInput
+                                        value={field.value}
+                                        onChange={(value) => field.onChange(value || "")}
+                                        placeholder="Enter a phone number"
+                                        defaultCountry="PK"
+                                        className="w-full min-w-full"
+                                    />
+                                )}
+                            />
+
+                        </StyledInputWrapper>
+
+                        {/* terms */}
+                        <div className="md:flex items-center justify-center hidden flex-col " >
+                            <div className="flex items-center justify-center gap-2 ">
                             <Controller
                                 name="termsAccepted"
                                 control={control}
@@ -117,55 +117,75 @@ const PersonalInfoForm = () => {
                                     />
                                 )}
                             />
-                            <label htmlFor="terms" className="text-sm font-medium leading-none">
+                                <Label htmlFor="terms">
                                 Accept terms and conditions
-                            </label>
+                                </Label>
                         </div>
                         {errors.termsAccepted && (
-                            <p className="text-[10px] text-red-500">{errors.termsAccepted.message}</p>
+                                <span className="text-[12px] text-red-600" >{errors.termsAccepted.message}</span>
                         )}
                     </div>
+
+
                 </div>
 
-                {/* right section */}
-                <div className="flex flex-col items-start justify-start gap-10">
-                    {/* Name Input */}
-                    <div className="flex flex-col items-start justify-center gap-1">
-                        <Label className="text-[12px] text-muted-foreground  ml-1 " htmlFor="GroomName">
-                            Bride / Groom Name <span>*</span>
-                        </Label>
-                        <Input
-                            className="placeholder:text-muted-foreground"
-                            id="GroomName"
-                            type="text"
-                            placeholder="Bride / Groom Name *"
-                            {...register("GroomName")}
-                        />
-                        {errors.GroomName && <p className="text-red-500 text-[10px]">{errors.GroomName.message}</p>}
-                    </div>
 
-                    {/* Gender Selection */}
-                    <div className="flex flex-col items-start justify-center gap-2">
-                        <Label className="text-[12px] text-gray-600 ml-3">Gender <span>*</span></Label>
+                    {/* lefte secions */}
+                    <div className="md:w-[50%] w-full md:p-6 p-4 flex flex-col justify-center md:gap-4 gap-2">
+
+
+                        {/* bride groom name  */}
+                        <StyledInputWrapper label="GroomName" error={errors.GroomName?.message} required='Bride / Groom Name' >
+
+                            <Input
+                                id="GroomName"
+                                type="text"
+                                placeholder="Bride / Groom Name *"
+                                {...register("GroomName")}
+                            />
+                        </StyledInputWrapper>
+
+
+
+                        {/* gender  */}
+                        <div className="flex flex-col  justify-start">
+
+
+                            <div className="border border-red-600 flex items-center justify-start gap-4" >
+                                <Label className="flex md:text-[12px] text-[10px] text-gray-500" >Gender <span>*</span></Label>
                         <Controller
+
                             name="gender"
                             control={control}
                             render={({ field }) => (
-                                <RadioGroup onValueChange={field.onChange} value={field.value}>
-                                    <div className="flex gap-4">
-                                        <RadioGroupItem value="male" id="male" />
-                                        <Label htmlFor="male" className="text-sm">Male</Label>
+                                <RadioGroup onValueChange={field.onChange} value={field.value}  >
+                                    <div className="flex">
+                                        <div className="flex items-center justify-center" >
 
-                                        <RadioGroupItem value="female" id="female" />
-                                        <Label htmlFor="female" className="text-sm">Female</Label>
+                                            <RadioGroupItem className="h-3 w-3" value="male" id="male" />
+                                            <Label className="md:text-[12px] text-[10px] text-gray-500" htmlFor="male">Male</Label>
+                                        </div>
+                                        <div>
+
+                                            <div className="flex items-center justify-center" >
+
+                                                <RadioGroupItem className="w-3 h-3" value="female" id="female" />
+                                                <Label className="md:text-[12px] text-[10px] text-gray-500" htmlFor="female">Female</Label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </RadioGroup>
                             )}
-                        />
-                        {errors.gender && <p className="text-red-500 text-[10px]">{errors.gender.message}</p>}
-                    </div>
+                                />
+                            </div>
+                            {errors.gender && <p className="text-[12px] text-red-600">{errors.gender.message}</p>}
+                        </div>
+                        {/* getstartedbtn */}
 
                     <Button type="submit">Get Started</Button>
+
+
+                    </div>
                 </div>
             </form>
         </div>

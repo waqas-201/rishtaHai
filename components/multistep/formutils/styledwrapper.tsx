@@ -1,5 +1,5 @@
+import { Label } from "@/components/ui/label";
 import React from "react";
-import { Label } from "../ui/label";
 
 interface StyledInputWrapperProps {
     label: string;
@@ -15,7 +15,7 @@ const StyledInputWrapper: React.FC<StyledInputWrapperProps> = ({
     children,
 }) => {
     return (
-        <div className=" flex items-start flex-col gap-1">
+        <div className=" flex items-start flex-col gap-1  w-full ">
             <Label className="md:text-[12px] text-[10px] text-gray-500">
                 {label}
                 {required && <span>*</span>}
@@ -27,3 +27,9 @@ const StyledInputWrapper: React.FC<StyledInputWrapperProps> = ({
 };
 
 export default StyledInputWrapper;
+
+
+
+
+{/* Marital Status */ }
+

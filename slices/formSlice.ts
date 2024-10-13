@@ -1,5 +1,5 @@
 // store/formSlice.ts
-import { personalInfoSchema } from "@/components/multistep/personalinfo";
+import { personalInfoSchema } from "@/components/multistep/accountSetup1";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { z } from "zod";
 

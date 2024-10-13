@@ -4,7 +4,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 
-const steps = ['Personal Information', 'Address Information', 'Review'];
+const steps = ['Personal Information', 'Basic Details', 'Review'];
 
 const ProgressTracker: React.FC = () => {
     const currentStep = useSelector((state: RootState) => state?.form?.currentStep);

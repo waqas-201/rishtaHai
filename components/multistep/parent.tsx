@@ -1,14 +1,16 @@
 // MultiStepForm.tsx
 import React from "react";
 import { Wizard } from "react-use-wizard";
-import ProgressTracker from "./progressTracker";
-import PersonalInfoForm from "./personalinfo";
-import AddressForm from "./adderssform";
+import ProgressTracker from "./formutils/progressTracker";
 import ReviewForm from "./reviewform";
+import AccontSetup from "./accountSetup1";
+import BasicDetailsForm from "./basicinfo2";
+import PersonalInfo from "./personalInfo3";
+import EducationProfessionForm from "./education4";
 
 export const MultiStepForm = () => {
     return (
-        <div className=" bg-slate-100 rounded-sm  md:p-5 p-2   flex flex-col items-start justify-start  ">
+        <div className=" bg-background ">
 
 
 
@@ -16,10 +18,12 @@ export const MultiStepForm = () => {
 
 
             <Wizard>
-                {/* Render the step components */}
-                <PersonalInfoForm />
-                <AddressForm />
-                <ReviewForm />
+                {/* <AccontSetup /> */}
+                {/* <BasicDetailsForm /> */}
+                {/* <PersonalInfo /> */}
+                <EducationProfessionForm />
+
+                <ReviewForm /> 
             </Wizard>
         </div>
     );

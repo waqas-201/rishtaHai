@@ -4,31 +4,30 @@ import { useWizard } from "react-use-wizard";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
-import { useDispatch } from "react-redux";
-import { setPersonalInfo, setCurrentStep } from "../../slices/formSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setPersonalInfo, setCurrentStep } from "../../slices/stepCouterSlice";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Label } from "../ui/label";
 import { PhoneInput } from "../ui/phoneInput";
-import { isValidPhoneNumber } from "react-phone-number-input";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import StyledInputWrapper from "./formutils/styledwrapper";
+import { personalInfoSchema } from "@/schema/formSchema";
+import { useRouter } from "next/navigation";
+import { RootState } from "@/store";
 
-export const personalInfoSchema = z.object({
-    profileFor: z.string().min(1, { message: "You must select a profile type." }),
-    phone: z.string().refine(isValidPhoneNumber, { message: "Invalid phone number." }),
-    GroomName: z.string().min(5, { message: "Name must be at least 5 characters long." }),
-    gender: z.enum(['male', 'female'], { message: "You must select a gender." }),
-    termsAccepted: z.boolean().refine(val => val === true, { message: "You must accept the terms and conditions." })
-});
+
+
+
 
 type PersonalInfoFormData = z.infer<typeof personalInfoSchema>;
 
 const AccontSetup = () => {
     const { nextStep, } = useWizard();
     const dispatch = useDispatch();
-
+    const currentStep = useSelector((state: RootState) => state.form.currentStep);
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -41,15 +40,28 @@ const AccontSetup = () => {
         }
     });
 
+
+
+    const handleNextStep = () => {
+        dispatch(setCurrentStep(currentStep + 1)); // Increment the step
+    };
+
+
+
     const onSubmit = (data: PersonalInfoFormData) => {
         console.log("Form submitted:", data);
-        dispatch(setPersonalInfo(data));
         dispatch(setCurrentStep(1));
+        handleNextStep()
         nextStep();
+        router.push('/register')
+
     };
 
 
     return (
+        <>
+
+
 
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-wrap">
@@ -187,6 +199,7 @@ const AccontSetup = () => {
                 </div>
             </div>
         </form>
+        </>
 
 
     );

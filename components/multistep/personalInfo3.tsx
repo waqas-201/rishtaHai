@@ -9,28 +9,40 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from ".
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Button } from "../ui/button";
 import StyledInputWrapper from "./formutils/styledwrapper";
+import { personalinfo } from "@/schema/formSchema";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setCurrentStep } from "@/slices/stepCouterSlice";
 
 // Define Zod schema
-const schema = z.object({
-    Height: z.string(),
-    Weight: z.string(),
-    MaritalStatus: z.string(),
-    EthnicGroup: z.string(),
-    BodyType: z.string(),
-    PhysicallyChallenged: z.string()
-});
 
-type FormData = z.infer<typeof schema>;
+
+type FormData = z.infer<typeof personalinfo>;
 
 const PersonalInfo: React.FC = () => {
     const { nextStep, previousStep } = useWizard();
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
-        resolver: zodResolver(schema),
+        // resolver: zodResolver(personalinfo),
     });
+    const dispatch = useDispatch();
+    const currentStep = useSelector((state: RootState) => state.form.currentStep);
+
+
+
+    const handleNextStep = () => {
+        dispatch(setCurrentStep(currentStep + 1)); // Increment the step
+    };
+
+    const handlePreviousStep = () => {
+        if (currentStep > 1) { // Ensure you don't go below step 1
+            dispatch(setCurrentStep(currentStep - 1)); // Decrement the step
+        }
+    };
 
     const onSubmit: SubmitHandler<FormData> = (data) => {
         console.log("Form Submitted:", data);
+        handleNextStep()
         nextStep();
     };
 
@@ -184,7 +196,10 @@ const PersonalInfo: React.FC = () => {
                 </CardContent>
 
                 <div className="flex w-full md:p-6 py-4  items-center justify-center gap-6" >
-                    <Button variant='secondary' type="button" onClick={previousStep}>Previous</Button>
+                    <Button variant='secondary' type="button" onClick={() => {
+                        previousStep()
+                        handlePreviousStep()
+                    }}>Previous</Button>
                     <Button type="submit">Next</Button>
                 </div>
             </form>

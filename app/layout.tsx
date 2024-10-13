@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-serif antialiased">
         <Providers>
+
           {children}
         </Providers>
       </body>

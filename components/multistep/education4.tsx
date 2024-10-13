@@ -6,35 +6,51 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select'; // Updated import
 import { Button } from '../ui/button'; // Import your Shadcn Button component
 import StyledInputWrapper from './formutils/styledwrapper';
+import { EducationSchema } from '@/schema/formSchema';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentStep } from '@/slices/stepCouterSlice';
+import { RootState } from '@/store';
+import { useWizard } from 'react-use-wizard';
 
 
-const schema = z.object({
-    highestEducation: z.string().min(1, "Highest education is required"),
-    educationField: z.string().min(1, "Education field is required"),
-    profession: z.string().min(1, "Profession is required"),
-    professionType: z.string().min(1, "Profession type is required"),
-    homeLocation: z.string().min(1, "Home location is required"),
-    presentLocation: z.string().min(1, "Present location is required"),
-});
 
-type FormValues = z.infer<typeof schema>;
+type FormValues = z.infer<typeof EducationSchema>;
 
 const EducationProfessionForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
-        resolver: zodResolver(schema),
+        // resolver: zodResolver(EducationSchema),
     });
+    const { nextStep, previousStep } = useWizard();
+    const dispatch = useDispatch();
+    const currentStep = useSelector((state: RootState) => state.form.currentStep);
 
+    const handleNextStep = () => {
+        dispatch(setCurrentStep(currentStep + 1)); // Increment the step
+    };
+
+    const handlePreviousStep = () => {
+        if (currentStep > 1) { // Ensure you don't go below step 1
+            dispatch(setCurrentStep(currentStep - 1)); // Decrement the step
+        }
+    };
     const onSubmit = (data: FormValues) => {
         console.log(data);
+        nextStep()
+        handleNextStep()
         // Handle form submission
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+            {/* Education  */}
+            <div className='flex' >
+
+
             {/* Highest Education */}
             <StyledInputWrapper label="Highest Education" error={errors.highestEducation?.message}>
                 <Select {...register('highestEducation')}>
-                    <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                         <SelectValue placeholder="Select highest education" />
                     </SelectTrigger>
                     <SelectContent>
@@ -49,7 +65,7 @@ const EducationProfessionForm: React.FC = () => {
             {/* Education Field */}
             <StyledInputWrapper label="Education Field" error={errors.educationField?.message}>
                 <Select {...register('educationField')}>
-                    <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                         <SelectValue placeholder="Select education field" />
                     </SelectTrigger>
                     <SelectContent>
@@ -60,12 +76,15 @@ const EducationProfessionForm: React.FC = () => {
                     </SelectContent>
                 </Select>
             </StyledInputWrapper>
+            </div>
+
+
 
             {/* Profession */}
-            <div className="">
+            <div className="flex">
                 <StyledInputWrapper label="Profession" error={errors.profession?.message}>
                     <Select {...register('profession')}>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                             <SelectValue placeholder="Select profession" />
                         </SelectTrigger>
                         <SelectContent>
@@ -80,7 +99,7 @@ const EducationProfessionForm: React.FC = () => {
                 {/* Profession Type */}
                 <StyledInputWrapper label="Profession Type" error={errors.professionType?.message}>
                     <Select {...register('professionType')}>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                             <SelectValue placeholder="Select profession type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -92,11 +111,13 @@ const EducationProfessionForm: React.FC = () => {
                 </StyledInputWrapper>
             </div>
 
+
+
             {/* Home Location */}
-            <div className="bg-green-50 p-4 rounded-md space-y-4">
+            <div className="flex">
                 <StyledInputWrapper label="Home Location*" error={errors.homeLocation?.message}>
                     <Select {...register('homeLocation')}>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                             <SelectValue placeholder="Select home location" />
                         </SelectTrigger>
                         <SelectContent>
@@ -110,7 +131,7 @@ const EducationProfessionForm: React.FC = () => {
                 {/* Present Location */}
                 <StyledInputWrapper label="Present Location*" error={errors.presentLocation?.message}>
                     <Select {...register('presentLocation')}>
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="">
                             <SelectValue placeholder="Select present location" />
                         </SelectTrigger>
                         <SelectContent>
@@ -122,8 +143,11 @@ const EducationProfessionForm: React.FC = () => {
                 </StyledInputWrapper>
             </div>
 
-            <div className="flex justify-between mt-6">
-                <Button type="button" variant="secondary">Previous</Button>
+            <div className="flex justify-center gap-6">
+                <Button type="button" variant="secondary" onClick={() => {
+                    previousStep()
+                    handlePreviousStep()
+                }} >Previous</Button>
                 <Button type="submit" variant="default">Next</Button>
             </div>
         </form>

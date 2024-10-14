@@ -14,14 +14,12 @@ const RegisterPage = () => {
 
 
     return (
-        <div className="bg-pink-200 min-h-screen flex items-center flex-col justify-center">
+        <div className="bg-pink-200 min-h-screen flex items-center flex-col justify-center  ">
             {/* Card centered using flexbox */}
             <h1 className="text-3xl font-bold text-center mb-6">
                 Complete Your Registration
             </h1>
-            <Card className="w-full max-w-3xl p-8 shadow-2xl  ">
-
-
+            <Card className=" md:w-full md:max-w-[80%] lg:max-w-[60%] w-[95%]    md:p-8 p-4 shadow-2xl  ">
 
                 <CardDescription className="hidden md:block" >
                     <ProgressTracker />

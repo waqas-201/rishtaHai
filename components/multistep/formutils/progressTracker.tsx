@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
 const steps = [
-    { number: '1', label: 'Account Setup' },
-    { number: '2', label: 'Basic Information' },
-    { number: '3', label: 'Personal Details' },
-    { number: '4', label: 'Education and Location' },
-    { number: '5', label: 'Self Description' },
-    { number: '6', label: 'Review Information' },
+
+    { number: '1', label: 'Basic Information' },
+    { number: '2', label: 'Personal Details' },
+    { number: '3', label: 'Education and Location' },
+    { number: '4', label: 'Self Description' },
+    { number: '5', label: 'Review Information' },
 ];
 
 export const ProgressTracker: React.FC = () => {

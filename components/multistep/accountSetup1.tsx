@@ -5,7 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { setPersonalInfo, setCurrentStep } from "../../slices/stepCouterSlice";
+import { setCurrentStep } from "../../slices/stepCouterSlice";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Label } from "../ui/label";
 import { PhoneInput } from "../ui/phoneInput";

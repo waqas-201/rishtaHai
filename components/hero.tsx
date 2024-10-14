@@ -79,7 +79,7 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-white border border-red-800 w-[40%]'>
+                    <div className='bg-white w-full lg:w-[40%] md:w-[80%] '>
                         <MultiStepForm />  
                     </div>
                 </div>

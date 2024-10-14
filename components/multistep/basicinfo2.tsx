@@ -29,7 +29,7 @@ const BasicDetailsForm = () => {
         }
     };
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<z.infer<typeof basicDetailsSchema>>({
-        // resolver: zodResolver(basicDetailsSchema),
+        resolver: zodResolver(basicDetailsSchema),
     });
 
     const onSubmit = (data: z.infer<typeof basicDetailsSchema>) => {
@@ -44,7 +44,11 @@ const BasicDetailsForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="" >
 
             {/* brith day  section 1  */}
-            <div className="w-full md:p-6 py-4 flex  items-center justify-center gap-6"   >
+            <div className="flex flex-col justify-start items-start gap-2  w-full md:p-4 " >
+
+                <p className="md:text-[12px] md:ml-6 text-[10px] text-gray-700" >Birth Day *</p>
+
+                <div className="w-full   flex  items-center justify-center  gap-2 md:gap-4"   >
                 {/* Day */}
                 <StyledInputWrapper label="Day" required='Day' error={errors.Day?.message} >
 
@@ -99,10 +103,10 @@ const BasicDetailsForm = () => {
 
                 </StyledInputWrapper>
             </div>
-
+            </div>
 
             {/* Religion & nation section   */}
-            <div className="flex w-full md:p-6 py-4  items-center    justify-center gap-6" >
+            <div className="flex w-full md:flex-row flex-col items-center  justify-center gap-6 md:p-4" >
 
                 {/* religion */}
                 <StyledInputWrapper label="Religion" required='Religion' error={errors.Religion?.message} >
@@ -145,7 +149,7 @@ const BasicDetailsForm = () => {
 
 
             {/* criditioals  section 3  */}
-            <div className="flex w-full md:p-6 py-4  items-center justify-center gap-6">
+            <div className="flex w-full  md:flex-row flex-col items-center justify-center gap-6 md:p-4">
                 {/* Email */}
 
                 <StyledInputWrapper label="Email" error={errors.Email?.message} required="Email" >
@@ -158,7 +162,9 @@ const BasicDetailsForm = () => {
                 </StyledInputWrapper>
             </div>
 
-            <div className="flex w-full md:p-6 py-4  items-center justify-center gap-6" >
+
+            {/* buttons  */}
+            <div className="flex w-full    items-center justify-center gap-6 md:p-4" >
                 <Button variant='secondary' type="button" onClick={
                     () => {
                         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -168,6 +174,8 @@ const BasicDetailsForm = () => {
                 }>Back</Button>
                 <Button type="submit">Next</Button>
             </div>
+
+
         </form >
 
     );

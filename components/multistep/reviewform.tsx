@@ -2,7 +2,7 @@
 import React from "react";
 import { useWizard } from "react-use-wizard";
 import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Card } from "../ui/card";
 
 
 const ReviewForm: React.FC = () => {

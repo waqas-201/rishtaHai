@@ -8,7 +8,7 @@ import AccontSetup from "./accountSetup1";
 
 export const MultiStepForm = () => {
     return (
-        <div className=" bg-background ">
+        <div className=" bg-background p-4 ">
 
 
 
@@ -16,7 +16,6 @@ export const MultiStepForm = () => {
 
             <Wizard>
                 <AccontSetup />
-
             </Wizard>
         </div>
     );

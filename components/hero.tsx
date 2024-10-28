@@ -1,9 +1,12 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { MultiStepForm } from './multistep/parent';
+import UserForm from './userForm';
 
-const images = [
+
+type imageType = string[]
+
+const images: imageType = [
     '/image1.jpg',
     '/image2.jpg',
     '/image3.jpg',
@@ -36,7 +39,7 @@ export function Hero() {
     return (
         <div className="relative h-screen overflow-hidden">
             {/* Background images */}
-            {images.map((image, index) => (
+            {images && images?.map((image, index) => (
                 <div
                     key={index}
                     className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
@@ -55,7 +58,7 @@ export function Hero() {
 
 
             <div className="relative z-10 flex flex-col items-center justify-center md:justify-center h-full text-center lg:px-8 bg-black bg-opacity-40  ">
-                {/* Content overlay */} 
+                {/* Content overlay */}
 
 
 
@@ -75,12 +78,12 @@ export function Hero() {
                         <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl '>
                             {qoute}
                         </blockquote>
-                    </div> 
+                    </div>
 
 
                     {/* form section  */}
-                    <div className='bg-white w-full lg:w-[40%] md:w-[80%] '>
-                        <MultiStepForm />  
+                    <div className='bg-white   w-full lg:w-[40%]   md:w-[80%] '>
+                        <UserForm />
                     </div>
                 </div>
             </div>

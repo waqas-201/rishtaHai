@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "./globals.css";
-import Providers from "@/providers/providers";
+
+import CustomToast from "@/components/customToast";
 
 export const metadata: Metadata = {
   title: "RishtaHai",
@@ -15,10 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-serif antialiased">
-        <Providers>
 
-          {children}
-        </Providers>
+        <CustomToast />
+        {children}
+
       </body>
     </html>
   );

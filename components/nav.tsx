@@ -29,13 +29,13 @@ const navItemVariants = {
 
 export function Nav() {
   return (
-    <header className="flex h-16 w-full items-center  md:sticky  fixed z-50 bg-white ">
+    <header className=" flex items-center justify-center   h-16  bg-transparent  ">
 
 
-      <div className="mx-auto max-w-7xl flex justify-center  w-full md:px-6 px-2  ">
+      <div className="  flex items-center w-[90%] justify-start gap-[40%] ">
 
         {/* logo */}
-        <Link href="#" className="mr-6 flex items-center mx-[-30px]" prefetch={false}>
+        <Link href="#" className="mr-6  mx-[-30px]  " prefetch={false}>
           <Image
             src="/logo.svg"
             width={150} // Provide default width for Next.js optimization
@@ -46,8 +46,8 @@ export function Nav() {
           <span className="sr-only">RishtaHai</span>
         </Link>
 
-        {/* nav items  */}
-        <nav className="hidden lg:flex items-center space-x-6  ">
+        {/* nav items  for mobile */}
+        <nav className="hidden md:flex  gap-16  ">
           {["Home", "About", "Services", "Contact"].map((item, index) => (
             <motion.div
               key={index}
@@ -68,13 +68,7 @@ export function Nav() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="ml-auto   flex items-center space-x-4">
-
-          <button className="md:inline-flex h-12 items-center hidden justify-center rounded-lg bg-[#114bdf] bg-[linear-gradient(110deg,#FF007F,45%,#FF77A0,55%,#FF007F)] bg-[length:200%_100%] bg-[position:0%_0%] animate-shimmer px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            Get Started
-          </button>
-
+        <div className="ml-auto md:hidden  flex items-center space-x-4">
 
 
           <Sheet>
@@ -82,7 +76,7 @@ export function Nav() {
               <Button
                 variant="outline"
                 size="icon"
-                className="lg:hidden border-secondary text-primary hover:bg-secondary/10 hover:text-primary"
+                className="md:hidden border-secondary text-primary hover:bg-secondary/10 hover:text-primary"
               >
                 <MenuIcon className="h-6 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -107,6 +101,9 @@ export function Nav() {
 
 
       </div>
+
+
+
     </header>
   );
 }

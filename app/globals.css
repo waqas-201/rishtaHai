@@ -14,7 +14,7 @@
     --card-foreground: 222.22 47.37% 11.18%;
     --border: 220 15.56% 90.89%;
     --input: 216 12.2% 83.92%;
-    --primary: 331.29 100% 68.04%;
+      --primary: 331.29 100% 68.04%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 13.04% 90.98%;
     --secondary-foreground: 222.22 47.37% 11.18%;
@@ -22,7 +22,7 @@
     --accent-foreground: 222.22 47.37% 11.18%;
     --destructive: 0 84.31% 60%;
     --destructive-foreground: 0 0% 98.04%;
-    --ring: 331.18 100% 80%;
+      --ring: 331.18 100% 80%;
     --radius: 0.5rem;
   }
 

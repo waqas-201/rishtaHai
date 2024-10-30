@@ -62,10 +62,10 @@ export function Hero() {
 
 
 
-                <div className='flex flex-col items-center lg:flex-row justify-center   p-4   lg:mt-[-200px] mt-[100px] lg:gap-24  gap-10 '  >
+                <div className=' flex flex-col items-center justify-center p-4  ' >
                     {/* lefte secion  */}
 
-                    <div className='lg:w-[45%] flex flex-col  lg:gap-4 gap-2 '>
+                    <div className=' flex flex-col  lg:gap-4 gap-2 '>
 
                         <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-[#FF308D]'> perfect</span> match await&apos;s here!

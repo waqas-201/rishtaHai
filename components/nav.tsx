@@ -35,6 +35,7 @@ export function Nav() {
       <div className="  flex items-center w-[90%] justify-start gap-[40%] ">
 
         {/* logo */}
+
         <Link href="#" className="mr-6  mx-[-30px]  " prefetch={false}>
           <Image
             src="/logo.svg"
@@ -48,7 +49,7 @@ export function Nav() {
 
         {/* nav items  for mobile */}
         <nav className="hidden md:flex  gap-16  ">
-          {["Home", "About", "Services", "Contact"].map((item, index) => (
+          {["How it Works", "Services", "About us", "Contact"].map((item, index) => (
             <motion.div
               key={index}
               className="relative"

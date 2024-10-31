@@ -68,14 +68,14 @@ export function Hero() {
                     <div className=' flex flex-col items-center lg:gap-16 gap-2 '>
 
                         <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
-                            Your <span className='text-[#FF308D]'> perfect</span> match await&apos;s here!
+                            Your <span className='text-primary'> perfect</span> match await&apos;s here!
                         </h1>
 
                         <div className='flex flex-col items-center gap-6' >
-                            <blockquote className="lg:w-[50%] hidden md:block  w-[70%] border-[#FF308D] md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
+                            <blockquote className="lg:w-[50%] hidden md:block  w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
                         </blockquote>
-                            <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl hidden md:block '>
+                            <blockquote className='text-primary tmd:ext-2xl text-xl hidden md:block '>
                             {qoute}
                         </blockquote>
                     </div>
@@ -83,7 +83,7 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-black/20 md:p-4   w-full lg:w-[80%] p-2  '>
+                    <div className='bg-[#47a6d3]/10 md:p-6   w-full lg:w-[80%] p-2  '>
                         <UserForm />
                     </div>
                 </div>

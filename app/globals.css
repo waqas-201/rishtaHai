@@ -4,26 +4,47 @@
 
  @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.22 47.37% 11.18%;
-    --muted: 220 14.29% 95.88%;
-    --muted-foreground: 215.29 19.32% 34.51%;
-    --popover: 0 6.67% 97.06%;
-    --popover-foreground: 222.22 47.37% 11.18%;
-    --card: 210 20% 98.04%;
-    --card-foreground: 222.22 47.37% 11.18%;
-    --border: 220 15.56% 90.89%;
-    --input: 216 12.2% 83.92%;
-      --primary: 331.29 100% 68.04%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 13.04% 90.98%;
-    --secondary-foreground: 222.22 47.37% 11.18%;
-    --accent: 216 12.2% 83.92%;
-    --accent-foreground: 222.22 47.37% 11.18%;
-    --destructive: 0 84.31% 60%;
-    --destructive-foreground: 0 0% 98.04%;
-      --ring: 331.18 100% 80%;
-    --radius: 0.5rem;
+
+   /* Main background color for the overall page/app */
+  --background: 0 0% 100%;
+  /* Primary text color used for body text */
+  --foreground: 199, 55%, 51%;
+  /* Background color for less prominent/disabled elements */
+  --muted: 220 14.29% 95.88%;
+  /* Text color for muted/disabled elements */
+  --muted-foreground: 215.29 19.32% 34.51%;
+  /* Background color for floating elements like dropdowns/tooltips */
+  --popover: 0 6.67% 97.06%;
+  /* Text color for content inside popovers */
+  --popover-foreground: 222.22 47.37% 11.18%;
+  /* Background color for card components */
+  --card: 210 20% 98.04%;
+  /* Text color for content inside cards */
+  --card-foreground: 222.22 47.37% 11.18%;
+  /* Color for borders and dividers */
+  --border: 220 15.56% 90.89%;
+  /* Color for form input borders and backgrounds */
+  --input: 216 12.2% 83.92%;
+  /* Main brand/action color for buttons and interactive elements */
+  --primary: 331.29 100% 68.04%;
+  /* Text color on primary-colored elements */
+  --primary-foreground: 0 0% 100%;
+  /* Less prominent action color for secondary buttons */
+  --secondary: 220 13.04% 90.98%;
+  /* Text color on secondary-colored elements */
+  --secondary-foreground: 222.22 47.37% 11.18%;
+  /* Color for highlighted or focused elements */
+  --accent: 216 12.2% 83.92%;
+  /* Text color on accent-colored elements */
+  --accent-foreground: 222.22 47.37% 11.18%;
+  /* Color for error states and delete actions */
+  --destructive: 0 84.31% 60%;
+  /* Text color on destructive-colored elements */
+  --destructive-foreground: 0 0% 98.04%;
+  /* Color for focus rings and outlines */
+  --ring: 331.18 100% 80%;
+  /* Border radius for rounded corners */
+  --radius: 0.5rem;
   }
 
   .dark {
@@ -174,3 +195,11 @@ h6 {
     url("/fonts/Merriweather/Merriweather-Bold.woff2") format("woff2"),
     url("/fonts/Merriweather/Merriweather-Bold.woff") format("woff");
 }
+
+
+
+
+
+
+
+

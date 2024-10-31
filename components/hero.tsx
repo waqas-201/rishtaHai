@@ -62,30 +62,35 @@ export function Hero() {
 
 
 
-                <div className=' flex flex-col items-center justify-center p-4  ' >
+                <div className=' flex flex- gap-32  flex-col items-center justify-around  ' >
                     {/* lefte secion  */}
 
-                    <div className=' flex flex-col  lg:gap-4 gap-2 '>
+                    <div className=' flex flex-col items-center lg:gap-16 gap-2 '>
 
                         <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-[#FF308D]'> perfect</span> match await&apos;s here!
                         </h1>
 
-
-                        <blockquote className=" border-[#FF308D] md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
+                        <div className='flex flex-col items-center gap-6' >
+                            <blockquote className="lg:w-[50%] hidden md:block  w-[70%] border-[#FF308D] md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
                         </blockquote>
-                        <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl '>
+                            <blockquote className='text-[#FF308D] tmd:ext-2xl text-xl hidden md:block '>
                             {qoute}
                         </blockquote>
+                    </div>
                     </div>
 
 
                     {/* form section  */}
-                    <div className='bg-white   w-full lg:w-[40%]   md:w-[80%] '>
+                    <div className='bg-black/20 md:p-4   w-full lg:w-[80%] p-2  '>
                         <UserForm />
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     );

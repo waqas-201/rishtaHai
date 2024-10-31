@@ -47,8 +47,8 @@ export function Nav() {
           <span className="sr-only">RishtaHai</span>
         </Link>
 
-        {/* nav items  for mobile */}
-        <nav className="hidden md:flex  gap-16  ">
+        {/* nav items  for desktop */}
+        <nav className=" hidden md:flex lg:gap-12 md:gap-6 gap-2 items-center">
           {["How it Works", "Services", "About us", "Contact"].map((item, index) => (
             <motion.div
               key={index}
@@ -60,7 +60,7 @@ export function Nav() {
             >
               <Link
                 href="#"
-                className="text-md font-medium text-foreground hover:text-primary tracking-widest"
+                className="text-md  h-full w-[100px] font-medium text-foreground hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}
@@ -69,9 +69,8 @@ export function Nav() {
           ))}
         </nav>
 
+        {/* for mobiles  */}
         <div className="ml-auto md:hidden  flex items-center space-x-4">
-
-
           <Sheet>
             <SheetTrigger asChild>
               <Button

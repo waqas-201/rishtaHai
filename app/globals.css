@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+ @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.22 47.37% 11.18%;
@@ -46,8 +46,54 @@
     --destructive-foreground: 0 0% 100%;
     --ring: 331 100% 68%;
   }
-}
-
+} 
+/* @layer base {
+    :root {
+      --background: 48.07 100% 67.45%;
+      --foreground: 47 65% 2%;
+      --muted: 79.25 0% 100%;
+      --muted-foreground: 47 5% 35%;
+      --popover: 52.08 0% 100%;
+      --popover-foreground: 47 65% 2%;
+      --card: 47 68% 97%;
+      --card-foreground: 47 65% 1%;
+      --border: 47 10% 93%;
+      --input: 47 10% 93%;
+      --primary: 106.42 22.25% 27.69%;
+      --primary-foreground: 47 0% 100%;
+      --secondary: 203.77 75.29% 50.19%;
+      --secondary-foreground: 47 0% 100%;
+      --accent: 344.15 87.61% 62.75%;
+      --accent-foreground: 47 0% 100%;
+      --destructive: 0 82.4% 38.8%;
+      --destructive-foreground: 0 86% 97%;
+      --ring: 346.42 100% 59.43%;
+      --radius: 0.5rem;
+    }
+  
+    .dark {
+      --background: 47 51% 4%;
+      --foreground: 47 16% 99%;
+      --muted: 47 22% 10%;
+      --muted-foreground: 47 5% 65%;
+      --popover: 47 51% 4%;
+      --popover-foreground: 47 16% 99%;
+      --card: 47 51% 5%;
+      --card-foreground: 0 0% 100%;
+      --border: 47 10% 11%;
+      --input: 47 10% 11%;
+      --primary: 47 100% 50%;
+      --primary-foreground: 47 100% 10%;
+      --secondary: 47 9% 8%;
+      --secondary-foreground: 47 9% 68%;
+      --accent: 47 15% 14%;
+      --accent-foreground: 47 15% 74%;
+      --destructive: 0 86% 47%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 47 100% 50%;
+    }
+  } */
+  
 @keyframes zoomInOut {
   0%,
   100% {

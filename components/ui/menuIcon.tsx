@@ -2,7 +2,8 @@ import { SVGProps } from "react";
 
 export function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
     return (
-        <svg
+        <svg 
+
             {...props}
             xmlns="http://www.w3.org/2000/svg"
             width="24"

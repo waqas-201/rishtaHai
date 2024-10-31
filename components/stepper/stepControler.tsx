@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, } from "../ui/card";
 import StepWizard from "react-step-wizard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -7,10 +7,10 @@ import { PersonalInfo } from "./persolanInfo1";
 import { ContactInfo } from "./contactInfo2";
 import { AddressInfo } from "./addressInfo3";
 import { formSchema } from "@/schema/formSchema";
-import { StepperNav } from "./stepperNav";
 
 // Main Form Component
 export const MultiStepForm: React.FC = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [activeStep, setActiveStep] = useState(1);
     const methods = useForm<FormData>({
         resolver: zodResolver(formSchema),
@@ -23,11 +23,11 @@ export const MultiStepForm: React.FC = () => {
 
     return (
         <Card className="w-full max-w-lg mx-auto">
-            <CardHeader>
+            {/* <CardHeader>
                 <CardTitle className="text-center">Step {activeStep} of 3</CardTitle>
                 <StepperNav currentStep={activeStep} totalSteps={3} />
 
-            </CardHeader>
+            </CardHeader> */}
             <CardContent>
                 <FormProvider {...methods}>
                     <StepWizard onStepChange={handleStepChange}>

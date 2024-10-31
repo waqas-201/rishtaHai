@@ -3,10 +3,40 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import MultiStepForm from "./stepper/stepControler";
+import SelectWrapper from "./stepper/SelectWrapper";
+import { P } from "./ui/P";
 
 
 
 
+
+
+const numbersAsStrings = Array.from({ length: 55 }, (_, i) => (i + 18).toString());
+const topReligions = [
+    "Islam",
+    "Christianity",
+    "Hinduism",
+    "Buddhism",
+    "Sikhism",
+    "Judaism",
+    "Baha'i",
+    "Jainism",
+    "Shinto",
+    "Taoism"
+];
+
+const topCountries = [
+    "Pakistan",
+    "India",
+    "United States",
+    "Bangladesh",
+    "China",
+    "Russia",
+    "Indonesia",
+    "Brazil",
+    "Nigeria",
+    "Mexico"
+];
 
 
 
@@ -22,45 +52,47 @@ const UserForm = () => {
     };
 
 
-
-
-
-
-
-
-
-
-
-
     return (
 
-        <Dialog open={open} onOpenChange={() => setOpen(!open)}>    
+        <Dialog open={open} onOpenChange={() => setOpen(false)}>    
 
             <form>
-                <div className="flex flex-wrap   p-4">
-                    {/* right section */}
+                <div className="flex md:items-center items-start  gap-4 flex-wrap  justify-between ">
 
+                    {/* first row */}
+                    <div className="flex  md:gap-4 gap-2   items-center justify-start   w-full md:flex-1  md:w-auto ">
 
-                    {/* left section */}
-                    <div className="md:w-[50%] w-full md:p-6 py-4 flex flex-col items-start justify-center   gap-6 ">
+                        <SelectWrapper values={['Women', 'Men']} text="I'm Looking for a " containerClassName="grow" />
+                        <SelectWrapper values={[...numbersAsStrings]} text="Aged" containerClassName="basis-1/5 md:basis " />
+                        {/* <div className="text-white mt-5">to</div> */}
+                        <SelectWrapper values={[...numbersAsStrings]} text="...." TextclassName="invisible" containerClassName="basis-1/5" valueAt={5} />
 
+                    </div>
+                    {/* second row */}
+                    <div className="flex md:gap-4  gap-2 w-full md:flex-1   md:w-auto">
 
-
+                        <SelectWrapper values={[...topReligions]} text="of reiligion" containerClassName="grow" />
+                        <SelectWrapper values={[...topCountries]} text="and i'm living in" containerClassName="grow" />
+                    </div>
 
 
                         {/* Get Started Button */}
-                        <DialogTrigger asChild>
-                            <Button onClick={handleClick} className="w-full" type="submit">Let&apos;s Begin</Button>
+                    <DialogTrigger asChild> 
+                        <div className="flex flex-col items-start gap-[2px] md:w-auto  w-full  ">
+                            <P className="invisible">Get Started</P>
+
+                            <Button onClick={handleClick} className="w-full md:w-auto " variant="default" >
+                                Let&apos;s Begin
+                            </Button>
+                        </div>
                         </DialogTrigger>
                     </div>
-                </div>
+
             </form>
+            {/* dialog related content */}
             <DialogContent>
-
                 <MultiStepForm />
-
             </DialogContent>
-
         </Dialog >
     );
 };

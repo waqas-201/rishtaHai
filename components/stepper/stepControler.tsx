@@ -2,10 +2,16 @@ import { FormProvider, useForm } from "react-hook-form";
 import StepWizard from "react-step-wizard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { PersonalInfo } from "./persolanInfo1";
-import { ContactInfo } from "./contactInfo2";
-import { AddressInfo } from "./addressInfo3";
+import { ProfileInfo } from "./profileInfo1";
+import { PersonalInfo } from "./personalInfo2";
 import { formSchema } from "@/schema/formSchema";
+import { ReligionsInfo } from "./religionInfo3";
+import { AddressInfo } from "./addressInfo4";
+
+
+
+
+
 
 
 
@@ -26,15 +32,13 @@ export const MultiStepForm: React.FC = () => {
         <div className="w-full max-w-lg mx-auto">
 
                 <FormProvider {...methods}>
-                    <StepWizard onStepChange={handleStepChange}>
-                        <PersonalInfo />
 
-
-                        <ContactInfo />
-
-
-                        <AddressInfo />
-                    </StepWizard>
+                <StepWizard onStepChange={handleStepChange}>
+                    <ProfileInfo />
+                    <PersonalInfo />
+                    <ReligionsInfo />
+                    <AddressInfo />
+                </StepWizard>
                 </FormProvider>
         </div>
     );

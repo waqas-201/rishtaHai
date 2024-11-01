@@ -25,10 +25,10 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
     };
 
     return (
-        <div className="space-y-4">
+        <div className=" flex  flex-col items-center justify-center gap-4">
             <Step2Icon />
             {/* First Name */}
-            <div className="space-y-2">
+            <div className="space-y-2  w-full">
                 <Label htmlFor="firstName">First Name</Label>
                 <Input
                     id="firstName"
@@ -45,7 +45,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
             </div>
 
             {/* Last Name */}
-            <div className="space-y-2">
+            <div className="space-y-2 w-full">
                 <Label htmlFor="lastName">Last Name</Label>
                 <Input
                     id="lastName"
@@ -62,7 +62,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
             </div>
 
             {/* Date of Birth */}
-            <div className="space-y-2">
+            <div className="space-y-2 w-full">
                 <Label>Date of Birth</Label>
                 <div className="flex space-x-2">
                     <Input
@@ -120,7 +120,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-4 w-full">
                 <Button variant="outline" onClick={previousStep} className="flex items-center gap-2">
                     <ArrowLeft className="w-4 h-4" /> Previous
                 </Button>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import UserForm from './userForm';
+import { TypographyBlockquote } from './ui/typography/blockQoute';
 
 
 type imageType = string[]
@@ -72,18 +73,18 @@ export function Hero() {
                         </h1>
 
                         <div className='flex flex-col items-center gap-6' >
-                            <blockquote className="lg:w-[50%] hidden md:block  w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
+                            <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
-                        </blockquote>
-                            <blockquote className='text-primary tmd:ext-2xl text-xl hidden md:block '>
+                            </TypographyBlockquote>
+                            <TypographyBlockquote className='text-primary tmd:ext-2xl border-none text-xl hidden md:block '>
                             {qoute}
-                        </blockquote>
+                            </TypographyBlockquote>
                     </div>
                     </div>
 
 
                     {/* form section  */}
-                    <div className='bg-[#47a6d3]/30 md:p-6   w-full lg:w-[80%] p-2  '>
+                    <div className='bg-black/30 md:p-6   w-full lg:w-[80%] p-2 md:py-2 py-4 '>
                         <UserForm />
                     </div>
                 </div>

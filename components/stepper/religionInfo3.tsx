@@ -3,100 +3,159 @@ import { useFormContext } from "react-hook-form";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../ui/select"; // Adjust the import path as necessary
 import { Button } from "../ui/button";
 import Image from "next/image";
-
+import { TypographySmall } from "../ui/typography/small";
+import { Alert, AlertDescription } from "../ui/alert";
+import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
+import { cities } from "@/lib/dataArrays";
 
 // Define the union type for religions
 type Religion = "Christianity" | "Islam" | "Hinduism" | "Buddhism" | "Sikhism";
-
-// Update the communities and countries types if they are also enums or arrays of specific strings
-type Community = "Community A" | "Community B" | "Community C";
+type Community = "CommunityA" | "CommunityB" | "CommunityC";
 type Country = "USA" | "Canada" | "Pakistan" | "India";
+type City = "Karachi" | "Lahore" | "Islamabad" | "Faisalabad" | "Rawalpindi" | "Multan" | "Hyderabad" | "Gujranwala" | "Peshawar" | "Quetta";
 
 export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
-    const { formState: { errors }, trigger, setValue, watch } = useFormContext<FormData>();
+    const { formState: { errors }, trigger, setValue, watch, getValues } = useFormContext<FormData>();
+    const data = getValues();
 
     const handleNext = async () => {
-        const isValid = await trigger(['communities', 'countries', 'religions']);
+        console.log("All Form Data:", data);
+        const isValid = await trigger(['community', 'country', 'religion']); 
         if (isValid && nextStep) {
             nextStep();
         }
     };
 
     // Watch selected values
-    const selectedReligion = watch("religions") || ""; // single value
-    const selectedCommunity = watch("communities") || ""; // single value
-    const selectedCountry = watch("countries") || ""; // single value
-
-    // Log selected values for debugging
-    console.log("Selected Religion:", selectedReligion);
-    console.log("Selected Community:", selectedCommunity);
-    console.log("Selected Country:", selectedCountry);
+    const selectedReligion = watch("religion") as Religion; // cast as Religion
+    const selectedCommunity = watch("community") as Community; // cast as Community
+    const selectedCountry = watch("country") as Country; // cast as Country
+    const selectedCity = watch("city") as City; // cast as City
 
     return (
-        <div>
+        <div className="flex flex-col items-center justify-center gap-4">
             {/* Religions Select */}
             <Image src='/Image-3.png' alt="Religion Icon" width={80} height={80} />
-
-            <Select
-                onValueChange={(selected: Religion) => setValue("religions", selected as Religion)}
-                value={selectedReligion} // single value binding
-            >
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select your religion" />
-                </SelectTrigger>
-                <SelectContent>
-                    {["Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism"].map((religion) => (
-                        <SelectItem key={religion} value={religion as Religion}>
-                            {religion}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
-            {errors.religions && <span className="text-red-600">{errors.religions.message}</span>}
+            <div className="w-full space-y-2">
+                <TypographySmall>Religion</TypographySmall>
+                <Select
+                    onValueChange={(selected: Religion) => setValue("religion", selected as Religion)}
+                    value={selectedReligion} // single value binding
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Select your religion" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {["Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism"].map((religion) => (
+                            <SelectItem key={religion} value={religion as Religion}>
+                                {religion}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                {errors.religion && (
+                    <Alert variant="destructive" className="py-2">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>{errors.religion.message}</AlertDescription>
+                    </Alert>
+                )}
+            </div>
 
             {/* Communities Select */}
-            <Select
-                onValueChange={(selected: Community) => setValue("communities", selected as Community)}
-                value={selectedCommunity} // single value binding
-            >
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select your community" />
-                </SelectTrigger>
-                <SelectContent>
-                    {["Community A", "Community B", "Community C"].map((community) => (
-                        <SelectItem key={community} value={community as Community}>
-                            {community}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
-            {errors.communities && <span className="text-red-600">{errors.communities.message}</span>}
-
+            {selectedReligion &&
+                (<div className="w-full space-y-2">
+                    <TypographySmall>Community</TypographySmall>
+                    <Select
+                    onValueChange={(selected: Community) => setValue("community", selected as Community)}
+                    value={selectedCommunity} // single value binding
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Select your community" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {["CommunityA", "CommunityB", "CommunityC"].map((community) => (
+                            <SelectItem key={community} value={community as Community}>
+                                {community}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+                {errors.community && (
+                    <Alert variant="destructive" className="py-2">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>{errors.community.message}</AlertDescription>
+                    </Alert>
+                )}
+            </div>
+                )
+            }  
             {/* Countries Select */}
-            <Select
-                onValueChange={(selected: Country) => setValue("countries", selected as Country)}
-                value={selectedCountry} // single value binding
-            >
-                <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select your country" />
-                </SelectTrigger>
-                <SelectContent>
-                    {["USA", "Canada", "Pakistan", "India"].map((country) => (
-                        <SelectItem key={country} value={country as Country}>
-                            {country}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
-            {errors.countries && <span className="text-red-600">{errors.countries.message}</span>}
+
+            {selectedReligion && selectedCommunity &&
+
+                (
+                    <div className="w-full space-y-2">
+                        <TypographySmall>Country</TypographySmall>
+                    <Select
+                        onValueChange={(selected: Country) => setValue("country", selected as Country)}
+                        value={selectedCountry} // single value binding
+                    >
+                    <SelectTrigger>
+                            <SelectValue placeholder="Select your country" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            {["USA", "Canada", "Pakistan", "India"].map((country) => (
+                                <SelectItem key={country} value={country as Country}>
+                                    {country}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                        {errors.country && (
+                            <Alert variant="destructive" className="py-2">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{errors.country.message}</AlertDescription>
+                            </Alert>
+                        )}
+                    </div>)
+            }
+            {/* city selectet */}
+
+            {selectedReligion && selectedCommunity && selectedCountry &&
+
+                (
+                    <div className="w-full space-y-2">
+                        <TypographySmall>City</TypographySmall>
+                        <Select
+                            onValueChange={(selected: Religion) => setValue("city", selected as City)}
+                            value={selectedCity} // single value binding
+                        >
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select your City" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {[...cities].map((city) => (
+                                    <SelectItem key={city} value={city as City}>
+                                        {city}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                        {errors.religion && (
+                    <Alert variant="destructive" className="py-2">
+                        <AlertCircle className="h-4 w-4" />
+                            <AlertDescription>{errors.religion.message}</AlertDescription>
+                    </Alert>
+                )}
+                    </div>)}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-4">
-                <Button variant="outline" onClick={previousStep}>
-                    Previous
+            <div className="flex justify-between mt-4 w-full">
+                <Button className="flex items-center gap-2" variant="outline" onClick={previousStep}>
+                    <ArrowLeft className="w-4 h-4" /> Previous
                 </Button>
-                <Button variant="default" onClick={handleNext}>
-                    Next
+                <Button className="flex items-center gap-2" variant="default" onClick={handleNext}>
+                    Next <ArrowRight className="w-4 h-4" />
                 </Button>
             </div>
         </div>

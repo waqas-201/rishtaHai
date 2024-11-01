@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { P } from "../ui/P";
+import { P } from "../ui/typography/P";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 type SelectWrapperProps = {

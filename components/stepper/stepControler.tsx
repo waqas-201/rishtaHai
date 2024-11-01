@@ -7,6 +7,7 @@ import { PersonalInfo } from "./personalInfo2";
 import { formSchema } from "@/schema/formSchema";
 import { ReligionsInfo } from "./religionInfo3";
 import { AddressInfo } from "./addressInfo4";
+import { DescriptionAboutUser } from "./discription5";
 
 
 
@@ -29,15 +30,16 @@ export const MultiStepForm: React.FC = () => {
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto">
+        <div className="w-full max-w-lg mx-auto ">
 
-                <FormProvider {...methods}>
 
+            <FormProvider {...methods}>
                 <StepWizard onStepChange={handleStepChange}>
                     <ProfileInfo />
                     <PersonalInfo />
                     <ReligionsInfo />
                     <AddressInfo />
+                    <DescriptionAboutUser />
                 </StepWizard>
                 </FormProvider>
         </div>

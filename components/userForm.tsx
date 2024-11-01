@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import MultiStepForm from "./stepper/stepControler";
 import SelectWrapper from "./stepper/SelectWrapper";
-import { P } from "./ui/P";
+import { P } from "./ui/typography/P";
 
 
 
@@ -77,7 +77,7 @@ const UserForm = () => {
 
 
                         {/* Get Started Button */}
-                    <DialogTrigger asChild> 
+                    <DialogTrigger asChild  > 
                         <div className="flex flex-col items-start gap-[2px] md:w-auto  w-full  ">
                             <P className="invisible">Get Started</P>
 
@@ -90,8 +90,11 @@ const UserForm = () => {
 
             </form>
             {/* dialog related content */}
-            <DialogContent>
+
+            <DialogContent className="w-[95%]"  >
+                <div className="md:p-6 p-2 ">
                 <MultiStepForm />
+                </div>
             </DialogContent>
         </Dialog >
     );

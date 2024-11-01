@@ -1,9 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,25 +8,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// prisma/schema.prisma
 model User {
-  id           Int       @id @default(autoincrement())
-  phone        String    @unique // Phone number at the top and unique
-  email        String    @unique // Email at the top and unique
-  firstName    String
-  lastName     String
-  day          Int       // Stores day of birth
-  month        Int       // Stores month of birth
-  year         Int       // Stores year of birth
-  address      String
-  city         String
-  profileFor   ProfileFor // Enum type for profile selection
-  gender       Gender     // Enum type for gender selection
-  religion     Religion   // Enum type for religion selection
-  community    Community  // Enum type for community selection
-  country      Country    // Enum type for country selection
+  id          Int        @id @default(autoincrement())
+  phone       String     @unique
+  email       String     @unique
+  firstName   String
+  lastName    String
+  day         Int
+  month       Int
+  year        Int
+  // address     String
+  city        City
+  profileFor  ProfileFor
+  gender      Gender
+  religion    Religion
+  community   Community
+  country     Country
+  description String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
-// Enum definitions based on your schema choices
 enum ProfileFor {
   Myself
   MySon
@@ -68,5 +66,15 @@ enum Country {
   India
 }
 
-
- 
+enum City {
+  Karachi
+  Lahore
+  Islamabad
+  Faisalabad
+  Rawalpindi
+  Multan
+  Hyderabad
+  Gujranwala
+  Peshawar
+  Quetta
+}

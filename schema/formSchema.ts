@@ -1,6 +1,6 @@
+// schema/formSchema.ts
 import { z } from "zod";
 
-// Zod schema for validation
 export const formSchema = z
   .object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -22,27 +22,40 @@ export const formSchema = z
       .max(new Date().getFullYear(), "Year cannot be in the future"),
     email: z.string().email("Please enter a valid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 digits"),
-    address: z.string().min(5, "Address must be at least 5 characters"),
-    city: z.string().min(2, "City must be at least 2 characters"),
+    city: z.enum([
+      "Karachi",
+      "Lahore",
+      "Islamabad",
+      "Faisalabad",
+      "Rawalpindi",
+      "Multan",
+      "Hyderabad",
+      "Gujranwala",
+      "Peshawar",
+      "Quetta",
+    ]),
     profileFor: z.enum([
       "Myself",
-      "My Son",
-      "My Daughter",
-      "My Brother",
-      "My Sister",
-      "My Friend",
-      "My Relative",
+      "MySon",
+      "MyDaughter",
+      "MyBrother",
+      "MySister",
+      "MyFriend",
+      "MyRelative",
     ]),
     gender: z.enum(["Male", "Female"]),
-    religions: z.enum([
+    religion: z.enum([
       "Christianity",
       "Islam",
       "Hinduism",
       "Buddhism",
       "Sikhism",
-    ]), // Updated to allow a single selection
-    communities: z.enum(["Community A", "Community B", "Community C"]), // Updated to allow a single selection
-    countries: z.enum(["USA", "Canada", "Pakistan", "India"]), // Updated to allow a single selection
+    ]),
+    community: z.enum(["CommunityA", "CommunityB", "CommunityC"]),
+    country: z.enum(["USA", "Canada", "Pakistan", "India"]),
+    description: z
+      .string()
+      .min(20, "Description must be at least 20 characters"),
   })
   .refine(
     (data) => {

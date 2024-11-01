@@ -1,24 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // actions/createUser.ts
 "use server";
 
 import { z } from "zod";
 import { db } from "@/prismaClient";
+import { formSchema } from "@/schema/formSchema";
 
-const InfoSchema = z.object({
-  profileFor: z.string().min(1, { message: "You must select a profile type." }),
-  phone: z.string(),
-  GroomName: z
-    .string()
-    .min(5, { message: "Name must be at least 5 characters long." }),
-  gender: z.enum(["male", "female"], { message: "You must select a gender." }),
-  termsAccepted: z.boolean().refine((val) => val === true, {
-    message: "You must accept the terms and conditions.",
-  }),
-});
-
-export async function createUser(data: z.infer<typeof InfoSchema>) {
+export async function createUser(data: z.infer<typeof formSchema>) {
   try {
-    const validatedData = InfoSchema.safeParse(data);
+    const validatedData = formSchema.safeParse(data);
+    console.log(validatedData);
 
     if (!validatedData.success) {
       return {
@@ -43,24 +34,20 @@ export async function createUser(data: z.infer<typeof InfoSchema>) {
         },
       };
     }
-
+    console.log(validatedData.data);
     const user = await db.user.create({
-      data: {
-        phone: validatedData.data.phone,
-        profileFor: validatedData.data.profileFor,
-        gender: validatedData.data.gender,
-        GroomName: validatedData.data.GroomName,
-        termsAccepted: validatedData.data.termsAccepted,
-      },
+      data: validatedData.data,
     });
 
-    return { success: true, error: null, data: user };
-  } catch (error) {
+    return { success: true, error: null, data: { ...user } }; // Spread operator to ensure it's a plain object
+  } catch (error: unknown) {
+    console.log(error);
+
     return {
       success: false,
       error: {
         message: "Failed to create user",
-        cause: error,
+        cause: "something went wrong",
       },
     };
   }

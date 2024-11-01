@@ -12,7 +12,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const { control, formState: { errors }, trigger, getValues, watch, setValue } = useFormContext<FormData>();
 
     const profileFor = watch('profileFor');
-    const showGenderSelection = ["Myself", "My Friend", "My Relative"].includes(profileFor);
+    const showGenderSelection = ["Myself", "MyFriend", "MyRelative"].includes(profileFor);
 
     const handleNext = async () => {
         const isValid = await trigger(['profileFor', 'gender']);

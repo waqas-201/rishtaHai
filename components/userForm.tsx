@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import MultiStepForm from "./stepper/stepControler";
 import SelectWrapper from "./stepper/SelectWrapper";
 import { P } from "./ui/typography/P";
+import { ArrowRight } from "lucide-react";
 
 
 
@@ -64,7 +65,7 @@ const UserForm = () => {
 
                         <SelectWrapper values={['Women', 'Men']} text="I'm Looking for a " containerClassName="grow" />
                         <SelectWrapper values={[...numbersAsStrings]} text="Aged" containerClassName="basis-1/5 md:basis " />
-                        {/* <div className="text-white mt-5">to</div> */}
+                        <div className="text-white mt-6">to</div>
                         <SelectWrapper values={[...numbersAsStrings]} text="...." TextclassName="invisible" containerClassName="basis-1/5" valueAt={5} />
 
                     </div>
@@ -81,8 +82,8 @@ const UserForm = () => {
                         <div className="flex flex-col items-start gap-[2px] md:w-auto  w-full  ">
                             <P className="invisible">Get Started</P>
 
-                            <Button onClick={handleClick} className="w-full md:w-auto " variant="default" >
-                                Let&apos;s Begin
+                            <Button onClick={handleClick} className="w-full flex  justify-around gap-2 md:w-auto " variant="default" >
+                                Let&apos;s Begin <ArrowRight className="w-4 h-4" />
                             </Button>
                         </div>
                         </DialogTrigger>

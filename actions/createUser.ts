@@ -39,7 +39,7 @@ export async function createUser(data: z.infer<typeof formSchema>) {
       data: validatedData.data,
     });
 
-    return { success: true, error: null, data: { ...user } }; // Spread operator to ensure it's a plain object
+    return { success: true, error: null, data: {} }; // Spread operator to ensure it's a plain object
   } catch (error: unknown) {
     console.log(error);
 

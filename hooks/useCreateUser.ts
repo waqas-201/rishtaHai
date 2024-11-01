@@ -3,20 +3,23 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { createUser } from "@/actions/createUser"; // This should be a client-side accessible function
+import { toast } from "sonner";
 
 const useCreateUser = () => {
-  const { mutate } = useMutation({
+  const { mutate, isPending, data } = useMutation({
     mutationKey: ["createUser"],
     mutationFn: createUser,
     onSuccess: (data) => {
-      console.log(data);
+      if (data.error) {
+        toast.error(data.error.message);
+      }
     },
     onError: (error) => {
-      console.log(error);
+      toast.error(error.message);
     },
   });
 
-  return { mutate };
+  return { mutate, isPending, data };
 };
 
 export default useCreateUser;

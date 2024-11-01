@@ -15,12 +15,12 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const showGenderSelection = ["Myself", "MyFriend", "MyRelative"].includes(profileFor);
 
     const handleNext = async () => {
-        const isValid = await trigger(['profileFor', 'gender']);
+        const isValid = await trigger(['profileFor', 'gender']); // Validate the required fields
         if (isValid) {
             const data = getValues();
             console.log("All Form Data:", data);
             if (nextStep) {
-                nextStep();
+                nextStep(); // Proceed to the next step
             }
         } else {
             console.log("Validation failed");
@@ -38,16 +38,12 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
 
     return (
         <div className="flex flex-col items-center justify-center gap-4 p-6">
-
-            {/* User Icon */}
             <div className="flex justify-center mb-4">
                 <UserIcon />
             </div>
 
-            {/* Typography */}
             <TypographySmall className="self-start mb-2">This Profile is for</TypographySmall>
 
-            {/* Radio Group for Profile Selection */}
             <div className="w-full mb-4">
                 <Controller
                     control={control}
@@ -57,7 +53,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                         <div className="space-y-2">
                             <RadioGroup
                                 onValueChange={field.onChange}
-                                value={field.value} // Set the value for controlled input
+                                value={field.value}
                                 className="flex flex-wrap gap-4"
                             >
                                 {[
@@ -84,13 +80,12 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                     )}
                 />
                 {errors.profileFor && (
-                    <p className="text-red-500 text-sm">{errors.profileFor.message}</p>
+                    <p className="text-red-500 text-sm animate-slide-in ">{errors.profileFor.message}</p>
                 )}
             </div>
 
-            {/* Gender Selection */}
             {showGenderSelection && (
-                <div className="self-start w-full mb-4">
+                <div className="self-start w-full mb-4 animate-slide-in">
                     <TypographySmall className="self-start mb-2">Gender</TypographySmall>
                     <Controller
                         control={control}
@@ -100,7 +95,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                             <div className="space-y-2">
                                 <RadioGroup
                                     onValueChange={field.onChange}
-                                    value={field.value} // Set the value for controlled input
+                                    value={field.value}
                                     className="flex px-4"
                                 >
                                     {["Male", "Female"].map((option) => (
@@ -116,7 +111,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                                     ))}
                                 </RadioGroup>
                                 {errors.gender && (
-                                    <p className="text-red-500 text-sm">{errors.gender.message}</p>
+                                    <p className="text-red-500 text-sm animate-slide-in">{errors.gender.message}</p>
                                 )}
                             </div>
                         )}
@@ -124,7 +119,6 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                 </div>
             )}
 
-            {/* Next Button */}
             <div className="flex justify-end w-full mt-6">
                 <Button onClick={handleNext}>
                     Next <ArrowRight className="w-4 h-4" />

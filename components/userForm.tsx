@@ -80,10 +80,10 @@ const UserForm = () => {
                         {/* Get Started Button */}
                     <DialogTrigger asChild  > 
                         <div className="flex flex-col items-start gap-[2px] md:w-auto  w-full  ">
-                            <P className="invisible">Get Started</P>
+                            <P className="invisible text-sm mb-1">Get Started</P>
 
                             <Button onClick={handleClick} className="w-full flex  justify-around gap-2 md:w-auto " variant="default" >
-                                Let&apos;s Begin <ArrowRight className="w-4 h-4" />
+                                Let&apos;s Begin   <ArrowRight className="w-4 h-4 hidden md:block" />
                             </Button>
                         </div>
                         </DialogTrigger>
@@ -94,6 +94,7 @@ const UserForm = () => {
 
             <DialogContent className="w-[95%]"  >
                 <div className="md:p-6 p-2 ">
+
                 <MultiStepForm />
                 </div>
             </DialogContent>

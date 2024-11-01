@@ -54,7 +54,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     </SelectContent>
                 </Select>
                 {errors.religion && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.religion.message}</AlertDescription>
                     </Alert>
@@ -63,7 +63,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
 
             {/* Communities Select */}
             {selectedReligion &&
-                (<div className="w-full space-y-2">
+                (<div className="w-full space-y-2 animate-slide-in">
                     <TypographySmall>Community</TypographySmall>
                     <Select
                     onValueChange={(selected: Community) => setValue("community", selected as Community)}
@@ -94,7 +94,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
             {selectedReligion && selectedCommunity &&
 
                 (
-                    <div className="w-full space-y-2">
+                <div className="w-full space-y-2 animate-slide-in">
                         <TypographySmall>Country</TypographySmall>
                     <Select
                         onValueChange={(selected: Country) => setValue("country", selected as Country)}
@@ -112,7 +112,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                         </SelectContent>
                     </Select>
                         {errors.country && (
-                            <Alert variant="destructive" className="py-2">
+                        <Alert variant="destructive" className="py-2 animate-slide-in">
                                 <AlertCircle className="h-4 w-4" />
                                 <AlertDescription>{errors.country.message}</AlertDescription>
                             </Alert>
@@ -124,7 +124,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
             {selectedReligion && selectedCommunity && selectedCountry &&
 
                 (
-                    <div className="w-full space-y-2">
+                <div className="w-full space-y-2 animate-slide-in">
                         <TypographySmall>City</TypographySmall>
                         <Select
                             onValueChange={(selected: Religion) => setValue("city", selected as City)}
@@ -142,7 +142,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                             </SelectContent>
                         </Select>
                         {errors.religion && (
-                    <Alert variant="destructive" className="py-2">
+                        <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                             <AlertDescription>{errors.religion.message}</AlertDescription>
                     </Alert>

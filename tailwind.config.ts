@@ -76,27 +76,37 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+        "fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "-200% 0" },
+        "slide-in": {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-out": {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(20px)", opacity: "0" },
+        },
+        "smooth-height": {
+          from: { maxHeight: "0px" },
+          to: { maxHeight: "var(--radix-dialog-content-max-height)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        zoom: "zoomInOut 5s ease-in-out infinite",
-        fade: "zoomInOut 5s ease-in-out infinite",
-        shimmer: "shimmer 2s linear infinite", // Add shimmer animation
+        "fade-in": "fade-in 0.5s ease-out",
+        "fade-out": "fade-out 0.5s ease-out",
+        "slide-in": "slide-in 0.5s ease-out",
+        "slide-out": "slide-out 0.5s ease-out",
+        "smooth-height": "smooth-height 0.5s ease-in-out forwards",
       },
     },
   },
   plugins: [tailwindAnimate],
 };
+
+

@@ -68,7 +68,7 @@ export function Hero() {
 
                     <div className=' flex flex-col items-center lg:gap-16 gap-2 '>
 
-                        <h1 className="scroll-m-20 md:text-4xl text-2xl font-extrabold text-white/90  lg:text-6xl tracking-wider">
+                        <h1 className="scroll-m-20  text-4xl w-[90%] md:w-full font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-primary'> perfect</span> match await&apos;s here!
                         </h1>
 
@@ -84,7 +84,7 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-black/30    w-full lg:w-[80%] p-8 '>
+                    <div className='bg-black/30    w-full lg:w-[80%]  p-4 sm:p-8 '>
                         <UserForm />
                     </div>
                 </div>

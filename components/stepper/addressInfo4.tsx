@@ -13,7 +13,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
     const { register, formState: { errors }, getValues, control, trigger } = useFormContext<FormData>();
 
     const handleNext = async () => {
-        const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
+        const isValid = await trigger(['email', 'phone']);
         if (isValid && nextStep) {
             nextStep();
         }
@@ -47,7 +47,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                     className={errors.email ? 'border-red-500' : ''}
                 />
                 {errors.email && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.email.message}</AlertDescription>
                     </Alert>
@@ -70,7 +70,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                     )}
                 />
                 {errors.phone && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.phone.message}</AlertDescription>
                     </Alert>

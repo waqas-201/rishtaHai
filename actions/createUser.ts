@@ -21,19 +21,32 @@ export async function createUser(data: z.infer<typeof formSchema>) {
       };
     }
 
-    const userExists = await db.user.findFirst({
+    const PhoneExists = await db.user.findFirst({
       where: { phone: validatedData.data.phone },
     });
-
-    if (userExists) {
+    if (PhoneExists) {
       return {
         success: false,
         error: {
-          message: "Phone number already exists.",
+          message: " This phone number is already registered.",
           cause: "user already created",
         },
       };
     }
+
+    const EmailExists = await db.user.findFirst({
+      where: { email: validatedData.data.email },
+    });
+    if (EmailExists) {
+      return {
+        success: false,
+        error: {
+          message: "This email is  already registered.",
+          cause: "user already created",
+        },
+      };
+    }
+
     console.log(validatedData.data);
     const user = await db.user.create({
       data: validatedData.data,

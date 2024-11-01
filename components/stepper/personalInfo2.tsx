@@ -37,7 +37,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     className={errors.firstName ? 'border-red-500' : ''}
                 />
                 {errors.firstName && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in ">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.firstName.message}</AlertDescription>
                     </Alert>
@@ -54,7 +54,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     className={errors.lastName ? 'border-red-500' : ''}
                 />
                 {errors.lastName && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.lastName.message}</AlertDescription>
                     </Alert>
@@ -100,13 +100,13 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     />
                 </div>
                 {errors.day && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.day.message}</AlertDescription>
                     </Alert>
                 )}
                 {errors.month && (
-                    <Alert variant="destructive" className="py-2">
+                    <Alert variant="destructive" className="py-2 animate-slide-in">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>{errors.month.message}</AlertDescription>
                     </Alert>

@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { ChevronDown, Phone } from "lucide-react";
 import React, { forwardRef, type InputHTMLAttributes } from "react";
 import * as RPNInput from "react-phone-number-input";
@@ -16,7 +15,6 @@ interface Input46Props {
 export default function Input46({ value, onChange, onBlur }: Input46Props) {
     return (
         <div className="space-y-2" dir="ltr">
-            <Label htmlFor="input-46">Phone number input</Label>
             <RPNInput.default
                 className="flex rounded-lg shadow-sm shadow-black/[.04]"
                 international

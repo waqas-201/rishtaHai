@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // actions/createUser.ts
 "use server";
 
@@ -11,50 +10,56 @@ export async function createUser(data: z.infer<typeof formSchema>) {
     const validatedData = formSchema.safeParse(data);
     console.log(validatedData);
 
+    // If validation fails, return error response
     if (!validatedData.success) {
       return {
         success: false,
         error: {
           message: validatedData.error.message,
-          cause: validatedData.error.cause,
+          cause: validatedData.error.errors, // Changed to .errors to provide more detailed feedback
         },
       };
     }
 
-    const PhoneExists = await db.user.findFirst({
+    // Check if the phone number already exists
+    const phoneExists = await db.user.findFirst({
       where: { phone: validatedData.data.phone },
     });
-    if (PhoneExists) {
+    if (phoneExists) {
       return {
         success: false,
         error: {
-          message: " This phone number is already registered.",
+          message: "This phone number is already registered.",
           cause: "user already created",
         },
       };
     }
 
-    const EmailExists = await db.user.findFirst({
+    // Check if the email already exists
+    const emailExists = await db.user.findFirst({
       where: { email: validatedData.data.email },
     });
-    if (EmailExists) {
+    if (emailExists) {
       return {
         success: false,
         error: {
-          message: "This email is  already registered.",
+          message: "This email is already registered.",
           cause: "user already created",
         },
       };
     }
 
-    console.log(validatedData.data);
+    // Create user in the database with properly mapped data
     const user = await db.user.create({
-      data: validatedData.data,
+      data: {
+        ...validatedData.data,
+        community: validatedData.data.community, // Ensure this is of type Community
+      },
     });
 
-    return { success: true, error: null, data: {} }; // Spread operator to ensure it's a plain object
+    return { success: true, error: null, data: user }; // Return created user data
   } catch (error: unknown) {
-    console.log(error);
+    console.error(error);
 
     return {
       success: false,

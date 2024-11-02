@@ -8,7 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// prisma/schema.prisma
 model User {
   id          Int        @id @default(autoincrement())
   phone       String     @unique
@@ -18,12 +17,11 @@ model User {
   day         Int
   month       Int
   year        Int
-  // address     String
   city        City
   profileFor  ProfileFor
   gender      Gender
   religion    Religion
-  community   Community
+  community    String
   country     Country
   description String
   createdAt   DateTime   @default(now())
@@ -53,18 +51,7 @@ enum Religion {
   Sikhism
 }
 
-enum Community {
-      UrduSpeaking
-      Punjabi
-      Sindhi
-      Pashtun
-      Baloch
-      Muhajir
-      Saraiki
-      Hindko
-      EnglishSpeaking
-      Brahui
-}
+
 
 enum Country {
   USA

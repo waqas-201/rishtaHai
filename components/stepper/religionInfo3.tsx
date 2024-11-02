@@ -9,22 +9,23 @@ import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { cities } from "@/lib/dataArrays";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
+import { z } from "zod";
+import { formSchema } from "@/schema/formSchema";
 
 
-type Religion = "Islam" | "Christianity" | "Hinduism" | "Buddhism" | "Sikhism";
-type Community =
-    "Punjabi" |
-    "Sindhi" |
-    "Pashtun" |
-    "Baloch" |
-    "Muhajir" |
-    "Saraiki" |
-    "Hindko" |
-    "Brahui" |
-    "EnglishSpeaking" |
-    "UrduSpeaking";
-type Country = "USA" | "Canada" | "Pakistan" | "India";
-type City = "Karachi" | "Lahore" | "Islamabad" | "Faisalabad" | "Rawalpindi" | "Multan" | "Hyderabad" | "Gujranwala" | "Peshawar" | "Quetta";
+
+const Communities = [
+    "UrduSpeaking",
+    "Punjabi",
+    "Sindhi",
+    "Pashtun",
+    "Baloch",
+    "Muhajir",
+    "Saraiki",
+    "Hindko",
+    "Brahui",
+    "EnglishSpeaking",
+];
 
 const fadeInAnimation = {
     initial: { opacity: 0, y: 20 },
@@ -82,10 +83,10 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
 
 
 
-    const selectedReligion = watch("religion") as Religion;
-    const selectedCommunity = watch("community") as Community;
-    const selectedCountry = watch("country") as Country;
-    const selectedCity = watch("city") as City;
+    const selectedReligion = watch("religion") as z.infer<typeof formSchema>["religion"];
+    const selectedCommunity = watch("community") as z.infer<typeof formSchema>["community"];
+    const selectedCountry = watch("country") as z.infer<typeof formSchema>["country"];
+    const selectedCity = watch("city") as z.infer<typeof formSchema>["city"];
 
     return (
         <motion.div
@@ -112,7 +113,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
             >
                 <TypographySmall>Religion</TypographySmall>
                 <Select
-                    onValueChange={(selected: Religion) => setValue("religion", selected)}
+                    onValueChange={(selected: z.infer<typeof formSchema>["religion"]) => setValue("religion", selected)}
                     value={selectedReligion}
                 >
                     <SelectTrigger>
@@ -120,7 +121,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     </SelectTrigger>
                     <SelectContent>
                         <AnimatePresence mode="wait">
-                            {["Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism"].map((religion) => (
+                            {["Islam", "Christianity", "Hinduism", "Buddhism", "Sikhism"].map((religion) => (
                                 <motion.div
                                     key={religion}
                                     initial={{ opacity: 0, x: -10 }}
@@ -128,7 +129,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                     exit={{ opacity: 0, x: 10 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <SelectItem value={religion as Religion}>
+                                    <SelectItem value={religion as z.infer<typeof formSchema>["religion"]}>
                                         {religion}
                                     </SelectItem>
                                 </motion.div>
@@ -167,7 +168,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     >
                         <TypographySmall>Community</TypographySmall>
                         <Select
-                            onValueChange={(selected: Community) => setValue("community", selected)}
+                            onValueChange={(selected: z.infer<typeof formSchema>["community"]) => setValue("community", selected)}  
                             value={selectedCommunity}
                         >
                             <SelectTrigger>
@@ -175,7 +176,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                             </SelectTrigger>
                             <SelectContent>
                                 <AnimatePresence mode="wait">
-                                    {["CommunityA", "CommunityB", "CommunityC"].map((community) => (
+                                    {[...Communities].map((community) => (
                                         <motion.div
                                             key={community}
                                             initial={{ opacity: 0, x: -10 }}
@@ -183,7 +184,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                             exit={{ opacity: 0, x: 10 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <SelectItem value={community as Community}>
+                                            <SelectItem value={community as z.infer<typeof formSchema>["community"]}>
                                                 {community}
                                             </SelectItem>
                                         </motion.div>
@@ -224,7 +225,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     >
                         <TypographySmall>Country</TypographySmall>
                         <Select
-                            onValueChange={(selected: Country) => setValue("country", selected)}
+                            onValueChange={(selected: z.infer<typeof formSchema>["country"]) => setValue("country", selected)}
                             value={selectedCountry}
                         >
                             <SelectTrigger>
@@ -232,7 +233,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                             </SelectTrigger>
                             <SelectContent>
                                 <AnimatePresence mode="wait">
-                                    {["USA", "Canada", "Pakistan", "India"].map((country) => (
+                                    {["Pakistan", "USA", "Canada", "India"].map((country) => (
                                         <motion.div
                                             key={country}
                                             initial={{ opacity: 0, x: -10 }}
@@ -240,7 +241,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                             exit={{ opacity: 0, x: 10 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <SelectItem value={country as Country}>
+                                            <SelectItem value={country as z.infer<typeof formSchema>["country"]}>
                                                 {country}
                                             </SelectItem>
                                         </motion.div>
@@ -281,7 +282,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     >
                         <TypographySmall>City</TypographySmall>
                         <Select
-                            onValueChange={(selected: string) => setValue("city", selected as City)}
+                            onValueChange={(selected: string) => setValue("city", selected as z.infer<typeof formSchema>["city"])}
                             value={selectedCity}
                         >
                             <SelectTrigger>
@@ -297,7 +298,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                             exit={{ opacity: 0, x: 10 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <SelectItem value={city as City}>
+                                            <SelectItem value={city as z.infer<typeof formSchema>["city"]}>
                                                 {city}
                                             </SelectItem>
                                         </motion.div>

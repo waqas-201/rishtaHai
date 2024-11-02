@@ -8,6 +8,8 @@ import { Alert, AlertDescription } from "../ui/alert";
 import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { cities } from "@/lib/dataArrays";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+
 
 type Religion = "Christianity" | "Islam" | "Hinduism" | "Buddhism" | "Sikhism";
 type Community = "CommunityA" | "CommunityB" | "CommunityC";
@@ -27,9 +29,9 @@ const errorAnimation = {
 };
 
 const selectAnimation = {
-    initial: { opacity: 0, y: 15, scale: 0.95 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    exit: { opacity: 0, y: -15, scale: 0.95 }
+    initial: { height: 0, opacity: 0 },
+    animate: { height: "auto", opacity: 1 },
+    exit: { height: 0, opacity: 0 }
 };
 
 export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
@@ -43,6 +45,32 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
             nextStep();
         }
     };
+
+
+    const community = watch('community');
+    const country = watch('country');
+    const religion = watch('religion');
+    const city = watch('city');
+
+
+    // Auto-advance to next step if all fields are valid
+    useEffect(() => {
+        const validateAndMoveNext = async () => {
+            const isValid = await trigger(['community', 'country', 'religion', 'city']);
+
+            if (isValid && nextStep) {
+                nextStep();
+            }
+        };
+
+        // Validate only when all fields have been filled
+        if (community && country && religion && city) {
+            validateAndMoveNext();
+        }
+    }, [community, country, religion, city, nextStep, trigger]);
+
+
+
 
     const selectedReligion = watch("religion") as Religion;
     const selectedCommunity = watch("community") as Community;

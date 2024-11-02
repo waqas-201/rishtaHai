@@ -1,11 +1,12 @@
 'use client'
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import MultiStepForm from "./stepper/stepControler";
 import SelectWrapper from "./stepper/SelectWrapper";
 import { P } from "./ui/typography/P";
 import { ArrowRight } from "lucide-react";
+import { useStore } from "@/store/useSteps";
 
 
 
@@ -44,8 +45,8 @@ const topCountries = [
 
 const UserForm = () => {
 
-
-    const [open, setOpen] = useState(false);
+    const open = useStore((state) => state.open);
+    const setOpen = useStore((state) => state.setOpen);
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

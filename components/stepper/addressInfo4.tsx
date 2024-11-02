@@ -8,6 +8,7 @@ import EmailIcon from "./icons/emailIcon";
 import Input46 from "../ui/phoneInputs";
 import { Controller, useFormContext } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 
 const fadeInAnimation = {
     initial: { opacity: 0, y: 20 },
@@ -28,7 +29,7 @@ const inputAnimation = {
 };
 
 export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextStep }) => {
-    const { register, formState: { errors }, getValues, control, trigger } = useFormContext<FormData>();
+    const { register, formState: { errors }, getValues, watch, control, trigger } = useFormContext<FormData>();
 
     const handleNext = async () => {
         const isValid = await trigger(['email', 'phone']);
@@ -38,6 +39,29 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
         console.log(getValues());
         console.log(errors);
     };
+
+
+    const email = watch('email');
+    const phone = watch('phone');
+
+
+    useEffect(() => {
+        const validateAndMoveNext = async () => {
+            const isValid = await trigger(['email', 'phone']);
+            if (isValid && nextStep) {
+                nextStep();
+            }
+        };
+
+        // Validate only when all fields have been filled
+        if (email && phone) {
+            validateAndMoveNext();
+        }
+    }, [nextStep, trigger, email, phone]);
+
+
+
+
 
     return (
         <motion.div

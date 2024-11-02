@@ -80,6 +80,17 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
         }
     }, [successData, nextStep]);
 
+
+
+
+
+
+
+
+
+
+
+
     return (
         <motion.div
             className="flex flex-col gap-6"

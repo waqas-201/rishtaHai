@@ -20,20 +20,33 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const { control, formState: { errors }, trigger, getValues, watch, setValue } = useFormContext<FormData>();
 
     const profileFor = watch('profileFor');
+    const gender = watch('gender');
     const showGenderSelection = ["Myself", "MyFriend", "MyRelative"].includes(profileFor);
 
     const handleNext = async () => {
         const isValid = await trigger(['profileFor', 'gender']);
         if (isValid) {
-            const data = getValues();
-            console.log("All Form Data:", data);
-            if (nextStep) {
-                nextStep();
-            }
+            console.log("All Form Data:", getValues());
+            if (nextStep) nextStep();
         } else {
             console.log("Validation failed");
         }
     };
+
+    // Auto-advance when valid
+    useEffect(() => {
+        const validateAndMoveNext = async () => {
+            const isValid = await trigger(['profileFor', 'gender']);
+            if (isValid && nextStep) {
+                nextStep();
+            }
+        };
+
+        // Validate only when profileFor is selected, and gender if applicable
+        if (profileFor && (showGenderSelection ? gender : true)) {
+            validateAndMoveNext();
+        }
+    }, [profileFor, gender, showGenderSelection, nextStep, trigger]);
 
     useEffect(() => {
         if (profileFor === "MySon" || profileFor === "MyBrother") {

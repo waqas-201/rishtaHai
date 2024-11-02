@@ -21,7 +21,12 @@ export const formSchema = z
       .min(1900, "Year must be at least 1900")
       .max(new Date().getFullYear(), "Year cannot be in the future"),
     email: z.string().email("Please enter a valid email address"),
-    phone: z.string().min(10, "Phone number must be at least 10 digits"),
+    phone: z
+      .string()
+      .min(
+        13,
+        "Phone number must be at least 13 digits! including country code "
+      ),
     city: z.enum([
       "Karachi",
       "Lahore",

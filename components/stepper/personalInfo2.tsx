@@ -6,8 +6,14 @@ import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
 import Step2Icon from "./icons/step2Icon";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Step 2: Personal Information
+const errorAnimation = {
+    initial: { height: 0, opacity: 0, marginBottom: 0 },
+    animate: { height: "auto", opacity: 1, marginBottom: 8 },
+    exit: { height: 0, opacity: 0, marginBottom: 0 }
+};
+
 export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
     const { register, formState: { errors }, trigger, getValues } = useFormContext<FormData>();
 
@@ -16,19 +22,16 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
         if (isValid && nextStep) {
             nextStep();
         }
-
         console.log(getValues());
-
-
         console.log(errors);
-
     };
 
     return (
-        <div className=" flex  flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center gap-4">
             <Step2Icon />
+
             {/* First Name */}
-            <div className="space-y-2  w-full">
+            <div className="space-y-2 w-full">
                 <Label htmlFor="firstName">First Name</Label>
                 <Input
                     id="firstName"
@@ -36,12 +39,22 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     placeholder="Enter your first name"
                     className={errors.firstName ? 'border-red-500' : ''}
                 />
-                {errors.firstName && (
-                    <Alert variant="destructive" className="py-2 animate-slide-in ">
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{errors.firstName.message}</AlertDescription>
-                    </Alert>
-                )}
+                <AnimatePresence mode="wait">
+                    {errors.firstName && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <Alert variant="destructive" className="py-2">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{errors.firstName.message}</AlertDescription>
+                            </Alert>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
 
             {/* Last Name */}
@@ -53,12 +66,22 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     placeholder="Enter your last name"
                     className={errors.lastName ? 'border-red-500' : ''}
                 />
-                {errors.lastName && (
-                    <Alert variant="destructive" className="py-2 animate-slide-in">
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{errors.lastName.message}</AlertDescription>
-                    </Alert>
-                )}
+                <AnimatePresence mode="wait">
+                    {errors.lastName && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <Alert variant="destructive" className="py-2">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{errors.lastName.message}</AlertDescription>
+                            </Alert>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
 
             {/* Date of Birth */}
@@ -70,7 +93,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         placeholder="Day"
                         {...register('day', {
                             required: "Day is required",
-                            valueAsNumber: true, // Ensures the value is stored as a number
+                            valueAsNumber: true,
                             min: { value: 1, message: "Day must be at least 1" },
                             max: { value: 31, message: "Day must be at most 31" },
                         })}
@@ -81,7 +104,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         placeholder="Month"
                         {...register('month', {
                             required: "Month is required",
-                            valueAsNumber: true, // Ensures the value is stored as a number
+                            valueAsNumber: true,
                             min: { value: 1, message: "Month must be at least 1" },
                             max: { value: 12, message: "Month must be at most 12" },
                         })}
@@ -92,31 +115,63 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         placeholder="Year"
                         {...register('year', {
                             required: "Year is required",
-                            valueAsNumber: true, // Ensures the value is stored as a number
+                            valueAsNumber: true,
                             min: { value: 1900, message: "Year must be at least 1900" },
                             max: { value: new Date().getFullYear(), message: "Year cannot be in the future" },
                         })}
                         className={errors.year ? 'border-red-500' : ''}
                     />
                 </div>
-                {errors.day && (
-                    <Alert variant="destructive" className="py-2 animate-slide-in">
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{errors.day.message}</AlertDescription>
-                    </Alert>
-                )}
-                {errors.month && (
-                    <Alert variant="destructive" className="py-2 animate-slide-in">
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{errors.month.message}</AlertDescription>
-                    </Alert>
-                )}
-                {errors.year && (
-                    <Alert variant="destructive" className="py-2">
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>{errors.year.message}</AlertDescription>
-                    </Alert>
-                )}
+                <div className="space-y-2">
+                    <AnimatePresence mode="wait">
+                        {errors.day && (
+                            <motion.div
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                variants={errorAnimation}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <Alert variant="destructive" className="py-2">
+                                    <AlertCircle className="h-4 w-4" />
+                                    <AlertDescription>{errors.day.message}</AlertDescription>
+                                </Alert>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                    <AnimatePresence mode="wait">
+                        {errors.month && (
+                            <motion.div
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                variants={errorAnimation}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <Alert variant="destructive" className="py-2">
+                                    <AlertCircle className="h-4 w-4" />
+                                    <AlertDescription>{errors.month.message}</AlertDescription>
+                                </Alert>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                    <AnimatePresence mode="wait">
+                        {errors.year && (
+                            <motion.div
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                variants={errorAnimation}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <Alert variant="destructive" className="py-2">
+                                    <AlertCircle className="h-4 w-4" />
+                                    <AlertDescription>{errors.year.message}</AlertDescription>
+                                </Alert>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
 
             {/* Navigation Buttons */}

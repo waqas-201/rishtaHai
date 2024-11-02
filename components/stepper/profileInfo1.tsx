@@ -7,6 +7,14 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { useEffect } from "react";
 import { TypographySmall } from "../ui/typography/small";
+import { motion, AnimatePresence } from "framer-motion";
+
+// Animation variants
+const errorAnimation = {
+    initial: { height: 0, opacity: 0, marginBottom: 0 },
+    animate: { height: "auto", opacity: 1, marginBottom: 8 },
+    exit: { height: 0, opacity: 0, marginBottom: 0 }
+};
 
 export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const { control, formState: { errors }, trigger, getValues, watch, setValue } = useFormContext<FormData>();
@@ -15,19 +23,18 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const showGenderSelection = ["Myself", "MyFriend", "MyRelative"].includes(profileFor);
 
     const handleNext = async () => {
-        const isValid = await trigger(['profileFor', 'gender']); // Validate the required fields
+        const isValid = await trigger(['profileFor', 'gender']);
         if (isValid) {
             const data = getValues();
             console.log("All Form Data:", data);
             if (nextStep) {
-                nextStep(); // Proceed to the next step
+                nextStep();
             }
         } else {
             console.log("Validation failed");
         }
     };
 
-    // Automatically set the gender based on the profileFor value
     useEffect(() => {
         if (profileFor === "MySon" || profileFor === "MyBrother") {
             setValue('gender', 'Male');
@@ -76,48 +83,76 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
                                     </div>
                                 ))}
                             </RadioGroup>
+                            <AnimatePresence mode="wait">
+                                {errors.profileFor && (
+                                    <motion.div
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                        variants={errorAnimation}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <p className="text-red-500 text-sm">{errors.profileFor.message}</p>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     )}
                 />
-                {errors.profileFor && (
-                    <p className="text-red-500 text-sm animate-slide-in ">{errors.profileFor.message}</p>
-                )}
             </div>
 
-            {showGenderSelection && (
-                <div className="self-start w-full mb-4 animate-slide-in">
-                    <TypographySmall className="self-start mb-2">Gender</TypographySmall>
-                    <Controller
-                        control={control}
-                        name="gender"
-                        rules={{ required: "Please select a gender" }}
-                        render={({ field }) => (
-                            <div className="space-y-2">
-                                <RadioGroup
-                                    onValueChange={field.onChange}
-                                    value={field.value}
-                                    className="flex px-4"
-                                >
-                                    {["Male", "Female"].map((option) => (
-                                        <div key={option} className="flex items-center">
-                                            <RadioGroupItem value={option} id={option.toLowerCase()} />
-                                            <Label
-                                                htmlFor={option.toLowerCase()}
-                                                className="ml-2 font-medium text-gray-700"
+            <AnimatePresence mode="wait">
+                {showGenderSelection && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="self-start w-full mb-4"
+                    >
+                        <TypographySmall className="self-start mb-2">Gender</TypographySmall>
+                        <Controller
+                            control={control}
+                            name="gender"
+                            rules={{ required: "Please select a gender" }}
+                            render={({ field }) => (
+                                <div className="space-y-2">
+                                    <RadioGroup
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                        className="flex px-4"
+                                    >
+                                        {["Male", "Female"].map((option) => (
+                                            <div key={option} className="flex items-center">
+                                                <RadioGroupItem value={option} id={option.toLowerCase()} />
+                                                <Label
+                                                    htmlFor={option.toLowerCase()}
+                                                    className="ml-2 font-medium text-gray-700"
+                                                >
+                                                    {option}
+                                                </Label>
+                                            </div>
+                                        ))}
+                                    </RadioGroup>
+                                    <AnimatePresence mode="wait">
+                                        {errors.gender && (
+                                            <motion.div
+                                                initial="initial"
+                                                animate="animate"
+                                                exit="exit"
+                                                variants={errorAnimation}
+                                                transition={{ duration: 0.2 }}
                                             >
-                                                {option}
-                                            </Label>
-                                        </div>
-                                    ))}
-                                </RadioGroup>
-                                {errors.gender && (
-                                    <p className="text-red-500 text-sm animate-slide-in">{errors.gender.message}</p>
-                                )}
-                            </div>
-                        )}
-                    />
-                </div>
-            )}
+                                                <p className="text-red-500 text-sm">{errors.gender.message}</p>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <div className="flex justify-end w-full mt-6">
                 <Button onClick={handleNext}>

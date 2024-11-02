@@ -50,13 +50,24 @@ export const formSchema = z
     ]),
     gender: z.enum(["Male", "Female"]),
     religion: z.enum([
-      "Christianity",
       "Islam",
+      "Christianity",
       "Hinduism",
       "Buddhism",
       "Sikhism",
     ]),
-    community: z.enum(["CommunityA", "CommunityB", "CommunityC"]),
+    community: z.enum([
+      "UrduSpeaking",
+      "Punjabi",
+      "Sindhi",
+      "Pashtun",
+      "Baloch",
+      "Muhajir",
+      "Saraiki",
+      "Hindko",
+      "Brahui",
+      "EnglishSpeaking",
+    ]),
     country: z.enum(["USA", "Canada", "Pakistan", "India"]),
     description: z
       .string()

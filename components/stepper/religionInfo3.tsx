@@ -11,8 +11,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 
 
-type Religion = "Christianity" | "Islam" | "Hinduism" | "Buddhism" | "Sikhism";
-type Community = "CommunityA" | "CommunityB" | "CommunityC";
+type Religion = "Islam" | "Christianity" | "Hinduism" | "Buddhism" | "Sikhism";
+type Community =
+    "Punjabi" |
+    "Sindhi" |
+    "Pashtun" |
+    "Baloch" |
+    "Muhajir" |
+    "Saraiki" |
+    "Hindko" |
+    "Brahui" |
+    "EnglishSpeaking" |
+    "UrduSpeaking";
 type Country = "USA" | "Canada" | "Pakistan" | "India";
 type City = "Karachi" | "Lahore" | "Islamabad" | "Faisalabad" | "Rawalpindi" | "Multan" | "Hyderabad" | "Gujranwala" | "Peshawar" | "Quetta";
 

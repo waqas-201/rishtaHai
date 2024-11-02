@@ -54,9 +54,16 @@ enum Religion {
 }
 
 enum Community {
-  CommunityA
-  CommunityB
-  CommunityC
+      UrduSpeaking
+      Punjabi
+      Sindhi
+      Pashtun
+      Baloch
+      Muhajir
+      Saraiki
+      Hindko
+      EnglishSpeaking
+      Brahui
 }
 
 enum Country {

@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
 import Step2Icon from "./icons/step2Icon";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const errorAnimation = {
     initial: { height: 0, opacity: 0, marginBottom: 0 },
@@ -16,13 +16,13 @@ const errorAnimation = {
 };
 
 export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
-    const { register, formState: { errors }, trigger, watch } = useFormContext<FormData>();
+    const { register, formState: { errors }, trigger } = useFormContext<FormData>();
 
-    const firstName = watch('firstName');
-    const lastName = watch('lastName');
-    const day = watch('day');
-    const month = watch('month');
-    const year = watch('year');
+    // const firstName = watch('firstName');
+    // const lastName = watch('lastName');
+    // const day = watch('day');
+    // const month = watch('month');
+    // const year = watch('year');
 
     const handleNext = async () => {
         const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
@@ -31,20 +31,20 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
         }
     };
 
-    // Auto-advance to next step if all fields are valid
-    useEffect(() => {
-        const validateAndMoveNext = async () => {
-            const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
-            if (isValid && nextStep) {
-                nextStep();
-            }
-        };
+    // // Auto-advance to next step if all fields are valid
+    // useEffect(() => {
+    //     const validateAndMoveNext = async () => {
+    //         const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
+    //         if (isValid && nextStep) {
+    //             nextStep();
+    //         }
+    //     };
 
-        // Validate only when all fields have been filled
-        if (firstName && lastName && day && month && year) {
-            validateAndMoveNext();
-        }
-    }, [firstName, lastName, day, month, year, nextStep, trigger]);
+    //     // Validate only when all fields have been filled
+    //     if (firstName && lastName && day && month && year) {
+    //         validateAndMoveNext();
+    //     }
+    // }, [firstName, lastName, day, month, year, nextStep, trigger]);
 
     return (
         <div className="flex flex-col items-center justify-center gap-4">

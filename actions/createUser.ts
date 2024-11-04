@@ -6,6 +6,9 @@ import { db } from "@/prismaClient";
 import { formSchema } from "@/schema/formSchema";
 
 export async function createUser(data: z.infer<typeof formSchema>) {
+ 
+  console.log(typeof data.city);
+
   try {
     const validatedData = formSchema.safeParse(data);
     console.log(validatedData);
@@ -54,6 +57,7 @@ export async function createUser(data: z.infer<typeof formSchema>) {
       data: {
         ...validatedData.data,
         community: validatedData.data.community, // Ensure this is of type Community
+        city: validatedData.data.city,
       },
     });
 

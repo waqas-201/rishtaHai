@@ -102,7 +102,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
 
                         onInput={(e) => {
                             const value = e.currentTarget.valueAsNumber;
-                            if (value < 1) e.currentTarget.value = "1";
+                            if (value < 1) e.currentTarget.value = "0";
                             if (value > 31) e.currentTarget.value = "31";
                         }}
                         className={errors.day ? 'border-red-500' : ''}
@@ -117,7 +117,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         })}
                         onInput={(e) => {
                             const value = e.currentTarget.valueAsNumber;
-                            if (value < 1) e.currentTarget.value = "1";
+                            if (value < 1) e.currentTarget.value = "0";
                             if (value > 12) e.currentTarget.value = "12";
                         }}
                         className={errors.month ? 'border-red-500' : ''}

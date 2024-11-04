@@ -17,11 +17,11 @@ model User {
   day         Int
   month       Int
   year        Int
-  city        String?
+  city        String? 
   profileFor  ProfileFor
   gender      Gender
   religion    Religion
-  community    String
+  community   String
   country     String
   state       String?
   description String

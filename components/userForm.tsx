@@ -2,11 +2,30 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import MultiStepForm from "./stepper/stepControler";
+
 import SelectWrapper from "./stepper/SelectWrapper";
 import { P } from "./ui/typography/P";
 import { ArrowRight } from "lucide-react";
 import { useStore } from "@/store/useSteps";
+import dynamic from "next/dynamic";
+import { Country } from "country-state-city";
+import { Watch } from 'react-loader-spinner'
+
+// lazy loading heavy components with fallback ui   
+const MultiStepForm = dynamic(() => import('./stepper/stepControler'), {
+    ssr: false, loading: () => (
+        <div className="flex flex-col items-center justify-center h-full">
+            <Watch
+                visible={true}
+                height="80"
+                width="80"
+                radius="48"
+                color="#F05CA1"
+                ariaLabel="watch-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+            /></div>)
+});
 
 
 
@@ -27,19 +46,9 @@ const topReligions = [
     "Taoism"
 ];
 
-const topCountries = [
-    "Pakistan",
-    "India",
-    "United States",
-    "Bangladesh",
-    "China",
-    "Russia",
-    "Indonesia",
-    "Brazil",
-    "Nigeria",
-    "Mexico"
-];
 
+
+const topCountries = Country.getAllCountries().map(country => country.name);
 
 
 
@@ -74,7 +83,7 @@ const UserForm = () => {
                     <div className="flex md:gap-4  gap-2 w-full md:flex-1   md:w-auto">
 
                         <SelectWrapper values={[...topReligions]} text="of reiligion" containerClassName="grow" />
-                        <SelectWrapper values={[...topCountries]} text="and i'm living in" containerClassName="grow" />
+                        <SelectWrapper values={[...topCountries]} text="and i'm living in" valueIs='Pakistan' containerClassName="grow" />
                     </div>
 
 
@@ -96,7 +105,9 @@ const UserForm = () => {
             <DialogContent className="w-[95%]"  >
                 <div className="md:p-6 p-2 ">
 
-                <MultiStepForm />
+
+                    <MultiStepForm />
+
                 </div>
             </DialogContent>
         </Dialog >

@@ -9,17 +9,18 @@ type SelectWrapperProps = {
     TextclassName?: string,
     containerClassName?: string,
     valueAt?: number
+    valueIs?: string
 }
 
 const SelectWrapper = ({
-    values, text, className, TextclassName, containerClassName, valueAt = 0
+    values, text, className, TextclassName, containerClassName, valueAt = 0, valueIs
 }: SelectWrapperProps) => {
     return (
         <div className={cn("flex flex-col  items-start gap-[2px]", containerClassName)} >             <P className={cn("text-sm mb-1", TextclassName)}>{text}</P>
             <Select >
                 <SelectTrigger className={cn("rounded-sm text-muted-foreground", className)}
                 >
-                    <SelectValue placeholder={values[valueAt]} />
+                    <SelectValue placeholder={valueIs || values[valueAt]} />
                 </SelectTrigger>
                 <SelectContent className="text-muted-foreground" >
                     {values.map((value) => (

@@ -104,7 +104,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                 className="space-y-2 w-full"
                 variants={inputAnimation}
             >
-                <Label htmlFor="phone">Phone Number</Label>
+                <Label htmlFor="phone"> Phone Number (WhatsApp Preferred)</Label>
                 <Controller
                     name="phone"
                     control={control}

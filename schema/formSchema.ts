@@ -3,6 +3,12 @@ import { z } from "zod";
 const currentYear = new Date().getFullYear();
 const minYear = currentYear - 75;
 const maxYear = currentYear - 18;
+// const familyStatusEnum = z.enum([
+//   "MIDDLE_CLASS",
+//   "UPPER_MIDDLE_CLASS",
+//   "UPPER_CLASS",
+// ]);
+const maritalStatusEnum = z.enum(["UNMARRIED", "WIDOW"]);
 
 export const formSchema = z
   .object({
@@ -66,6 +72,10 @@ export const formSchema = z
       "Brahui",
       "EnglishSpeaking",
     ]),
+    // familyStatus: familyStatusEnum,
+    maritalStatus: maritalStatusEnum,
+    hasChildren: z.enum(["Yes", "No"]),
+    livesWithYou: z.enum(["Yes", "No"]),
     country: z.string().min(1, "Please select a country"), // Changed to string
     description: z
       .string()

@@ -7,7 +7,8 @@ import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
 import Step2Icon from "./icons/step2Icon";
 import { motion, AnimatePresence } from "framer-motion";
-// import { useEffect } from "react";
+
+
 
 const errorAnimation = {
     initial: { height: 0, opacity: 0, marginBottom: 0 },
@@ -18,11 +19,7 @@ const errorAnimation = {
 export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
     const { register, formState: { errors }, trigger } = useFormContext<FormData>();
 
-    // const firstName = watch('firstName');
-    // const lastName = watch('lastName');
-    // const day = watch('day');
-    // const month = watch('month');
-    // const year = watch('year');
+
 
     const handleNext = async () => {
         const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
@@ -31,20 +28,6 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
         }
     };
 
-    // // Auto-advance to next step if all fields are valid
-    // useEffect(() => {
-    //     const validateAndMoveNext = async () => {
-    //         const isValid = await trigger(['firstName', 'lastName', 'day', 'month', 'year']);
-    //         if (isValid && nextStep) {
-    //             nextStep();
-    //         }
-    //     };
-
-    //     // Validate only when all fields have been filled
-    //     if (firstName && lastName && day && month && year) {
-    //         validateAndMoveNext();
-    //     }
-    // }, [firstName, lastName, day, month, year, nextStep, trigger]);
 
     return (
         <div className="flex flex-col items-center justify-center gap-4">
@@ -114,9 +97,14 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         {...register('day', {
                             required: "Day is required",
                             valueAsNumber: true,
-                            min: { value: 1, message: "Day must be at least 1" },
-                            max: { value: 31, message: "Day must be at most 31" },
+
                         })}
+
+                        onInput={(e) => {
+                            const value = e.currentTarget.valueAsNumber;
+                            if (value < 1) e.currentTarget.value = "1";
+                            if (value > 31) e.currentTarget.value = "31";
+                        }}
                         className={errors.day ? 'border-red-500' : ''}
                     />
                     <Input
@@ -125,9 +113,13 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                         {...register('month', {
                             required: "Month is required",
                             valueAsNumber: true,
-                            min: { value: 1, message: "Month must be at least 1" },
-                            max: { value: 12, message: "Month must be at most 12" },
+
                         })}
+                        onInput={(e) => {
+                            const value = e.currentTarget.valueAsNumber;
+                            if (value < 1) e.currentTarget.value = "1";
+                            if (value > 12) e.currentTarget.value = "12";
+                        }}
                         className={errors.month ? 'border-red-500' : ''}
                     />
                     <Input
@@ -139,6 +131,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                             min: { value: 1900, message: "Year must be at least 1900" },
                             max: { value: new Date().getFullYear(), message: "Year cannot be in the future" },
                         })}
+
                         className={errors.year ? 'border-red-500' : ''}
                     />
                 </div>

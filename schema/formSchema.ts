@@ -1,16 +1,33 @@
 import { z } from "zod";
 
+const currentYear = new Date().getFullYear();
+const minYear = currentYear - 75;
+const maxYear = currentYear - 18;
+
 export const formSchema = z
   .object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
-    day: z.number().int("Day must be an integer").min(1).max(31),
-    month: z.number().int("Month must be an integer").min(1).max(12),
+    day: z
+      .number()
+      .int("Day must be an integer")
+      .min(1)
+      .max(31)
+      .refine((value) => value >= 1 && value <= 31, {
+        message: "Month must be between 1 and 31",
+      }),
+    month: z
+      .number()
+      .int("Month must be a whole number")
+      .refine((value) => value >= 1 && value <= 12, {
+        message: "Month must be between 1 and 12",
+      }),
     year: z
       .number()
-      .int("Year must be an integer")
-      .min(1900)
-      .max(new Date().getFullYear()),
+      .int("Please enter a valid year.")
+      .refine((year) => year >= minYear && year <= maxYear, {
+        message: `Your birth year must be between ${minYear} and ${maxYear} to join.`,
+      }),
     email: z.string().email("Please enter a valid email address"),
     phone: z
       .string()
@@ -18,18 +35,8 @@ export const formSchema = z
         13,
         "Phone number must be at least 13 digits! including country code"
       ),
-    city: z.enum([
-      "Karachi",
-      "Lahore",
-      "Islamabad",
-      "Faisalabad",
-      "Rawalpindi",
-      "Multan",
-      "Hyderabad",
-      "Gujranwala",
-      "Peshawar",
-      "Quetta",
-    ]),
+    city: z.string().min(1, "Please select a city"), // Changed to string
+    state: z.string().min(1, "Please select a state"), // Added state
     profileFor: z.enum([
       "Myself",
       "MySon",
@@ -59,7 +66,7 @@ export const formSchema = z
       "Brahui",
       "EnglishSpeaking",
     ]),
-    country: z.enum(["USA", "Canada", "Pakistan", "India"]),
+    country: z.string().min(1, "Please select a country"), // Changed to string
     description: z
       .string()
       .min(20, "Description must be at least 20 characters"),

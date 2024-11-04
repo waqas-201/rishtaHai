@@ -41,23 +41,6 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
     };
 
 
-    // const email = watch('email');
-    // const phone = watch('phone');
-
-
-    // useEffect(() => {
-    //     const validateAndMoveNext = async () => {
-    //         const isValid = await trigger(['email', 'phone']);
-    //         if (isValid && nextStep) {
-    //             nextStep();
-    //         }
-    //     };
-
-    //     // Validate only when all fields have been filled
-    //     if (email && phone) {
-    //         validateAndMoveNext();
-    //     }
-    // }, [nextStep, trigger, email, phone]);
 
 
 

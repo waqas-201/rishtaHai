@@ -6,12 +6,13 @@ import Image from "next/image";
 import { TypographySmall } from "../ui/typography/small";
 import { Alert, AlertDescription } from "../ui/alert";
 import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
-import { cities } from "@/lib/dataArrays";
 import { motion, AnimatePresence } from "framer-motion";
 // import { useEffect } from "react";
 import { z } from "zod";
 import { formSchema } from "@/schema/formSchema";
-import { useEffect } from "react";
+import { Country, State, City } from 'country-state-city';
+
+
 
 
 
@@ -52,34 +53,12 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
 
     const handleNext = async () => {
         console.log("All Form Data:", data);
-        const isValid = await trigger(['community', 'country', 'religion', 'city']);
+        const isValid = await trigger(['community', 'country', 'religion', 'city', 'state']);
         if (isValid && nextStep) {
             nextStep();
         }
     };
 
-
-    const community = watch('community');
-    const country = watch('country');
-    const religion = watch('religion');
-    const city = watch('city');
-
-
-    // // Auto-advance to next step if all fields are valid
-    useEffect(() => {
-        const validateAndMoveNext = async () => {
-            const isValid = await trigger(['community', 'country', 'religion', 'city']);
-
-            if (isValid && nextStep) {
-                nextStep();
-            }
-        };
-
-        // Validate only when all fields have been filled
-        if (community && country && religion && city) {
-            validateAndMoveNext();
-        }
-    }, [community, country, religion, city, nextStep, trigger]);
 
 
 
@@ -88,6 +67,58 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
     const selectedCommunity = watch("community") as z.infer<typeof formSchema>["community"];
     const selectedCountry = watch("country") as z.infer<typeof formSchema>["country"];
     const selectedCity = watch("city") as z.infer<typeof formSchema>["city"];
+    const selectedState = watch("state") as z.infer<typeof formSchema>["state"];
+
+
+
+    const countries = Country.getAllCountries().map(country => ({
+        value: country.name,
+        label: country.name,
+        isoCode: country.isoCode
+    }));
+
+    const states = selectedCountry
+        ? State.getStatesOfCountry(
+            countries.find(c => c.value === selectedCountry)?.isoCode
+        ).map(state => ({
+            value: state.name,
+            label: state.name,
+            isoCode: state.isoCode
+        }))
+        : [];
+
+
+    const cities = selectedState && selectedCountry && Array.isArray(countries) && Array.isArray(states)
+        ? (() => {
+            const country = countries.find(c => c.value === selectedCountry);
+            const state = states.find(s => s.value === selectedState);
+
+            if (country && state) {
+                return City.getCitiesOfState(country.isoCode, state.isoCode).map(city => ({
+                    value: city.name,
+                    label: city.name
+                }));
+            }
+            return []; // Return an empty array if country or state is not found
+        })()
+        : [];
+
+
+    // Add handlers for country, state, and city changes
+    const handleCountryChange = (value: string) => {
+        setValue("country", value);
+        setValue("state", "");
+        setValue("city", "");
+    };
+
+    const handleStateChange = (value: string) => {
+        setValue("state", value);
+        setValue("city", "");
+    };
+
+
+
+
 
     return (
         <motion.div
@@ -156,9 +187,136 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                 </AnimatePresence>
             </motion.div>
 
+
+
+
+
+            {/* Replace the existing country select with: */}
+            {selectedReligion && (
+                <motion.div
+                    className="w-full space-y-2"
+                    variants={selectAnimation}
+                    transition={{ duration: 0.3 }}
+                >
+
+                    <TypographySmall>country</TypographySmall>
+
+                    <Select
+                        onValueChange={handleCountryChange}
+                        value={selectedCountry}
+
+                    >
+
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select your country" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <AnimatePresence mode="wait">
+                                {countries.map((country) => (
+                                    <motion.div
+                                        key={country.value}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 10 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <SelectItem value={country.value}>
+                                            {country.label}
+                                        </SelectItem>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </SelectContent>
+                    </Select> 
+                </motion.div>
+            )}
+
+
+            {selectedCountry && (
+                <motion.div
+                    className="w-full space-y-2"
+                    variants={selectAnimation}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.3 }}
+                >
+                    <TypographySmall>State</TypographySmall>
+                    <Select
+                        onValueChange={handleStateChange}
+                        value={selectedState}
+                    >
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select your state" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <AnimatePresence mode="wait">
+                                {states.map((state) => (
+                                    <motion.div
+                                        key={state.value}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 10 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <SelectItem value={state.value}>
+                                            {state.label}
+                                        </SelectItem>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </SelectContent>
+                    </Select>
+                    {errors.state && (
+                        <Alert variant="destructive" className="py-2">
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertDescription>{errors.state.message}</AlertDescription>
+                        </Alert>
+                    )}
+                </motion.div>
+            )}
+
+
+            {/* Update the city select to use the cities from the picker: */}
+            {selectedCountry && selectedState && (
+                <motion.div
+                    className="w-full space-y-2"
+                    variants={selectAnimation}
+                    transition={{ duration: 0.3 }}
+                > 
+                    <TypographySmall>City</TypographySmall>
+                    <Select
+                        onValueChange={(value: string) => setValue("city", value)}
+                        value={selectedCity}
+                    >
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select your City" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <AnimatePresence mode="wait">
+                                {cities.map((city) => (
+                                    <motion.div
+                                        key={city.value}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 10 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <SelectItem value={city.value}>
+                                            {city.label}
+                                        </SelectItem>
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </SelectContent>
+                    </Select>
+
+                </motion.div>
+            )}
+
             {/* Communities Select */}
             <AnimatePresence mode="wait">
-                {selectedReligion && (
+                {selectedReligion && selectedCountry && selectedCity && selectedState && (
                     <motion.div
                         className="w-full space-y-2"
                         variants={selectAnimation}
@@ -169,7 +327,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     >
                         <TypographySmall>Community</TypographySmall>
                         <Select
-                            onValueChange={(selected: z.infer<typeof formSchema>["community"]) => setValue("community", selected)}  
+                            onValueChange={(selected: z.infer<typeof formSchema>["community"]) => setValue("community", selected)}
                             value={selectedCommunity}
                         >
                             <SelectTrigger>
@@ -205,120 +363,6 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                     <Alert variant="destructive" className="py-2">
                                         <AlertCircle className="h-4 w-4" />
                                         <AlertDescription>{errors.community.message}</AlertDescription>
-                                    </Alert>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Countries Select */}
-            <AnimatePresence mode="wait">
-                {selectedReligion && selectedCommunity && (
-                    <motion.div
-                        className="w-full space-y-2"
-                        variants={selectAnimation}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        transition={{ duration: 0.3 }}
-                    >
-                        <TypographySmall>Country</TypographySmall>
-                        <Select
-                            onValueChange={(selected: z.infer<typeof formSchema>["country"]) => setValue("country", selected)}
-                            value={selectedCountry}
-                        >
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select your country" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <AnimatePresence mode="wait">
-                                    {["Pakistan", "USA", "Canada", "India"].map((country) => (
-                                        <motion.div
-                                            key={country}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: 10 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <SelectItem value={country as z.infer<typeof formSchema>["country"]}>
-                                                {country}
-                                            </SelectItem>
-                                        </motion.div>
-                                    ))}
-                                </AnimatePresence>
-                            </SelectContent>
-                        </Select>
-                        <AnimatePresence mode="wait">
-                            {errors.country && (
-                                <motion.div
-                                    variants={errorAnimation}
-                                    initial="initial"
-                                    animate="animate"
-                                    exit="exit"
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Alert variant="destructive" className="py-2">
-                                        <AlertCircle className="h-4 w-4" />
-                                        <AlertDescription>{errors.country.message}</AlertDescription>
-                                    </Alert>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* City Select */}
-            <AnimatePresence mode="wait">
-                {selectedReligion && selectedCommunity && selectedCountry && (
-                    <motion.div
-                        className="w-full space-y-2"
-                        variants={selectAnimation}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        transition={{ duration: 0.3 }}
-                    >
-                        <TypographySmall>City</TypographySmall>
-                        <Select
-                            onValueChange={(selected: string) => setValue("city", selected as z.infer<typeof formSchema>["city"])}
-                            value={selectedCity}
-                        >
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select your City" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <AnimatePresence mode="wait">
-                                    {cities.map((city) => (
-                                        <motion.div
-                                            key={city}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: 10 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <SelectItem value={city as z.infer<typeof formSchema>["city"]}>
-                                                {city}
-                                            </SelectItem>
-                                        </motion.div>
-                                    ))}
-                                </AnimatePresence>
-                            </SelectContent>
-                        </Select>
-                        <AnimatePresence mode="wait">
-                            {errors.city && (
-                                <motion.div
-                                    variants={errorAnimation}
-                                    initial="initial"
-                                    animate="animate"
-                                    exit="exit"
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Alert variant="destructive" className="py-2">
-                                        <AlertCircle className="h-4 w-4" />
-                                        <AlertDescription>{errors.city.message}</AlertDescription>
                                     </Alert>
                                 </motion.div>
                             )}

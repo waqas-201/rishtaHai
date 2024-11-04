@@ -17,12 +17,13 @@ model User {
   day         Int
   month       Int
   year        Int
-  city        City
+  city        String?
   profileFor  ProfileFor
   gender      Gender
   religion    Religion
   community    String
-  country     Country
+  country     String
+  state       String?
   description String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -44,8 +45,8 @@ enum Gender {
 }
 
 enum Religion {
-  Christianity
   Islam
+  Christianity
   Hinduism
   Buddhism
   Sikhism
@@ -53,22 +54,4 @@ enum Religion {
 
 
 
-enum Country {
-  USA
-  Canada
-  Pakistan
-  India
-}
 
-enum City {
-  Karachi
-  Lahore
-  Islamabad
-  Faisalabad
-  Rawalpindi
-  Multan
-  Hyderabad
-  Gujranwala
-  Peshawar
-  Quetta
-}

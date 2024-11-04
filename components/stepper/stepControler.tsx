@@ -9,6 +9,7 @@ import { ReligionsInfo } from "./religionInfo3";
 import { AddressInfo } from "./addressInfo4";
 import { DescriptionAboutUser } from "./discription5";
 import SuccessMessage from "./successMessage";
+import { MorePersonalInfo } from "./moreInfo4.1";
 
 
 
@@ -40,6 +41,7 @@ export const MultiStepForm: React.FC = () => {
                     <PersonalInfo />
                     <ReligionsInfo />
                     <AddressInfo />
+                    <MorePersonalInfo /> 
                     <DescriptionAboutUser />
                     <SuccessMessage />
                 </StepWizard>

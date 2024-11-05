@@ -9,7 +9,7 @@ import { genderOptions, hasChildrenOptions, LiveWithYou, maritalStatusOptions, p
 import { RadioGroupWrapper } from "../animatedRadioWrappre";
 
 export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
-    const { formState: { errors }, trigger, getValues, watch, setValue } = useFormContext<FormData>();
+    const { formState: { errors }, trigger, watch, setValue } = useFormContext<FormData>();
 
     const profileFor = watch('profileFor');
     const gender = watch('gender');
@@ -26,7 +26,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const handleNext = async () => {
         const isValid = await trigger(['profileFor', 'gender', 'maritalStatus', 'hasChildren']);
         if (isValid) {
-            console.log("All Form Data:", getValues());
+            // console.log("All Form Data:", getValues());
             if (nextStep) nextStep();
         }
     };

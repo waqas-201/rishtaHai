@@ -63,10 +63,10 @@ export function Hero() {
 
 
 
-                <div className=' flex flex- gap-32  flex-col items-center justify-around  ' >
+                <div className='flex flex-col justify-center items-center gap-20 md:gap-36 ' >
                     {/* lefte secion  */}
 
-                    <div className=' flex flex-col items-center lg:gap-16 gap-2 '>
+                    <div className=' flex flex-col items-center lg:gap-16 gap-2  '>
 
                         <h1 className="scroll-m-20  text-4xl w-[90%] md:w-full font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-primary'> perfect</span> match await&apos;s here!
@@ -76,6 +76,11 @@ export function Hero() {
                             <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
                             </TypographyBlockquote>
+
+                            <TypographyBlockquote className=' md:hidden text-white tmd:ext-2xl border-none text-xl block '>
+                                RishtaHai..!  Guardian to Guardian Connection
+                            </TypographyBlockquote>
+
                             <TypographyBlockquote className='text-primary tmd:ext-2xl border-none text-xl hidden md:block '>
                             {qoute}
                             </TypographyBlockquote>
@@ -84,9 +89,11 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-black/30    w-full lg:w-[80%]  p-4 sm:p-8 '>
+                    <div className='bg-black/30  w-full lg:w-[80%]  p-4 sm:p-8 '>
                         <UserForm />
-                    </div>
+                    </div>   
+
+
                 </div>
 
 

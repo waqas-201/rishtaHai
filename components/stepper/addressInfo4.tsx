@@ -1,13 +1,13 @@
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { Alert, AlertDescription } from "../ui/alert";
-import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
 import EmailIcon from "./generel/emailIcon";
 import Input46 from "../ui/phoneInputs";
 import { Controller, useFormContext } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
+import ErrorMessage from "./generel/errorMessage";
 // import { useEffect } from "react";
 
 const fadeInAnimation = {
@@ -90,10 +90,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                             exit="exit"
                             transition={{ duration: 0.2 }}
                         >
-                            <Alert variant="destructive" className="py-2">
-                                <AlertCircle className="h-4 w-4" />
-                                <AlertDescription>{errors.email.message}</AlertDescription>
-                            </Alert>
+                            <ErrorMessage message={errors.email.message} />
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -126,10 +123,7 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                             exit="exit"
                             transition={{ duration: 0.2 }}
                         >
-                            <Alert variant="destructive" className="py-2">
-                                <AlertCircle className="h-4 w-4" />
-                                <AlertDescription>{errors.phone.message}</AlertDescription>
-                            </Alert>
+                            <ErrorMessage message={errors.phone.message} />
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -164,17 +158,6 @@ export const AddressInfo: React.FC<StepComponentProps> = ({ previousStep, nextSt
                     </Button>
                 </motion.div>
             </motion.div>
-
-            <style jsx global>{`
-                @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    25% { transform: translateX(-4px); }
-                    75% { transform: translateX(4px); }
-                }
-                .shake {
-                    animation: shake 0.3s ease-in-out;
-                }
-            `}</style>
         </motion.div>
     );
 };

@@ -6,6 +6,7 @@ import { errorAnimation } from "@/constants/constents";
 import { TypographySmall } from "./ui/typography/small";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
+import ErrorMessage from "./stepper/generel/errorMessage";
 
 interface Option {
     value: string;
@@ -27,10 +28,10 @@ export const RadioGroupWrapper: React.FC<RadioGroupWrapperProps> = ({
     errorMessage,
 
 }) => {
-    const { control, getValues } = useFormContext();
+    const { control } = useFormContext();
 
-    const selectedValue = getValues();
-    console.log("Selected Value:", selectedValue);
+    // const selectedValue = getValues();
+    // console.log("Selected Value:", selectedValue);
 
 
     return (
@@ -74,7 +75,7 @@ export const RadioGroupWrapper: React.FC<RadioGroupWrapperProps> = ({
                                     variants={errorAnimation}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <p className="text-red-500 text-sm">{errorMessage}</p>
+                                    <ErrorMessage message={errorMessage} />
                                 </motion.div>
                             )}
                         </AnimatePresence>

@@ -82,7 +82,7 @@ const UserForm = () => {
 
 
 
-            <DialogContent className="md:w-[100%] w-[95%] min-h-fit max-h-[90vh] md:p-6 p-2 flex flex-col md:overflow-visible overflow-y-scroll before ">
+            <DialogContent className="md:w-[100%] w-[95%] min-h-fit max-h-[99vh] md:p-6 p-2 flex flex-col md:overflow-visible md:landscape:overflow-visible landscape:overflow-y-scroll before ">
                 <div className="md:p-6 ">
                     <MultiStepForm />
                 </div>

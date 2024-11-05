@@ -25,8 +25,12 @@ const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({ id, label
     const { register } = useFormContext();
 
     return (
-        <div className="space-y-2 w-full">
-            <Label htmlFor={id}>{label}</Label>
+        <div className="w-full  ">
+            <div className="flex flex-col gap-2  " >
+                {
+                    label ?
+                        <Label className="space-x-2" htmlFor={id}>{label}</Label> : null
+                }
             <Input
                 id={id}
                 type={type}
@@ -34,6 +38,7 @@ const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({ id, label
                 placeholder={placeholder}
                 className={errorMessage ? 'border-red-500' : className}
             />
+            </div>
             <AnimatePresence mode="wait">
                 {errorMessage && (
                     <motion.div

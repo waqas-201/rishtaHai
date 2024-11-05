@@ -5,6 +5,9 @@ import { FormData, StepComponentProps } from "@/types/types";
 import Step2Icon from "./generel/step2Icon";
 import { Label } from "../ui/label";
 import SignleInputFieldWrapper from "./generel/signleInputFieldWrapper";
+import { AnimatePresence, motion } from "framer-motion";
+import { errorAnimation } from "@/constants/constents";
+import ErrorMessage from "./generel/errorMessage";
 
 export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
     const { trigger, formState: { errors } } = useFormContext<FormData>();
@@ -17,7 +20,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
     };
 
     return (
-        <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center gap-4 ">
             <Step2Icon />
 
             {/* First Name */}
@@ -32,39 +35,89 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
             <SignleInputFieldWrapper
                 id="lastName"
                 label="Last Name"
-                placeholder="Enter your last name"
+                placeholder="Enter your last name"  
                 errorMessage={errors.lastName?.message}
             />
 
             {/* Date of Birth */}
             <div className="space-y-2 w-full">
-                <Label>Date of Birth</Label>
+                <Label className="text-black" >Date of Birth</Label>
                 <div className="flex space-x-2">
+
                     <SignleInputFieldWrapper
 
                         id="day"
                         label="Day"
                         placeholder="Day"
                         type="number"
-                        errorMessage={errors.day?.message}
                     />
+
+
                     <SignleInputFieldWrapper
                         id="month"
                         label="Month"
                         placeholder="Month"
                         type="number"
-                        errorMessage={errors.month?.message}
+
                     />
+
+
+
+
                     <SignleInputFieldWrapper
                         id="year"
                         label="Year"
                         placeholder="Year"
                         type="number"
-                        errorMessage={errors.year?.message}
+
                     />
+
                 </div>
             </div>
 
+            {/* Error Messages */}
+            <div className=" flex flex-col justify-start w-full " >
+                <AnimatePresence mode="wait">
+                    {errors.day?.message && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <ErrorMessage message={errors.day?.message} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <AnimatePresence mode="wait">
+                    {errors.month?.message && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <ErrorMessage message={errors.month?.message} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+                <AnimatePresence mode="wait">
+                    {errors.year?.message && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <ErrorMessage message={errors.year?.message} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-4 w-full">
                 <Button variant="outline" onClick={previousStep} className="flex items-center gap-2">
@@ -74,6 +127,9 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
                     Next <ArrowRight className="w-4 h-4" />
                 </Button>
             </div>
+
+
+
         </div>
     );
 };

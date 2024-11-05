@@ -6,12 +6,11 @@ import { db } from "@/prismaClient";
 import { formSchema } from "@/schema/formSchema";
 
 export async function createUser(data: z.infer<typeof formSchema>) {
- 
-  console.log(typeof data.city);
+  // console.log(typeof data.city);
 
   try {
     const validatedData = formSchema.safeParse(data);
-    console.log(validatedData);
+    // console.log(validatedData);
 
     // If validation fails, return error response
     if (!validatedData.success) {

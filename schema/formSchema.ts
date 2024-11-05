@@ -52,13 +52,7 @@ export const formSchema = z
       "MyRelative",
     ]),
     gender: z.enum(["Male", "Female"]),
-    religion: z.enum([
-      "Islam",
-      "Christianity",
-      "Hinduism",
-      "Buddhism",
-      "Sikhism",
-    ]),
+    religion: z.string({ required_error: "Please select a religion" }),
     community: z.enum([
       "UrduSpeaking",
       "Punjabi",
@@ -90,7 +84,14 @@ export const formSchema = z
       ),
     qualification: z.string().trim().min(1, "Qualification is required"),
     profession: z.string().trim().min(1, "Profession is required"),
-    earning: z.number().nonnegative("Earning must be a non-negative number"),
+    earning: z
+      .string()
+      .transform((val) => parseFloat(val))
+      .refine(
+        (val) => !isNaN(val) && val > 0,
+        "earning must be a positive number"
+      ),
+
     familyStatus: familyStatusEnum,
     country: z.string().min(1, "Please select a country"),
     description: z

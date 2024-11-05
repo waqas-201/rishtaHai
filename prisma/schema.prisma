@@ -1,56 +1,56 @@
-// prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
+  // prisma/schema.prisma
+  generator client {
+    provider = "prisma-client-js"
+  }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
 
-model User {
-  id              Int        @id @default(autoincrement())
-  phone           String     @unique
-  email           String     @unique
-  firstName       String
-  lastName        String
-  day             Int
-  month           Int
-  year            Int
-  city            String? 
-  height          Float     // Assuming height is in centimeters or meters
-  weight          Float     // Assuming weight is in kilograms
-  qualification   String
-  profession      String
-  earning         Float     // Assuming earning is in currency (e.g., PKR, USD)
-  familyStatus    String
-  profileFor      String
-  gender          Gender
-  religion        String
-  community       String
-  country         String
-  state           String?
-  description     String
-  maritalStatus   String
-  hasChildren     HasChildren 
-  livesWithYou    LivesWithYou?
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-}
+  model User {
+    id              Int        @id @default(autoincrement())
+    phone           String     @unique
+    email           String     @unique
+    firstName       String
+    lastName        String
+    day             Int
+    month           Int
+    year            Int
+    city            String? 
+    height          Float     // Assuming height is in centimeters or meters
+    weight          Float     // Assuming weight is in kilograms
+    qualification   String
+    profession      String
+    earning         Float     // Assuming earning is in currency (e.g., PKR, USD)
+    familyStatus    String
+    profileFor      String
+    gender          Gender
+    religion        String
+    community       String
+    country         String
+    state           String?
+    description     String
+    maritalStatus   String
+    hasChildren     HasChildren 
+    livesWithYou    LivesWithYou?
+    createdAt       DateTime   @default(now())
+    updatedAt       DateTime   @updatedAt
+  }
 
-enum LivesWithYou {
-  Yes
-  No
-}
- enum HasChildren {
-  Yes
-  No
-}
+  enum LivesWithYou {
+    Yes
+    No
+  }
+  enum HasChildren {
+    Yes
+    No
+  }
 
-enum Gender {
-  Male
-  Female
-}
+  enum Gender {
+    Male
+    Female
+  }
 
 
 

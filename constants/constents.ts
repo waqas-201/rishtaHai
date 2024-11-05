@@ -66,7 +66,7 @@ export const LiveWithYou = [
 // Animation variants
 export const errorAnimation = {
   initial: { height: 0, opacity: 0, marginBottom: 0 },
-  animate: { height: "auto", opacity: 1, marginBottom: 8 },
+  animate: { height: "auto", opacity: 1, marginBottom: 4 },
   exit: { height: 0, opacity: 0, marginBottom: 0 },
 };
 
@@ -83,14 +83,12 @@ export const selectAnimation = {
 };
 
 export const Communities = [
-  { value: "UrduSpeaking", label: "Urdu Speaking" },
+  { value: "UrduSpeaking", label: "Urdu" },
   { value: "Punjabi", label: "Punjabi" },
   { value: "Sindhi", label: "Sindhi" },
   { value: "Pashtun", label: "Pashtun" },
   { value: "Baloch", label: "Baloch" },
-  { value: "Muhajir", label: "Muhajir" },
-  { value: "Saraiki", label: "Saraiki" },
-  { value: "Hindko", label: "Hindko" },
-  { value: "Brahui", label: "Brahui" },
-  { value: "EnglishSpeaking", label: "English Speaking" },
+  { value: "EnglishSpeaking", label: "English" },
+  { value: "Gilgiti", label: "Gilgiti" },
+  { value: "Kashmiri", label: "Kashmiri" },
 ];

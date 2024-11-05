@@ -14,7 +14,7 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => {
         >
             {
                 message ?
-                    <p className="text-red-500 md:text-sm  text-[10px]  font-medium">{message}</p>
+                    <p className="text-red-500 md:text-sm  text-[11px]  font-medium">{message}</p>
                     : null
 
             }

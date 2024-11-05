@@ -51,20 +51,20 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
 
     const submit = async () => {
         const isValid = await trigger(['description']);
-        console.log("Is Valid:", isValid);
-        console.log("Form Errors:", errors);
+        // console.log("Is Valid:", isValid);
+        // console.log("Form Errors:", errors);
 
         if (isValid) {
             const data = getValues();
-            console.log("All Form Data:", data);
+            // console.log("All Form Data:", data);
             mutate(data);
         } else {
-            console.log("Validation failed, description:", getValues('description'));
+            // console.log("Validation failed, description:", getValues('description'));
         }
     };
 
     useEffect(() => {
-        console.log("Data:", data);
+        // console.log("Data:", data);
         if (data?.success) {
             setSuccessData(true);
         }

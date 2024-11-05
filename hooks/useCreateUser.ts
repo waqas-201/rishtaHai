@@ -15,9 +15,9 @@ const useCreateUser = () => {
       }
     },
     onError: (error) => {
-       console.log(error);
+        console.log(error);
 
-       toast.error("failed to submit. try again");
+        toast.error("failed to submit. try again");
     },
   });
 

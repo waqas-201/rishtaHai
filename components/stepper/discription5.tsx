@@ -173,6 +173,7 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
                         <Button
                             onClick={(e) => {
                                 e.preventDefault();
+                                    console.log(data);
                                 submit();
                             }}
                         >

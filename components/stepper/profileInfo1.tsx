@@ -21,13 +21,14 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
 
     const profileFor = watch('profileFor');
     const gender = watch('gender');
+    const maritalStatus = watch('maritalStatus')
+    const isWidow = watch('maritalStatus') === 'WIDOW';
+    const hasChildren = watch('hasChildren') === 'Yes';
+
 
     const showGenderSelection = ["Myself", "MyFriend", "MyRelative"].includes(profileFor);
     const showMaritalStatus = ["MySon", "MyDaughter", "MyBrother", "MySister"].includes(profileFor) ||
         (showGenderSelection && gender);
-
-    const isWidow = watch('maritalStatus') === 'WIDOW';
-    const hasChildren = watch('hasChildren') === 'Yes';
 
 
     const handleNext = async () => {
@@ -40,14 +41,23 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
             console.log("Validation failed");
         }
     };
-
+    // Set gender based on profileFor
     useEffect(() => {
         if (profileFor === "MySon" || profileFor === "MyBrother") {
             setValue('gender', 'Male');
         } else if (profileFor === "MyDaughter" || profileFor === "MySister") {
             setValue('gender', 'Female');
-        }
+        } 
     }, [profileFor, setValue]);
+
+    // Set hasChildren and livesWithYou based on marital status
+    useEffect(() => {
+        if (maritalStatus === 'UNMARRIED') {
+            setValue('hasChildren', 'No');
+            setValue('livesWithYou', 'No');
+        }
+    }, [maritalStatus, setValue]);
+
 
     const profileOptions = {
         Myself: "Myself",

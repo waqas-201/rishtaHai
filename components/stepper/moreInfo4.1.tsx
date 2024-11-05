@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Alert, AlertDescription } from "../ui/alert";
@@ -7,15 +7,31 @@ import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
 import Step2Icon from "./icons/step2Icon";
 import { motion, AnimatePresence } from "framer-motion";
+import { Select } from "@radix-ui/react-select";
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 const errorAnimation = {
     initial: { height: 0, opacity: 0, marginBottom: 0 },
     animate: { height: "auto", opacity: 1, marginBottom: 8 },
     exit: { height: 0, opacity: 0, marginBottom: 0 }
 };
+// Qualification options
+const qualifications = [
+    { value: "Matric", label: "Matric" },
+    { value: "Intermediate", label: "Intermediate" },
+    { value: "Graduation", label: "Graduation" },
+    { value: "Masters", label: "Masters" },
+    { value: "PhD", label: "PhD" },
+];
 
+
+const selectAnimation = {
+    initial: { height: 0, opacity: 0 },
+    animate: { height: "auto", opacity: 1 },
+    exit: { height: 0, opacity: 0 }
+};
 export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
-    const { register, formState: { errors }, trigger } = useFormContext<FormData>();
+    const { register, formState: { errors }, trigger, control } = useFormContext<FormData>();
 
     const handleNext = async () => {
         const isValid = await trigger(['height', 'weight', 'qualification', 'profession', 'earning', 'familyStatus']);
@@ -30,8 +46,9 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
 
             {/* Height */}
             <div className="space-y-2 w-full">
-                <Label htmlFor="height">Height</Label>
+                <Label htmlFor="height">Height(cm)</Label>
                 <Input
+                    type="number"
                     id="height"
                     {...register('height', { required: "Height is required" })}
                     placeholder="Enter your height"
@@ -55,13 +72,14 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
                 </AnimatePresence>
             </div>
 
-            {/* Weight */}
+            {/* Weight */}  
             <div className="space-y-2 w-full">
-                <Label htmlFor="weight">Weight</Label>
+                <Label htmlFor="weight">Weight(kg)</Label>
                 <Input
+                    type="number"
                     id="weight"
                     {...register('weight', { required: "Weight is required" })}
-                    placeholder="Enter your total weight"
+                    placeholder="Enter your total weight in Kg "
                     className={errors.weight ? 'border-red-500' : ''}
                 />
                 <AnimatePresence mode="wait">
@@ -83,7 +101,7 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
             </div>
 
             {/* Qualification */}
-            <div className="space-y-2 w-full">
+            {/* <div className="space-y-2 w-full">
                 <Label htmlFor="qualification">Qualification</Label>
                 <Input
                     id="qualification"
@@ -107,7 +125,56 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </div> */}
+            <motion.div
+                className="w-full space-y-2"
+                variants={selectAnimation}
+                transition={{ duration: 0.3 }}
+            >
+                <Controller
+                    name="qualification"
+                    control={control}
+                    render={({ field }) => (
+                        <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value || ""}
+                        >
+                            <SelectTrigger
+                                id="qualification"
+                                className={`w-full ${errors.qualification ? 'border-red-500' : ''}`}
+                            >
+                                <SelectValue placeholder="Select your qualification" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {qualifications.map((option) => (
+                                    <SelectItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    )}
+                />
+
+                <AnimatePresence mode="wait">
+                    {errors.qualification && (
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={errorAnimation}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <Alert variant="destructive" className="py-2">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{errors.qualification.message}</AlertDescription>
+                            </Alert>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+            </motion.div>
+
 
             {/* Profession */}
             <div className="space-y-2 w-full">
@@ -171,7 +238,7 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
             {/* Family Status */}
             <div className="space-y-2 w-full">
                 <Label htmlFor="familyStatus">Family Status</Label>
-                <select
+                {/* <select
                     id="familyStatus"
                     {...register('familyStatus', { required: "Family status is required" })}
                     className={`border ${errors.familyStatus ? 'border-red-500' : ''} w-full p-2`}
@@ -180,7 +247,30 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
                     <option value="MIDDLE_CLASS">Middle Class</option>
                     <option value="UPPER_MIDDLE_CLASS">Upper Middle Class</option>
                     <option value="UPPER_CLASS">Upper Class</option>
-                </select>
+                </select> */}
+                <Controller
+                    name="familyStatus"
+                    control={control}
+                    rules={{ required: "Family status is required" }}
+                    render={({ field }) => (
+                        <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value || ""}
+                        >
+                            <SelectTrigger className={`w-full ${errors.familyStatus ? 'border-red-500' : ''}`}>
+                                <SelectValue placeholder="Select family status" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="MIDDLE_CLASS">Middle Class</SelectItem>
+                                <SelectItem value="UPPER_MIDDLE_CLASS">Upper Middle Class</SelectItem>
+                                <SelectItem value="UPPER_CLASS">Upper Class</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    )}
+                />
+                {errors.familyStatus && (
+                    <p className="text-red-500 text-sm mt-1">{errors.familyStatus.message}</p>
+                )}
                 <AnimatePresence mode="wait">
                     {errors.familyStatus && (
                         <motion.div

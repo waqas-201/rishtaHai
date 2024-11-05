@@ -9,7 +9,7 @@ const maxYear = currentYear - 18;
    "UPPER_MIDDLE_CLASS",
    "UPPER_CLASS",
  ]);
- const maritalStatusEnum = z.enum(["UNMARRIED", "WIDOW"]);
+ const maritalStatusEnum = z.enum(["UNMARRIED", "WIDOW", "DIVORCED"]);
 
 export const formSchema = z
   .object({

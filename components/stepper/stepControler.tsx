@@ -32,7 +32,7 @@ export const MultiStepForm: React.FC = () => {
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto ">
+
 
 
             <FormProvider {...methods}>
@@ -46,7 +46,7 @@ export const MultiStepForm: React.FC = () => {
                     <SuccessMessage />
                 </StepWizard>
                 </FormProvider>
-        </div>
+
     );
 };
 

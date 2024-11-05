@@ -4,34 +4,32 @@ const currentYear = new Date().getFullYear();
 const minYear = currentYear - 75;
 const maxYear = currentYear - 18;
 
- const familyStatusEnum = z.enum([
-   "MIDDLE_CLASS",
-   "UPPER_MIDDLE_CLASS",
-   "UPPER_CLASS",
- ]);
- const maritalStatusEnum = z.enum(["UNMARRIED", "WIDOW", "DIVORCED"]);
+const familyStatusEnum = z.enum([
+  "MIDDLE_CLASS",
+  "UPPER_MIDDLE_CLASS",
+  "UPPER_CLASS",
+]);
+const maritalStatusEnum = z.enum(["UNMARRIED", "WIDOW", "DIVORCED"]);
 
 export const formSchema = z
   .object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
     day: z
-      .number()
-      .int("Day must be an integer")
-      .min(1)
-      .max(31)
-      .refine((value) => value >= 1 && value <= 31, {
-        message: "Month must be between 1 and 31",
+      .string() // Change to string for initial processing
+      .transform((val) => parseInt(val, 10)) // Transform to number
+      .refine((value) => Number.isInteger(value) && value >= 1 && value <= 31, {
+        message: "Day must be an integer between 1 and 31",
       }),
     month: z
-      .number()
-      .int("Month must be a whole number")
-      .refine((value) => value >= 1 && value <= 12, {
-        message: "Month must be between 1 and 12",
+      .string() // Change to string for initial processing
+      .transform((val) => parseInt(val, 10)) // Transform to number
+      .refine((value) => Number.isInteger(value) && value >= 1 && value <= 12, {
+        message: "Month must be an integer between 1 and 12",
       }),
     year: z
-      .number()
-      .int("Please enter a valid year.")
+      .string() // Change to string for initial processing
+      .transform((val) => parseInt(val, 10)) // Transform to number
       .refine((year) => year >= minYear && year <= maxYear, {
         message: `Your birth year must be between ${minYear} and ${maxYear} to join.`,
       }),
@@ -78,14 +76,14 @@ export const formSchema = z
     livesWithYou: z.enum(["Yes", "No"]),
     height: z
       .string()
-      .transform((val) => parseFloat(val)) // Convert string to number
+      .transform((val) => parseFloat(val))
       .refine(
         (val) => !isNaN(val) && val > 0 && val < 300,
         "Height must be a positive number and less than 300 cm"
       ),
     weight: z
       .string()
-      .transform((val) => parseFloat(val)) // Convert string to number
+      .transform((val) => parseFloat(val))
       .refine(
         (val) => !isNaN(val) && val > 0 && val < 300,
         "Weight must be a positive number and less than 300 kg"
@@ -114,4 +112,3 @@ export const formSchema = z
       path: ["day", "month", "year"],
     }
   );
-

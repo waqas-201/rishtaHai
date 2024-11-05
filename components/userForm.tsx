@@ -2,13 +2,13 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import SelectWrapper from "./stepper/SelectWrapper";
 import { P } from "./ui/typography/P";
 import { ArrowRight } from "lucide-react";
 import { useStore } from "@/store/useSteps";
 import dynamic from "next/dynamic";
 import { Watch } from 'react-loader-spinner'
 import { numbersAsStrings, topCountries, topReligions } from "@/constants/constents";
+import SelectWrapper from "./stepper/generel/SelectWrapper";
 
 
 // lazy loading heavy components with fallback ui   
@@ -26,17 +26,6 @@ const MultiStepForm = dynamic(() => import('./stepper/stepControler'), {
                 wrapperClass=""
             /></div>)
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 const UserForm = () => {

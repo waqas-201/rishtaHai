@@ -1,6 +1,6 @@
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { P } from "@/components/ui/typography/P";
 import { cn } from "@/lib/utils";
-import { P } from "../ui/typography/P";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 type SelectWrapperProps = {
     values: string[],

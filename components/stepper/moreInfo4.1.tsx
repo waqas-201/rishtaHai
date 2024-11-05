@@ -5,7 +5,7 @@ import { Alert, AlertDescription } from "../ui/alert";
 import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
-import Step2Icon from "./icons/step2Icon";
+import Step2Icon from "./generel/step2Icon";
 import { motion, AnimatePresence } from "framer-motion";
 import { Select } from "@radix-ui/react-select";
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";

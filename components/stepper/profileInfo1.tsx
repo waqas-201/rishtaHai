@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
-import UserIcon from "./icons/userIcon";
+import UserIcon from "./generel/userIcon";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";

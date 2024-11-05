@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { formSchema } from "@/schema/formSchema";
 import { Country, State, City } from 'country-state-city';
+import { errorAnimation, fadeInAnimation, selectAnimation } from "@/constants/constents";
 
 
 
@@ -29,23 +30,6 @@ const Communities = [
     "EnglishSpeaking",
 ];
 
-const fadeInAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
-};
-
-const errorAnimation = {
-    initial: { height: 0, opacity: 0 },
-    animate: { height: "auto", opacity: 1 },
-    exit: { height: 0, opacity: 0 }
-};
-
-const selectAnimation = {
-    initial: { height: 0, opacity: 0 },
-    animate: { height: "auto", opacity: 1 },
-    exit: { height: 0, opacity: 0 }
-};
 
 export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
     const { formState: { errors }, trigger, setValue, watch, getValues } = useFormContext<FormData>();
@@ -227,7 +211,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                                 ))}
                             </AnimatePresence>
                         </SelectContent>
-                    </Select> 
+                    </Select>
                 </motion.div>
             )}
 
@@ -283,7 +267,7 @@ export const ReligionsInfo: React.FC<StepComponentProps> = ({ nextStep, previous
                     className="w-full space-y-2"
                     variants={selectAnimation}
                     transition={{ duration: 0.3 }}
-                > 
+                >
                     <TypographySmall>City</TypographySmall>
                     <Select
                         onValueChange={(value: string) => setValue("city", value)}

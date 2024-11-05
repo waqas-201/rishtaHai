@@ -4,7 +4,7 @@ import { Alert, AlertDescription } from "../ui/alert";
 import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
-import EmailIcon from "./icons/emailIcon";
+import EmailIcon from "./generel/emailIcon";
 import Input46 from "../ui/phoneInputs";
 import { Controller, useFormContext } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";

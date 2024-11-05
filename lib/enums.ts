@@ -7,16 +7,5 @@ export enum Religion {
   // Add more religions as needed
 }
 
-export enum Community {
-  CommunityA = "CommunityA",
-  CommunityB = "CommunityB",
-  CommunityC = "CommunityC",
-  // Add more communities as needed
-}
 
-export enum Country {
-  Pakistan = "Pakistan",
-  India = "India",
-  Bangladesh = "Bangladesh",
-  // Add more countries as needed
-}
+

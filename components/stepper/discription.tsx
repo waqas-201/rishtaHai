@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 import { useFormContext } from "react-hook-form";
 import { Textarea } from "../ui/textarea";
 import { FormData, StepComponentProps } from "@/types/types";
-import { Alert, AlertDescription } from "../ui/alert";
-import { AlertCircle, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import useCreateUser from "@/hooks/useCreateUser";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import UserIcon from "./generel/userIcon";
 import { Label } from "../ui/label";
+import ErrorMessage from "./generel/errorMessage";
 
 
 
@@ -117,10 +117,7 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
                             exit="exit"
                             transition={{ duration: 0.2 }}
                         >
-                            <Alert variant="destructive" className="py-2">
-                                <AlertCircle className="h-4 w-4" />
-                                <AlertDescription>{errors.description.message}</AlertDescription>
-                            </Alert>
+                            <ErrorMessage message={errors.description?.message} />
                         </motion.div>
                     )}
                 </AnimatePresence>

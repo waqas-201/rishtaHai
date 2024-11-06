@@ -5,12 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ErrorMessage from "./errorMessage";
+import { errorAnimation } from "@/constants/constents";
 
-const errorAnimation = {
-    initial: { height: 0, opacity: 0, marginBottom: 0 },
-    animate: { height: "auto", opacity: 1, marginBottom: 8 },
-    exit: { height: 0, opacity: 0, marginBottom: 0 }
-};
+
 
 interface ValidatedInputFieldProps {
     id: string;
@@ -19,9 +16,10 @@ interface ValidatedInputFieldProps {
     type?: string; // Default is "text"
     className?: string;
     errorMessage?: string; // Pass the error message directly
+    showError?: boolean;
 }
 
-const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({ id, label, placeholder, type = "text", className, errorMessage }) => {
+const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({ id, label, placeholder, type = "text", className, errorMessage, showError }) => {
     const { register } = useFormContext();
 
     return (
@@ -36,7 +34,7 @@ const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({ id, label
                 type={type}
                 {...register(id)} // Just register the field without additional options
                 placeholder={placeholder}
-                className={errorMessage ? 'border-red-500' : className}
+                    className={errorMessage || showError ? 'border-red-500' : className}
             />
             </div>
             <AnimatePresence mode="wait">

@@ -6,8 +6,7 @@ import Step2Icon from "./generel/step2Icon";
 import { Label } from "../ui/label";
 import SignleInputFieldWrapper from "./generel/signleInputFieldWrapper";
 import { AnimatePresence, motion } from "framer-motion";
-import { errorAnimation } from "@/constants/constents";
-import ErrorMessage from "./generel/errorMessage";
+
 
 export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, nextStep }) => {
     const { trigger, formState: { errors } } = useFormContext<FormData>();
@@ -17,6 +16,13 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
         if (isValid && nextStep) {
             nextStep();
         }
+    };
+
+
+    const errorAnimationForSmallErrors = {
+        initial: { height: 0, opacity: 0, marginBottom: 0 },
+        animate: { height: "auto", opacity: 1, marginBottom: 0 },
+        exit: { height: 0, opacity: 0, marginBottom: 0 },
     };
 
     return (
@@ -42,9 +48,10 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
             />
 
             {/* Date of Birth */}
-            <div className="space-y-2 w-full">
-                <Label className="text-black" >Date of Birth</Label>
-                <div className="flex space-x-2">
+            <div>
+                <div className=" w-full ">
+                    <Label  >Date of Birth</Label>
+                    <div className="flex gap-3 ">
 
                     <SignleInputFieldWrapper
 
@@ -52,6 +59,7 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                         label="Day"
                         placeholder="Day"
                         type="number"
+                            showError={!!errors.day?.message}
                     />
 
 
@@ -60,6 +68,8 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                         label="Month"
                         placeholder="Month"
                         type="number"
+                            showError={!!errors.month?.message}
+
 
                     />
 
@@ -71,6 +81,8 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                         label="Year"
                         placeholder="Year"
                         type="number"
+                            showError={!!errors.year?.message}
+
 
                     />
 
@@ -85,10 +97,11 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                             initial="initial"
                             animate="animate"
                             exit="exit"
-                            variants={errorAnimation}
+                                variants={errorAnimationForSmallErrors}
                             transition={{ duration: 0.2 }}
                         >
-                            <ErrorMessage message={errors.day?.message} />
+                                <p className="text-red-500 md:text-[12px]  text-[11px]  font-medium">{errors.day?.message}</p>
+
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -99,10 +112,10 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                             initial="initial"
                             animate="animate"
                             exit="exit"
-                            variants={errorAnimation}
+                                variants={errorAnimationForSmallErrors}
                             transition={{ duration: 0.2 }}
                         >
-                            <ErrorMessage message={errors.month?.message} />
+                                <p className="text-red-500 md:text-[12px]  text-[11px]  font-medium">{errors.month?.message}</p>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -112,13 +125,17 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
                             initial="initial"
                             animate="animate"
                             exit="exit"
-                            variants={errorAnimation}
+                                variants={errorAnimationForSmallErrors}
                             transition={{ duration: 0.2 }}
                         >
-                            <ErrorMessage message={errors.year?.message} />
+                                <p className="text-red-500 md:text-[12px]  text-[11px]  font-medium">{errors.year?.message}</p>
+
+
                         </motion.div>
                     )}
                 </AnimatePresence>
+            </div>
+
             </div>
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-4 w-full">

@@ -37,8 +37,8 @@ export const formSchema = z
     phone: z
       .string()
       .min(
-        13,
-        "Phone number must be at least 13 digits! including country code"
+        11,
+        "Phone number must be at least 11 digits! including country code"
       ),
     city: z.string().min(1, "Please select a city"),
     state: z.string().min(1, "Please select a state"),
@@ -64,6 +64,8 @@ export const formSchema = z
       "Hindko",
       "Brahui",
       "EnglishSpeaking",
+      "Kashmiri",
+      "Gilgiti",
     ]),
     maritalStatus: maritalStatusEnum,
     hasChildren: z.enum(["Yes", "No"]),

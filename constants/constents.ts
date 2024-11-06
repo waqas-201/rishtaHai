@@ -76,9 +76,9 @@ export const Communities = [
 ];
 
 export const familyStatusOptions = [
-  { value: "MIDDLE_CLASS", label: "Middle Class" },
-  { value: "UPPER_MIDDLE_CLASS", label: "Upper Middle Class" },
-  { value: "UPPER_CLASS", label: "Upper Class" },
+  { value: "MIDDLE_CLASS", label: "Middle class" },
+  { value: "UPPER_MIDDLE_CLASS", label: "Upper middle class" },
+  { value: "UPPER_CLASS", label: "Upper class" },
 ];
 
 // Animation variants

@@ -24,7 +24,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
 
 
     const handleNext = async () => {
-        const isValid = await trigger(['profileFor', 'gender', 'maritalStatus', 'hasChildren']);
+        const isValid = await trigger(['profileFor', 'gender', 'maritalStatus', 'hasChildren', 'livesWithYou']);
         if (isValid) {
             // console.log("All Form Data:", getValues());
             if (nextStep) nextStep();
@@ -52,8 +52,9 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
 
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <div className="flex justify-center mb-4">
+        <div className="flex flex-col items-center justify-center gap-4 ">
+
+            <div className="flex justify-center mb-8 ">
                 <UserIcon />
             </div>
 

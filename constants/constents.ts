@@ -63,6 +63,24 @@ export const LiveWithYou = [
   { value: "Yes", label: "Yes" },
   { value: "No", label: "No" },
 ];
+
+export const Communities = [
+  { value: "UrduSpeaking", label: "Urdu" },
+  { value: "Punjabi", label: "Punjabi" },
+  { value: "Sindhi", label: "Sindhi" },
+  { value: "Pashtun", label: "Pashtun" },
+  { value: "Baloch", label: "Baloch" },
+  { value: "EnglishSpeaking", label: "English" },
+  { value: "Gilgiti", label: "Gilgiti" },
+  { value: "Kashmiri", label: "Kashmiri" },
+];
+
+export const familyStatusOptions = [
+  { value: "MIDDLE_CLASS", label: "Middle Class" },
+  { value: "UPPER_MIDDLE_CLASS", label: "Upper Middle Class" },
+  { value: "UPPER_CLASS", label: "Upper Class" },
+];
+
 // Animation variants
 export const errorAnimation = {
   initial: { height: 0, opacity: 0, marginBottom: 0 },
@@ -81,14 +99,8 @@ export const selectAnimation = {
   animate: { height: "auto", opacity: 1 },
   exit: { height: 0, opacity: 0 },
 };
-
-export const Communities = [
-  { value: "UrduSpeaking", label: "Urdu" },
-  { value: "Punjabi", label: "Punjabi" },
-  { value: "Sindhi", label: "Sindhi" },
-  { value: "Pashtun", label: "Pashtun" },
-  { value: "Baloch", label: "Baloch" },
-  { value: "EnglishSpeaking", label: "English" },
-  { value: "Gilgiti", label: "Gilgiti" },
-  { value: "Kashmiri", label: "Kashmiri" },
-];
+export const inputAnimation = {
+  initial: { scale: 0.95, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { type: "spring", stiffness: 300, damping: 30 },
+};

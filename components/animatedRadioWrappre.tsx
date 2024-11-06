@@ -3,7 +3,6 @@ import { Controller, useFormContext } from "react-hook-form";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { errorAnimation } from "@/constants/constents";
-import { TypographySmall } from "./ui/typography/small";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 import ErrorMessage from "./stepper/generel/errorMessage";
@@ -40,9 +39,9 @@ export const RadioGroupWrapper: React.FC<RadioGroupWrapperProps> = ({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="self-start w-full mb-4"
+            className=" w-full  flex flex-col gap-1  justify-start items-start  "
         >
-            <TypographySmall className="self-start">{label}</TypographySmall>
+            <Label className="self-start ">{label}</Label>
 
             <Controller
                 control={control}
@@ -52,7 +51,7 @@ export const RadioGroupWrapper: React.FC<RadioGroupWrapperProps> = ({
                         <RadioGroup
                             onValueChange={field.onChange}
                             value={field.value}
-                            className="flex px-4 flex-wrap "
+                            className="flex flex-wrap "
                         >
                             {options.map(({ value, label }) => (
                                 <div key={value} className="flex items-center">

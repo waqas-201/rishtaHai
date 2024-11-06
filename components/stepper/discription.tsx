@@ -1,6 +1,4 @@
-'use client'
 import { Button } from "@/components/ui/button";
-import { TypographySmall } from "../ui/typography/small";
 import { useFormContext } from "react-hook-form";
 import { Textarea } from "../ui/textarea";
 import { FormData, StepComponentProps } from "@/types/types";
@@ -9,23 +7,11 @@ import { AlertCircle, ArrowLeft } from "lucide-react";
 import useCreateUser from "@/hooks/useCreateUser";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import UserIcon from "./generel/userIcon";
+import { Label } from "../ui/label";
 
-const containerVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5,
-            staggerChildren: 0.1
-        }
-    },
-    exit: {
-        opacity: 0,
-        y: -20,
-        transition: { duration: 0.3 }
-    }
-};
+
+
 
 const childVariants = {
     initial: { opacity: 0, x: -20 },
@@ -47,7 +33,11 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
         formState: { errors },
         getValues,
         trigger,
+
     } = useFormContext<FormData>();
+
+
+
 
     const submit = async () => {
         const isValid = await trigger(['description']);
@@ -92,19 +82,19 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
 
 
     return (
-        <motion.div
-            className="flex flex-col gap-6"
-            variants={containerVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-        >
+        <div className="flex flex-col items-center justify-center gap-4">
+
+
+            <div className="flex justify-center mb-4">
+                <UserIcon />
+            </div>
+
             <motion.div
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-4 w-full"
                 variants={childVariants}
             >
                 <motion.div variants={childVariants}>
-                    <TypographySmall className="ml-2">Tell us more about him/her</TypographySmall>
+                    <Label>Tell us more about him/her</Label>
                 </motion.div>
 
                 <motion.div
@@ -136,8 +126,10 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
                 </AnimatePresence>
             </motion.div>
 
+
+
             <motion.div
-                className="flex justify-between mt-4"
+                className="flex justify-between mt-4 w-full"
                 variants={childVariants}
             >
                 <motion.div
@@ -173,7 +165,7 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
                         <Button
                             onClick={(e) => {
                                 e.preventDefault();
-                                    console.log(data);
+                                console.log(data);
                                 submit();
                             }}
                         >
@@ -182,6 +174,6 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
                     )}
                 </motion.div>
             </motion.div>
-        </motion.div>
+        </div>
     );
 }

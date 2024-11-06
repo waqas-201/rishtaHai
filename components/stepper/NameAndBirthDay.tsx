@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { errorAnimation } from "@/constants/constents";
 import ErrorMessage from "./generel/errorMessage";
 
-export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
+export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, nextStep }) => {
     const { trigger, formState: { errors } } = useFormContext<FormData>();
 
     const handleNext = async () => {
@@ -21,7 +21,9 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
 
     return (
         <div className="flex flex-col items-center justify-center gap-4 ">
-            <Step2Icon />
+            <div className="flex justify-center mb-4">
+                <Step2Icon />
+            </div>
 
             {/* First Name */}
             <SignleInputFieldWrapper
@@ -35,7 +37,7 @@ export const PersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousS
             <SignleInputFieldWrapper
                 id="lastName"
                 label="Last Name"
-                placeholder="Enter your last name"  
+                placeholder="Enter your last name"
                 errorMessage={errors.lastName?.message}
             />
 

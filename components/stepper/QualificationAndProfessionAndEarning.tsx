@@ -1,16 +1,15 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { Alert, AlertDescription } from "../ui/alert";
-import { AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { FormData, StepComponentProps } from "@/types/types";
-import Step2Icon from "./generel/step2Icon";
 import { motion, AnimatePresence } from "framer-motion";
 import { Select } from "@radix-ui/react-select";
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import SignleInputFieldWrapper from "./generel/signleInputFieldWrapper";
 import ErrorMessage from "./generel/errorMessage";
+import UserIcon from "./generel/userIcon";
 
 const errorAnimation = {
     initial: { height: 0, opacity: 0, marginBottom: 0 },
@@ -32,11 +31,11 @@ const selectAnimation = {
     animate: { height: "auto", opacity: 1 },
     exit: { height: 0, opacity: 0 }
 };
-export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
+export const QualificationAndProfessionAndEarning: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
     const { register, formState: { errors }, trigger, control } = useFormContext<FormData>();
 
     const handleNext = async () => {
-        const isValid = await trigger(['height', 'weight', 'qualification', 'profession', 'earning',]);
+        const isValid = await trigger(['qualification', 'profession', 'earning',]);
         if (isValid && nextStep) {
             nextStep();
         }
@@ -44,29 +43,10 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
 
     return (
         <div className="flex flex-col items-center justify-center gap-4">
-            <Step2Icon />
-
-
-
-            <div className="flex justify-between items-center  gap-2 md:gap-4 "  >
-
-
-                <SignleInputFieldWrapper
-                    type="number"
-                    id="height"
-                    label="Height(cm)"
-                    placeholder="Enter your height"
-                    errorMessage={errors.height?.message}
-                />  
-
-                <SignleInputFieldWrapper
-                    type="number"
-                    id="weight"
-                    label="Weight(kg)"
-                    placeholder="Enter your weight"
-                    errorMessage={errors.weight?.message}
-                />
+            <div className="flex justify-center mb-4">
+                <UserIcon />
             </div>
+
 
 
 
@@ -111,10 +91,7 @@ export const MorePersonalInfo: React.FC<StepComponentProps> = ({ nextStep, previ
                             variants={errorAnimation}
                             transition={{ duration: 0.2 }}
                         >
-                            <Alert variant="destructive" className="py-2">
-                                <AlertCircle className="h-4 w-4" />
-                                <AlertDescription>{errors.qualification.message}</AlertDescription>
-                            </Alert>
+                            <ErrorMessage message={errors.qualification.message} />
                         </motion.div>
                     )}
                 </AnimatePresence>

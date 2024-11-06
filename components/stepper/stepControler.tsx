@@ -2,15 +2,16 @@ import { FormProvider, useForm } from "react-hook-form";
 import StepWizard from "react-step-wizard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { ProfileInfo } from "./profileInfo1";
-import { PersonalInfo } from "./personalInfo2";
+import { ProfileInfo } from "./profileInfo";
 import { formSchema } from "@/schema/formSchema";
-import { ReligionsInfo } from "./religionInfo3";
-import { AddressInfo } from "./addressInfo4";
-import { DescriptionAboutUser } from "./discription5";
+import { CountryCityAndState } from "./CountryCityAndState";
+import { EmailAndPhone } from "./EmailAndPhone";
+import { DescriptionAboutUser } from "./discription";
 import SuccessMessage from "./successMessage";
-import { MorePersonalInfo } from "./moreInfo4.1";
-import { MoreInformationAgain } from "./moreInformation6";
+import { QualificationAndProfessionAndEarning } from "./QualificationAndProfessionAndEarning";
+import { HeightAndWeight } from "./HeightAndWeight";
+import { CommunityAndReligionAndFamilyStatus } from "./CommunityAndReligionAndFamilyStatus";
+import { NameAndBirthDay } from "./NameAndBirthDay";
 
 
 
@@ -38,14 +39,15 @@ export const MultiStepForm: React.FC = () => {
 
             <FormProvider {...methods}>
                 <StepWizard onStepChange={handleStepChange}>
-                    <ProfileInfo />
-                    <PersonalInfo />
-                    <ReligionsInfo />
-                    <AddressInfo />
-                <MorePersonalInfo />
-                <MoreInformationAgain />
-                    <DescriptionAboutUser />
-                    <SuccessMessage />
+                <ProfileInfo /> 
+                <NameAndBirthDay />
+                <CountryCityAndState />
+                <CommunityAndReligionAndFamilyStatus />
+                <QualificationAndProfessionAndEarning />
+                <HeightAndWeight />
+                <EmailAndPhone />
+                <DescriptionAboutUser />
+                <SuccessMessage />
                 </StepWizard>
                 </FormProvider>
 

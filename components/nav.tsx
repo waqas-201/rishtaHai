@@ -1,5 +1,5 @@
-"use client";
-
+'use client'
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -7,48 +7,56 @@ import { motion } from "framer-motion";
 import { MenuIcon } from "./ui/menuIcon";
 import Image from "next/image";
 
-// Animation variants for navbar items
 const navItemVariants = {
   initial: {
     scale: 1,
-    color: "var(--foreground)", // Use foreground color from CSS variables
-    borderColor: "transparent", // Initially transparent border
+    color: "var(--foreground)",
   },
   hover: {
-    scale: 1.1, // Slightly increase size on hover
-    color: "var(--primary)", // Change text color to primary
-    borderColor: "var(--primary)", // Match border color to text color on hover
+    scale: 1.1,
+    color: "var(--primary)",
     transition: {
       type: "spring",
       stiffness: 300,
       damping: 20,
-      duration: 0.3, // Slightly longer duration
+      duration: 0.3,
     },
   },
 };
 
 export function Nav() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Set the scroll threshold to 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className=" flex items-center justify-center   h-16  bg-transparent  ">
+    <header
+      className={`sticky top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 ${isScrolled ? "bg-white/20 backdrop-blur-md shadow-md" : "bg-white"
+        }`}
+    >
+      <div className="flex items-center w-[90%] justify-start gap-[40%]">
 
-
-      <div className="  flex items-center w-[90%] justify-start gap-[40%] ">
-
-        {/* logo */}
-
-        <Link href="#" className="mr-6  mx-[-30px]  " prefetch={false}>
+        {/* Logo */}
+        <Link href="#" className="mr-6 mx-[-30px]" prefetch={false}>
           <Image
             src="/logo.svg"
-            width={150} // Provide default width for Next.js optimization
-            height={150} // Provide default height for Next.js optimization
+            width={150}
+            height={150}
             alt="RishtaHai logo"
-            className="w-24 h-24 md:w-36 md:h-36" // Responsive sizes: w-24 for 100px on mobile, w-36 for 150px on larger screens
+            className="w-24 h-24 md:w-36 md:h-36"
           />
           <span className="sr-only">RishtaHai</span>
         </Link>
 
-        {/* nav items  for desktop */}
-        <nav className=" hidden md:flex lg:gap-12 md:gap-6 gap-2 items-center">
+        {/* Desktop Nav Items */}
+        <nav className="hidden md:flex lg:gap-12 md:gap-6 gap-2 items-center">
           {["How it Works", "Services", "About us", "Contact"].map((item, index) => (
             <motion.div
               key={index}
@@ -56,11 +64,11 @@ export function Nav() {
               initial="initial"
               whileHover="hover"
               variants={navItemVariants}
-              style={{ borderBottom: "2px solid", borderColor: "transparent" }} // Initial border is transparent
+              style={{ borderBottom: "2px solid", borderColor: "transparent" }}
             >
               <Link
                 href="#"
-                className="text-md  h-full w-[100px] font-medium text-foreground hover:text-primary tracking-widest"
+                className="text-md font-medium text-foreground hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}
@@ -69,14 +77,14 @@ export function Nav() {
           ))}
         </nav>
 
-        {/* for mobiles  */}
-        <div className="ml-auto md:hidden  flex items-center space-x-4">
+        {/* Mobile Menu Button */}
+        <div className="ml-auto md:hidden flex items-center space-x-4">
           <Sheet>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
-                className="md:hidden border-secondary text-primary hover:bg-secondary/10 hover:text-primary"
+                className="border-none text-primary hover:bg-secondary/10 bg-transparent"
               >
                 <MenuIcon className="h-6 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
@@ -98,12 +106,7 @@ export function Nav() {
             </SheetContent>
           </Sheet>
         </div>
-
-
       </div>
-
-
-
     </header>
   );
 }

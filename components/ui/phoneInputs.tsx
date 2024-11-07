@@ -26,6 +26,7 @@ export default function Input46({ value, onChange, onBlur }: Input46Props) {
                 value={value}
                 onChange={(newValue) => onChange?.(newValue)} // Use optional chaining for `onChange`
                 onBlur={onBlur}
+                defaultCountry='PK'
             />
 
         </div>

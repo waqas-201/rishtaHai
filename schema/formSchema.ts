@@ -75,7 +75,7 @@ export const formSchema = z
       .transform((val) => parseFloat(val))
       .refine(
         (val) => !isNaN(val) && val > 0 && val < 300,
-        "Height must be a positive number and less than 300 cm"
+        "Height must be a positive number"
       ),
     weight: z
       .string()

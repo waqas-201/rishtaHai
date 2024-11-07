@@ -1,7 +1,9 @@
 import React from 'react';
+import { IconWrapper } from './IconWrapper';
 
-const Step2Icon: React.FC = () => (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Step2Icon: React.FC<{ className: string }> = ({ className }) => (
+    <IconWrapper className={className} >
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="40" cy="40" r="40" fill="#F5EFFF" />
         <g filter="url(#filter0_d_258_6917)">
             <path d="M27.8383 40.8034C31.2866 40.8034 34.0823 37.4896 34.0823 33.4018C34.0823 29.3138 33.1644 26 27.8383 26C22.5123 26 21.5942 29.3138 21.5942 33.4018C21.5942 37.4896 24.3899 40.8034 27.8383 40.8034Z" fill="#CAACFF" />
@@ -35,7 +37,8 @@ const Step2Icon: React.FC = () => (
             </filter>
             {/* Additional filters */}
         </defs>
-    </svg>
+        </svg> 
+    </IconWrapper>
 );
 
 export default Step2Icon;

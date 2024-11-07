@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormData, StepComponentProps } from "@/types/types";
 import { useFormContext, Controller } from "react-hook-form";
-import Image from "next/image";
 import { Country, State, City } from 'country-state-city';
 import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -10,6 +9,7 @@ import ErrorMessage from './generel/errorMessage';
 import { motion, AnimatePresence } from "framer-motion";
 import { errorAnimation, inputAnimation } from '@/constants/constents';
 import { Label } from '../ui/label';
+import { Checkbox } from './generel/LocationIcon';
 
 const inputStyles = cn(
     "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus:visible focus:ring-accent focus:border-accent focus:outline-none"
@@ -74,7 +74,10 @@ export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, pr
     return (
         <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex justify-center mb-4">
-                <Image src='/Image-3.png' alt="Religion Icon" width={80} height={80} />
+                <Checkbox
+                    className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] bg-[#33deb4]/30 rounded-full" 
+                // Custom scale
+                />
             </div>
 
             {/* Country Selector */}

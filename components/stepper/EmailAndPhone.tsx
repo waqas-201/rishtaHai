@@ -33,7 +33,7 @@ export const EmailAndPhone: React.FC<StepComponentProps> = ({ previousStep, next
     return (
         <div className="flex flex-col items-center justify-center  gap-4 ">
             <div className="flex justify-center mb-4">
-                <EmailIcon />
+                <EmailIcon className="" />
             </div>
 
 

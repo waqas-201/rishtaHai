@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SignleInputFieldWrapper from "./generel/signleInputFieldWrapper";
-import UserIcon from "./generel/userIcon";
+import { HeightIcon } from "./generel/heigthIcon";
 
 export const HeightAndWeight: React.FC<StepComponentProps> = ({ previousStep, nextStep }) => {
     const { formState: { errors }, trigger, } = useFormContext<FormData>();
@@ -20,13 +20,13 @@ export const HeightAndWeight: React.FC<StepComponentProps> = ({ previousStep, ne
     return (
         <div className="flex flex-col items-center justify-center gap-4 ">
             <div className="flex justify-center mb-4">
-                <UserIcon />
+                <HeightIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px]" />
             </div>
 
             <SignleInputFieldWrapper
                 type="number"
                 id="height"
-                label="Height(feets)"
+                label="Height(feet)"
                 placeholder="Enter your height"
                 errorMessage={errors.height?.message}
             />

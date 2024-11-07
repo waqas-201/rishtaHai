@@ -205,11 +205,18 @@ export const formSchema = z
     height: z.coerce
       .number()
       .positive()
-      .max(300, "Height must be less than 300 cm"),
+      .max(300, "Height must be positive number"),
     weight: z.coerce
       .number()
       .positive()
       .max(300, "Weight must be less than 300 kg"),
+
+    // height: z.coerce.number().positive().refine((val) => val > 0 && val < 300, {
+    //   message: "Height must be a positive",
+    // }),
+    // weight: z.coerce.number().refine((val) => val > 0 && val < 300, {
+    //   message: "Weight must be a positive number and less than 300 kg",
+    // }),
 
     // Professional Information
     qualification: z.string().trim().min(1, "Qualification is required"),

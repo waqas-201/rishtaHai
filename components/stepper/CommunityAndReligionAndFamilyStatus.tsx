@@ -4,7 +4,7 @@ import SelectWrapper from "./generel/animateAndSelect";
 import { Communities, familyStatusOptions, topReligions2 } from "@/constants/constents";
 import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import UserIcon from "./generel/userIcon";
+import ReligionIcon from "./generel/religionIcon";
 
 export const CommunityAndReligionAndFamilyStatus: React.FC<StepComponentProps> = ({ previousStep, nextStep }) => {
     const {
@@ -22,8 +22,9 @@ export const CommunityAndReligionAndFamilyStatus: React.FC<StepComponentProps> =
 
     return (
         <div className="flex flex-col items-center justify-center gap-4">
-            <div className="flex justify-center mb-4">
-                <UserIcon />
+            <div className="flex justify-center      rounded-full mb-4">
+
+                <ReligionIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px]  text-emerald-400   bg-emerald-500/20 rounded-full" /> 
             </div>
 
             {/* religion section */}

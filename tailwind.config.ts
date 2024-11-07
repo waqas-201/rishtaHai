@@ -96,6 +96,11 @@ module.exports = {
           from: { maxHeight: "0px" },
           to: { maxHeight: "var(--radix-dialog-content-max-height)" },
         },
+        "bounce-on-load": {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out",
@@ -103,6 +108,7 @@ module.exports = {
         "slide-in": "slide-in 0.5s ease-out",
         "slide-out": "slide-out 0.5s ease-out",
         "smooth-height": "smooth-height 0.5s ease-in-out forwards",
+        "bounce-on-load": "bounce-on-load 1s ease-out",
       },
     },
   },

@@ -9,7 +9,7 @@ import { Select } from "@radix-ui/react-select";
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import SignleInputFieldWrapper from "./generel/signleInputFieldWrapper";
 import ErrorMessage from "./generel/errorMessage";
-import UserIcon from "./generel/userIcon";
+import { EducationIcon } from "./generel/EducationIcon";
 
 const errorAnimation = {
     initial: { height: 0, opacity: 0, marginBottom: 0 },
@@ -44,7 +44,8 @@ export const QualificationAndProfessionAndEarning: React.FC<StepComponentProps> 
     return (
         <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex justify-center mb-4">
-                <UserIcon />
+                {/* <UserIcon className="" /> */}
+                <EducationIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] bg-[#ffb74d]/20 rounded-full" />
             </div>
 
 

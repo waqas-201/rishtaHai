@@ -1,6 +1,9 @@
 import React from 'react';
+import { IconWrapper } from './IconWrapper';
 
-const EmailIcon: React.FC = () => (
+export const EmailIcon = ({ className }: { className: string }) => (
+    <>
+        <IconWrapper className={className} >
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Group 11">
             <g id="Group 10">
@@ -34,6 +37,8 @@ const EmailIcon: React.FC = () => (
             </filter>
         </defs>
     </svg>
+        </IconWrapper>
+    </>
 );
 
 export default EmailIcon;

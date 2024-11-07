@@ -28,7 +28,7 @@ export const NameAndBirthDay: React.FC<StepComponentProps> = ({ previousStep, ne
     return (
         <div className="flex flex-col items-center justify-center gap-4 ">
             <div className="flex justify-center mb-4">
-                <Step2Icon />
+                <Step2Icon className="w-[60px] h-[60px]  md:w-[80px] md:h-[80px]" />
             </div>
 
             {/* First Name */}

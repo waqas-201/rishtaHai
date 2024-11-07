@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import "./globals.css";
-
 import CustomToast from "@/components/customToast";
 import Providers from "@/lib/providers";
 

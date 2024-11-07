@@ -55,7 +55,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
         <div className="flex flex-col items-center justify-center gap-4 ">
 
             <div className="flex justify-center mb-8 ">
-                <UserIcon />
+                <UserIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px]" />
             </div>
 
             <RadioGroupWrapper

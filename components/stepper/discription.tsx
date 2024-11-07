@@ -86,7 +86,7 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
 
 
             <div className="flex justify-center mb-4">
-                <UserIcon />
+                <UserIcon className="" />
             </div>
 
             <motion.div

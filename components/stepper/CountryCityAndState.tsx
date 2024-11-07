@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormData, StepComponentProps } from "@/types/types";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import Image from "next/image";
 import { Country, State, City } from 'country-state-city';
 import { Button } from '../ui/button';
@@ -11,21 +11,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { errorAnimation, inputAnimation } from '@/constants/constents';
 import { Label } from '../ui/label';
 
-// Define input styling for reuse
 const inputStyles = cn(
     "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus:visible focus:ring-accent focus:border-accent focus:outline-none"
 );
 
-
 export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, previousStep }) => {
-    const { formState: { errors }, trigger, setValue, watch } = useFormContext<FormData>();
+    const {
+        control,
+        formState: { errors },
+        trigger,
+        watch,
+        setValue
+    } = useFormContext<FormData>();
 
     const selectedCountry = watch("country");
     const selectedState = watch("state");
-    const selectedCity = watch("city");
 
     const handleNext = async () => {
-        const isValid = await trigger(['country', 'city', 'state']);
+        const isValid = await trigger(['country', 'state', 'city']);
         if (isValid && nextStep) {
             nextStep();
         }
@@ -69,37 +72,38 @@ export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, pr
     const { countries, states, cities } = getLocationData();
 
     return (
-        <div
-            className="flex flex-col items-center justify-center gap-4 "
-        >
+        <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex justify-center mb-4">
-
                 <Image src='/Image-3.png' alt="Religion Icon" width={80} height={80} />
             </div>
 
-
-
             {/* Country Selector */}
-            <motion.div className="w-full  space-y-2 " variants={inputAnimation}>
-
+            <motion.div className="w-full space-y-2" variants={inputAnimation}>
                 <Label htmlFor="country">Country</Label>
-                <select
-                    id="country"
-                    className={inputStyles}
-                    value={selectedCountry || ""}
-                    onChange={(e) => {
-                        setValue("country", e.target.value);
-                        setValue("state", "");
-                        setValue("city", "");
-                    }}
-                >
-                    <option value="">Select your country</option>
-                    {countries.map(country => (
-                        <option key={country.value} value={country.value}>
-                            {country.label}
-                        </option>
-                    ))}
-                </select>
+                <Controller
+                    name="country"
+                    control={control}
+                    render={({ field }) => (
+                        <select
+                            {...field}
+                            id="country"
+                            className={inputStyles}
+                            onChange={(e) => {
+                                field.onChange(e);
+                                // Reset dependent fields
+                                setValue("state", "", { shouldValidate: true });
+                                setValue("city", "", { shouldValidate: true });
+                            }}
+                        >
+                            <option value="">Select your country</option>
+                            {countries.map(country => (
+                                <option key={country.value} value={country.value}>
+                                    {country.label}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                />
                 <AnimatePresence>
                     {errors.country && (
                         <motion.div variants={errorAnimation}>
@@ -110,25 +114,32 @@ export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, pr
             </motion.div>
 
             {/* State Selector */}
-            <motion.div className="w-full  space-y-2" variants={inputAnimation}>
-                <Label htmlFor="state" >State</Label>
-                <select
-                    id="state"
-                    className={inputStyles}
-                    value={selectedState || ""}
-                    onChange={(e) => {
-                        setValue("state", e.target.value);
-                        setValue("city", "");
-                    }}
-                    disabled={!selectedCountry}
-                >
-                    <option value="">Select your state</option>
-                    {states.map(state => (
-                        <option key={state.value} value={state.value}>
-                            {state.label}
-                        </option>
-                    ))}
-                </select>
+            <motion.div className="w-full space-y-2" variants={inputAnimation}>
+                <Label htmlFor="state">State</Label>
+                <Controller
+                    name="state"
+                    control={control}
+                    render={({ field }) => (
+                        <select
+                            {...field}
+                            id="state"
+                            className={inputStyles}
+                            disabled={!selectedCountry}
+                            onChange={(e) => {
+                                field.onChange(e);
+                                // Reset city when state changes
+                                setValue("city", "", { shouldValidate: true });
+                            }}
+                        >
+                            <option value="">Select your state</option>
+                            {states.map(state => (
+                                <option key={state.value} value={state.value}>
+                                    {state.label}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                />
                 <AnimatePresence>
                     {errors.state && (
                         <motion.div variants={errorAnimation}>
@@ -139,22 +150,27 @@ export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, pr
             </motion.div>
 
             {/* City Selector */}
-            <motion.div className="w-full  space-y-2" variants={inputAnimation}>
+            <motion.div className="w-full space-y-2" variants={inputAnimation}>
                 <Label htmlFor="city">City</Label>
-                <select
-                    id="city"
-                    className={inputStyles}
-                    value={selectedCity || ""}
-                    onChange={(e) => setValue("city", e.target.value)}
-                    disabled={!selectedState}
-                >
-                    <option value="">Select your city</option>
-                    {cities.map(city => (
-                        <option key={city.value} value={city.value}>
-                            {city.label}
-                        </option>
-                    ))}
-                </select>
+                <Controller
+                    name="city"
+                    control={control}
+                    render={({ field }) => (
+                        <select
+                            {...field}
+                            id="city"
+                            className={inputStyles}
+                            disabled={!selectedState}
+                        >
+                            <option value="">Select your city</option>
+                            {cities.map(city => (
+                                <option key={city.value} value={city.value}>
+                                    {city.label}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                />
                 <AnimatePresence>
                     {errors.city && (
                         <motion.div variants={errorAnimation}>
@@ -163,9 +179,6 @@ export const CountryCityAndState: React.FC<StepComponentProps> = ({ nextStep, pr
                     )}
                 </AnimatePresence>
             </motion.div>
-
-
-
 
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-4 w-full">

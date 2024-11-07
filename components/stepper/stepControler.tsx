@@ -27,6 +27,8 @@ export const MultiStepForm: React.FC = () => {
     const methods = useForm<FormData>({
         resolver: zodResolver(formSchema),
         mode: 'onChange',
+        shouldUnregister: true,
+
     });
 
     const handleStepChange = (stats: { activeStep: number }) => {

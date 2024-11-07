@@ -3,16 +3,17 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import UserForm from './userForm';
 import { TypographyBlockquote } from './ui/typography/blockQoute';
+import { Nav } from './nav';
 
 
 type imageType = string[]
 
 const images: imageType = [
     '/image1.jpg',
-    '/image2.jpg',
-    '/image3.jpg',
-    '/image4.jpg',
-    '/image5.jpg'
+    // '/image2.jpg',
+    // '/image3.jpg',
+    // '/image4.jpg',
+    // '/image5.jpg'
 ];
 
 const message = `RishtaHai platform is dedicated to helping individuals connect with compatible partners and make it easier to Meet and Interact with Them. Start Your Search Today Because `;
@@ -39,6 +40,7 @@ export function Hero() {
 
     return (
         <div className="relative h-screen overflow-hidden">
+
             {/* Background images */}
             {images && images?.map((image, index) => (
                 <div
@@ -58,15 +60,20 @@ export function Hero() {
 
 
 
-            <div className="relative z-10 flex flex-col items-center justify-center md:justify-center h-full text-center lg:px-8 bg-black bg-opacity-40  ">
+            <div className="relative z-10 flex flex-col items-center justify-center md:justify-center h-full text-center  bg-black/60  ">
                 {/* Content overlay */}
 
 
+                <div className='flex flex-col justify-between  items-center w-full h-full ' >
 
-                <div className='flex flex-col justify-center items-center gap-20 md:gap-36 ' >
+                    {/* Navbar  */}
+                    <div className='w-full'>
+                        <Nav />
+
+                    </div>
+
                     {/* lefte secion  */}
-
-                    <div className=' flex flex-col items-center lg:gap-16 gap-2  '>
+                    <div className='  flex flex-col items-center lg:gap-16 gap-2  '>
 
                         <h1 className="scroll-m-20  text-4xl w-[90%] md:w-full font-extrabold text-white/90  lg:text-6xl tracking-wider">
                             Your <span className='text-primary'> perfect</span> match await&apos;s here!
@@ -89,12 +96,12 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-black/30  w-full lg:w-[80%]   p-4 sm:p-8 '>
+                    <div className='bg-white/20 md-[0px]  md:mb-[100px] rounded-lg  w-full lg:w-[80%]   p-4 sm:p-8 '>
                         <UserForm />
                     </div>   
-
-
                 </div>
+
+
 
 
 

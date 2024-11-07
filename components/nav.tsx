@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -25,20 +25,20 @@ const navItemVariants = {
 };
 
 export function Nav() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Set the scroll threshold to 50px
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50); // Set the scroll threshold to 50px
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 ${isScrolled ? "bg-white/20 backdrop-blur-md shadow-md" : "bg-white"
+      className={` sticky top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 bg-white/30 backdrop-blur-sm
         }`}
     >
       <div className="flex items-center w-[90%] justify-start gap-[40%]">
@@ -68,7 +68,7 @@ export function Nav() {
             >
               <Link
                 href="#"
-                className="text-md font-medium text-foreground hover:text-primary tracking-widest"
+                className="text-lg  font-medium text-white hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}

@@ -82,11 +82,11 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
 
 
     return (
-        <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center border  border-red-600 gap-4">
 
 
             <div className="flex justify-center     ">
-                <DiscriptionIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] p-2 bg-[#5DD2FC]/30 rounded-full" />
+                <DiscriptionIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] p-2 bg-pink-300/30 rounded-full" />
             </div>
 
             <motion.div

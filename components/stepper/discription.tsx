@@ -6,9 +6,9 @@ import { ArrowLeft } from "lucide-react";
 import useCreateUser from "@/hooks/useCreateUser";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import UserIcon from "./generel/userIcon";
 import { Label } from "../ui/label";
 import ErrorMessage from "./generel/errorMessage";
+import { DiscriptionIcon } from "./generel/DiscriptionIcon";
 
 
 
@@ -19,7 +19,7 @@ const childVariants = {
     exit: { opacity: 0, x: 20 }
 };
 
-const errorVariants = {
+const errorVariants = { 
     initial: { opacity: 0, height: 0 },
     animate: { opacity: 1, height: "auto" },
     exit: { opacity: 0, height: 0 }
@@ -85,8 +85,8 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
         <div className="flex flex-col items-center justify-center gap-4">
 
 
-            <div className="flex justify-center mb-4">
-                <UserIcon className="" />
+            <div className="flex justify-center     ">
+                <DiscriptionIcon className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] p-2 bg-[#5DD2FC]/30 rounded-full" />
             </div>
 
             <motion.div

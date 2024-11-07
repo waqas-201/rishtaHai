@@ -32,15 +32,15 @@ export const MultiStepForm: React.FC = () => {
     return (
         <FormProvider {...methods}>
             <StepWizard onStepChange={handleStepChange}>
-                <DescriptionAboutUser />
-                <HeightAndWeight />
-                <NameAndBirthDay />
-                <EmailAndPhone />
-                <CountryCityAndState />
-                <CommunityAndReligionAndFamilyStatus />
-                <QualificationAndProfessionAndEarning />
-                <SuccessMessage />
                 <ProfileInfo />
+                <NameAndBirthDay />
+                <HeightAndWeight />
+                <CountryCityAndState />
+                <QualificationAndProfessionAndEarning />
+                <CommunityAndReligionAndFamilyStatus />
+                <EmailAndPhone />
+                <DescriptionAboutUser />
+                <SuccessMessage />
             </StepWizard>
         </FormProvider>
     );

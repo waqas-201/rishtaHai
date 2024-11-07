@@ -40,7 +40,7 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     }, [profileFor, setValue]);
 
     useEffect(() => {
-        if (maritalStatus === 'UNMARRIED') {
+        if (maritalStatus === 'UNMARRIED' || maritalStatus === 'WIDOW') {
             setValue('hasChildren', 'No');
             setValue('livesWithYou', 'No');
         }

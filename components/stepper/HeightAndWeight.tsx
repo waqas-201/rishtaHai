@@ -26,7 +26,7 @@ export const HeightAndWeight: React.FC<StepComponentProps> = ({ previousStep, ne
             <SignleInputFieldWrapper
                 type="number"
                 id="height"
-                label="Height(cm)"
+                label="Height(inch)"
                 placeholder="Enter your height"
                 errorMessage={errors.height?.message}
             />

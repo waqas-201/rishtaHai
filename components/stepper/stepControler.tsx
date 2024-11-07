@@ -34,10 +34,10 @@ export const MultiStepForm: React.FC = () => {
             <StepWizard onStepChange={handleStepChange}>
                 <ProfileInfo />
                 <NameAndBirthDay />
-                <HeightAndWeight />
                 <CountryCityAndState />
                 <QualificationAndProfessionAndEarning />
                 <CommunityAndReligionAndFamilyStatus />
+                <HeightAndWeight />
                 <EmailAndPhone />
                 <DescriptionAboutUser />
                 <SuccessMessage />

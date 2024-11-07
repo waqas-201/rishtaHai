@@ -26,7 +26,6 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
     const handleNext = async () => {
         const isValid = await trigger(['profileFor', 'gender', 'maritalStatus', 'hasChildren', 'livesWithYou']);
         if (isValid) {
-            // console.log("All Form Data:", getValues());
             if (nextStep) nextStep();
         }
     };
@@ -39,8 +38,10 @@ export const ProfileInfo: React.FC<StepComponentProps> = ({ nextStep }) => {
         }
     }, [profileFor, setValue]);
 
+
+    //
     useEffect(() => {
-        if (maritalStatus === 'UNMARRIED' || maritalStatus === 'WIDOW') {
+        if (maritalStatus === 'UNMARRIED' || maritalStatus === 'WIDOW' || maritalStatus === 'DIVORCED') {
             setValue('hasChildren', 'No');
             setValue('livesWithYou', 'No');
         }

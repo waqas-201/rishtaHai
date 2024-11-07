@@ -89,7 +89,7 @@ export function Hero() {
 
 
                     {/* form section  */}
-                    <div className='bg-black/30  w-full lg:w-[80%]  p-4 sm:p-8 '>
+                    <div className='bg-black/30  w-full lg:w-[80%]   p-4 sm:p-8 '>
                         <UserForm />
                     </div>   
 

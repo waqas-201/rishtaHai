@@ -19,9 +19,9 @@ import { useStepStore } from "@/store/useActiveStep";
 export const MultiStepForm: React.FC = () => {
     const { activeStep, setActiveStep } = useStepStore(); // Zustand state for step
     const methods = useForm<FormData>({
-        // resolver: zodResolver(formSchema),
-        // mode: 'onChange',
-        // shouldUnregister: true,
+        resolver: zodResolver(formSchema),
+        mode: 'onChange',
+        shouldUnregister: true,
     });
 
     // Function to handle step changes and update Zustand store

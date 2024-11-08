@@ -12,7 +12,7 @@ export function Nav() {
 
   return (
     <header
-      className={` sticky top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 bg-background/30 backdrop-blur-sm
+      className={` fixed w-full top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 bg-background/30 backdrop-blur-sm
         }`}
     >
       <div className="flex items-center  justify-between  w-full">

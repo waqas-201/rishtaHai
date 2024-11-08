@@ -16,8 +16,8 @@ const images: imageType = [
     '/image5.jpg'
 ];
 
-const message = `RishtaHai platform is dedicated to helping individuals connect with compatible partners and make it easier to Meet and Interact with Them. Start Your Search Today Because `;
-const qoute = `"Yahi'n Aap Ka RishtaHai"`
+const message = `Most trusted matrimonial service who focused on Guardian to Guardian Connection `;
+
 
 
 
@@ -80,7 +80,7 @@ export function Hero() {
                         </h1>
 
                         <div className='flex flex-col items-center gap-6' >
-                            <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-background/90  md:border-l-2 pl-6 italic">
+                            <TypographyBlockquote className="lg:w-[70%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-background/90  md:border-l-2 pl-6 italic">
                             {message}
                             </TypographyBlockquote>
                             <div className='flex flex-col ' >
@@ -91,9 +91,7 @@ export function Hero() {
                                     Connection
                                 </TypographyBlockquote>
                             </div>
-                            <TypographyBlockquote className='text-primary tmd:ext-2xl border-none text-xl hidden md:block '>
-                            {qoute}
-                            </TypographyBlockquote>
+
                     </div>
                     </div>
 

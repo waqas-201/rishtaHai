@@ -47,7 +47,7 @@ const UserForm = () => {
                     <div className="flex md:gap-4 gap-2 items-center justify-start w-full md:flex-1 md:w-auto">
                         <SelectWrapper values={['Women', 'Men']} text="I'm Looking for a " containerClassName="grow" />
                         <SelectWrapper values={[...numbersAsStrings]} text="Aged" containerClassName="basis-1/5 md:basis" />
-                        <div className="text-white mt-6">to</div>
+                        <div className="text-background/90 mt-6">to</div>
                         <SelectWrapper
                             values={[...numbersAsStrings]}
                             text="...."

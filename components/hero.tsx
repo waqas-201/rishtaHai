@@ -75,16 +75,16 @@ export function Hero() {
                     {/* lefte secion  */}
                     <div className='  flex flex-col items-center lg:gap-16 gap-2  '>
 
-                        <h1 className="scroll-m-20  text-4xl w-[90%] md:w-full font-extrabold text-white/90  lg:text-6xl tracking-wider">
+                        <h1 className="scroll-m-20  text-4xl w-[90%] md:w-full font-extrabold text-background/90  lg:text-6xl tracking-wider">
                             Your <span className='text-primary'> perfect</span> match await&apos;s here!
                         </h1>
 
                         <div className='flex flex-col items-center gap-6' >
-                            <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
+                            <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-background/90  md:border-l-2 pl-6 italic">
                             {message}
                             </TypographyBlockquote>
                             <div className='flex flex-col ' >
-                                <TypographyBlockquote className=' md:hidden mt-6 text-white border-none text-xl block '>
+                                <TypographyBlockquote className=' md:hidden mt-6 text-background/90 border-none text-xl block '>
                                     RishtaHai..!  Guardian to Guardian
                             </TypographyBlockquote>
                                 <TypographyBlockquote className='md:hidden bold mt-2  text-primary  border-none text-2xl block  '>
@@ -98,7 +98,7 @@ export function Hero() {
                     </div>
 
                     {/* form section  */}
-                    <div className='bg-white/20 md-[0px]  md:mb-[100px]   w-full xl:w-[60%] lg:w-[80%]    p-4 sm:p-8 '>
+                    <div className='bg-background/20 md-[0px]  md:mb-[100px]   w-full xl:w-[60%] lg:w-[80%]    p-4 sm:p-8 '>
                         <UserForm />
                     </div>   
                 </div>

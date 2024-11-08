@@ -13,17 +13,18 @@ export default function SuccessMessage() {
             <CheckCircle className="text-primary w-16 h-16" />
             </IconWrapper>
             <h2 className="text-2xl font-bold text-gray-800">Success!</h2>
+            <Separator />
 
+            <TypographySmall className="text-gray-800">
+                Your information has submitted successfully.
+            </TypographySmall>
+
+            <Separator />
 
             <TypographySmall className="text-gray-600">
                 We will contact you via email/whatsapp shortly.
             </TypographySmall>
-            <Separator />
 
-
-            <TypographySmall className="text-gray-800">
-                Your information was submitted successfully.
-            </TypographySmall>
             <TypographySmall>
 
                 Thank you!

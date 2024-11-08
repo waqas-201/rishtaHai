@@ -83,11 +83,14 @@ export function Hero() {
                             <TypographyBlockquote className="lg:w-[50%] hidden md:block w-[70%] border-primary md:text-xl md:leading-10 tracking-wide  text-white  md:border-l-2 pl-6 italic">
                             {message}
                             </TypographyBlockquote>
-
-                            <TypographyBlockquote className=' md:hidden text-white tmd:ext-2xl border-none text-xl block '>
-                                RishtaHai..!  Guardian to Guardian Connection
+                            <div className='flex flex-col ' >
+                                <TypographyBlockquote className=' md:hidden mt-6 text-white border-none text-xl block '>
+                                    RishtaHai..!  Guardian to Guardian
                             </TypographyBlockquote>
-
+                                <TypographyBlockquote className='md:hidden bold mt-2  text-primary  border-none text-2xl block  '>
+                                    Connection
+                                </TypographyBlockquote>
+                            </div>
                             <TypographyBlockquote className='text-primary tmd:ext-2xl border-none text-xl hidden md:block '>
                             {qoute}
                             </TypographyBlockquote>
@@ -95,7 +98,7 @@ export function Hero() {
                     </div>
 
                     {/* form section  */}
-                    <div className='bg-white/20 md-[0px]  md:mb-[100px]   w-full lg:w-[75%]   p-4 sm:p-8 '>
+                    <div className='bg-white/20 md-[0px]  md:mb-[100px]   w-full xl:w-[60%] lg:w-[80%]    p-4 sm:p-8 '>
                         <UserForm />
                     </div>   
                 </div>

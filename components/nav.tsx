@@ -3,26 +3,10 @@ import React from "react";
 import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import { MenuIcon } from "./ui/menuIcon";
 import Image from "next/image";
 
-const navItemVariants = {
-  initial: {
-    scale: 1,
-    color: "var(--foreground)",
-  },
-  hover: {
-    scale: 1.1,
-    color: "var(--primary)",
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 20,
-      duration: 0.3,
-    },
-  },
-};
+
 
 export function Nav() {
 
@@ -48,22 +32,16 @@ export function Nav() {
         {/* Desktop Nav Items */}
         <nav className="hidden md:flex lg:gap-12 md:gap-6 gap-2 mr-[20%]  items-center">
           {["How it Works", "Services", "About us", "Contact"].map((item, index) => (
-            <motion.div
+
+            <Link
               key={index}
-              className="relative"
-              initial="initial"
-              whileHover="hover"
-              variants={navItemVariants}
-              style={{ borderBottom: "2px solid", borderColor: "transparent" }}
-            >
-              <Link
                 href="#"
                 className="  lg:text-lg text-sm font-medium text-white hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}
               </Link>
-            </motion.div>
+
           ))}
         </nav>
 
@@ -86,7 +64,7 @@ export function Nav() {
                   <Link
                     key={index}
                     href="#"
-                    className="text-sm font-medium text-foreground hover:text-primary hover:underline underline-offset-4"
+                    className="text-sm active:text-primary font-medium text-foreground hover:text-primary hover:underline underline-offset-4"
                     prefetch={false}
                   >
                     {item}

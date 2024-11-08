@@ -7,7 +7,7 @@ import { IconWrapper } from './generel/IconWrapper';
 export default function SuccessMessage() {
 
     return (
-        <div className="flex flex-col items-center justify-center h-full space-y-4 TypographySmall-6 animate-slide-in bg-white rounded-lg text-center">
+        <div className="flex flex-col items-center justify-center h-full space-y-4 TypographySmall-6 animate-slide-in  rounded-lg text-center">
             <IconWrapper className='' >
 
             <CheckCircle className="text-primary w-16 h-16" />
@@ -21,8 +21,13 @@ export default function SuccessMessage() {
             <Separator />
 
 
-            <TypographySmall className="text-gray-600">
-                Your information was submitted successfully. Thank you!
+            <TypographySmall className="text-gray-800">
+                Your information was submitted successfully.
+            </TypographySmall>
+            <TypographySmall>
+
+                Thank you!
+
             </TypographySmall>
         </div>
     );

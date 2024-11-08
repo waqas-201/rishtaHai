@@ -32,6 +32,7 @@ const SignleInputFieldWrapper: React.FC<ValidatedInputFieldProps> = ({
             <div className="flex flex-col gap-2">
                 {label ? <Label className="space-x-2" htmlFor={id}>{label}</Label> : null}
                 <Input
+
                     id={id}
                     type={type}
                     {...register(id, {

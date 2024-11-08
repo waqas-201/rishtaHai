@@ -10,10 +10,10 @@ type imageType = string[]
 
 const images: imageType = [
     '/image1.jpg',
-    // '/image2.jpg',
-    // '/image3.jpg',
-    // '/image4.jpg',
-    // '/image5.jpg'
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
+    '/image5.jpg'
 ];
 
 const message = `RishtaHai platform is dedicated to helping individuals connect with compatible partners and make it easier to Meet and Interact with Them. Start Your Search Today Because `;
@@ -64,7 +64,7 @@ export function Hero() {
                 {/* Content overlay */}
 
 
-                <div className='flex flex-col justify-between  items-center w-full h-full ' >
+                <div className='flex flex-col justify-between  h-[100vh]  items-center w-full' >
 
                     {/* Navbar  */}
                     <div className='w-full'>
@@ -94,9 +94,8 @@ export function Hero() {
                     </div>
                     </div>
 
-
                     {/* form section  */}
-                    <div className='bg-white/20 md-[0px]  md:mb-[100px] rounded-lg  w-full lg:w-[80%]   p-4 sm:p-8 '>
+                    <div className='bg-white/20 md-[0px]  md:mb-[100px]   w-full lg:w-[75%]   p-4 sm:p-8 '>
                         <UserForm />
                     </div>   
                 </div>

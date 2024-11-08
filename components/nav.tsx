@@ -25,26 +25,16 @@ const navItemVariants = {
 };
 
 export function Nav() {
-  // const [isScrolled, setIsScrolled] = useState(false);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsScrolled(window.scrollY > 50); // Set the scroll threshold to 50px
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   return (
     <header
       className={` sticky top-0 z-50 flex items-center justify-center h-[60px] md:h[80px] transition-colors duration-300 bg-white/30 backdrop-blur-sm
         }`}
     >
-      <div className="flex items-center w-[90%] justify-start gap-[40%]">
+      <div className="flex items-center  justify-between  w-full">
 
         {/* Logo */}
-        <Link href="#" className="mr-6 mx-[-30px]" prefetch={false}>
+        <Link href="#" className="mr-6 " prefetch={false}>
           <Image
             src="/logo.svg"
             width={150}
@@ -56,7 +46,7 @@ export function Nav() {
         </Link>
 
         {/* Desktop Nav Items */}
-        <nav className="hidden md:flex lg:gap-12 md:gap-6 gap-2 items-center">
+        <nav className="hidden md:flex lg:gap-12 md:gap-6 gap-2 mr-[20%]  items-center">
           {["How it Works", "Services", "About us", "Contact"].map((item, index) => (
             <motion.div
               key={index}
@@ -68,7 +58,7 @@ export function Nav() {
             >
               <Link
                 href="#"
-                className="text-lg  font-medium text-white hover:text-primary tracking-widest"
+                className="  lg:text-lg text-sm font-medium text-white hover:text-primary tracking-widest"
                 prefetch={false}
               >
                 {item}

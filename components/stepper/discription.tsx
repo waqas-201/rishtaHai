@@ -82,7 +82,7 @@ export function DescriptionAboutUser({ previousStep, nextStep }: StepComponentPr
 
 
     return (
-        <div className="flex flex-col items-center justify-center border  border-red-600 gap-4">
+        <div className="flex flex-col items-center justify-center gap-4">
 
 
             <div className="flex justify-center     ">

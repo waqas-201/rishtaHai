@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// MultiStepForm.tsx
 import { FormProvider, useForm } from "react-hook-form";
 import StepWizard from "react-step-wizard";
 import { zodResolver } from "@hookform/resolvers/zod";

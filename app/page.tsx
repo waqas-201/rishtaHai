@@ -1,6 +1,7 @@
 import { Hero } from "@/components/hero";
 import BoxWrapper from "@/components/howItWorks/BoxWrapper";
 import { HeartSection } from "@/components/howItWorks/hearts";
+import Special from "@/components/specialSection/special";
 
 
 
@@ -11,13 +12,15 @@ export default function Home() {
     <>
 
       <Hero /> 
-      <div className="">
+      <div className="flex items-center justify-center">
+        <div className="xl:w-[70%] lg:w-[75] md:w-[80%] w-[90%] flex flex-col items-center justify-center" >
+          <section className=" flex flex-col items-center justify-center">
 
-        <div className=" pt-20 flex flex-wrap items-center justify-center" >
+            <div className=" pt-16 flex flex-wrap items-center justify-center" >
           <HeartSection />
         </div>
 
-        <div className="  pt-20 flex flex-wrap items-center justify-center   " >
+            <div className="  pt-16 flex flex-wrap items-center justify-center   " >
           <BoxWrapper
             h2Text1="No.1 & Trusted "
             h2Text2="Matrimonial service"
@@ -45,7 +48,14 @@ export default function Home() {
 
           />
         </div>
+          </section>
+
+          <section className=" pt-16 flex items-center justify-center  ">
+            <Special />
+          </section>
       </div>
+      </div>
+
     </>
   );
 }

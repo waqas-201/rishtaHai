@@ -1,4 +1,6 @@
 import SvgComponent from "../icons/MatrimonialserviceIcon";
+import { P } from "../ui/typography/P";
+import { TypographyH4 } from "../ui/typography/TypoGraphyH4";
 
 type BoxWrapperProps = {
     h2Text1: string;
@@ -22,18 +24,18 @@ const BoxWrapper = ({ h2Text1, h2Text2, pText1, pText2 }: BoxWrapperProps) => {
                 </div>
 
                 {/* Text Content */}
-                <h2 className="text-xl md:text-1xl font-bold text-primary/70 mb-3">
+                <TypographyH4 className="text-primary/70">
                     {h2Text1}
 
                     <br />
                     {h2Text2}
-                </h2>
+                </TypographyH4>
 
-                <p className="text-gray-600 text-sm md:text-base">
+                <P className="text-gray-600 text-sm md:text-base">
                     {pText1}
                     <br />
                     {pText2}
-                </p>
+                </P>
             </div>
         </div>
     );

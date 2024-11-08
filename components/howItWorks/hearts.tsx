@@ -3,7 +3,7 @@ export const HeartSection = () => {
         <div>
             <div className=" flex items-center justify-center bg-background  ">
                 <div className="text-center">
-                    <div className="flex items-center justify-center flex-wrap md:px-0 px-4 ">
+                    <div className="flex items-center justify-center flex-wrap md:px-0 lg:px-0  px-4 ">
                         {["Get", "Ready", "With", "Us"].map((word, index, array) => (
                             <div key={word} className="flex items-center">
                                 <span className="text-4xl md:text-5xl font-bold text-primary">

@@ -13,6 +13,7 @@ import { HeightAndWeight } from "./HeightAndWeight";
 import { CommunityAndReligionAndFamilyStatus } from "./CommunityAndReligionAndFamilyStatus";
 import { NameAndBirthDay } from "./NameAndBirthDay";
 import { useStepStore } from "@/store/useActiveStep";
+import { useCallback } from "react";
 
 // Main Form Component
 export const MultiStepForm: React.FC = () => {
@@ -24,9 +25,13 @@ export const MultiStepForm: React.FC = () => {
     });
 
     // Function to handle step changes and update Zustand store
-    const handleStepChange = (stats: { activeStep: number }) => {
-        setActiveStep(stats.activeStep);
-    };
+    const handleStepChange = useCallback(
+        (state: { activeStep: number }) => {
+            setActiveStep(state.activeStep);
+        },
+        [setActiveStep]  // Memoizing the function with respect to setActiveStep
+    );
+
 
     return (
         <FormProvider {...methods}>

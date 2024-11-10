@@ -1,6 +1,8 @@
 import { Hero } from "@/components/hero";
 import BoxWrapper from "@/components/howItWorks/BoxWrapper";
 import { HeartSection } from "@/components/howItWorks/hearts";
+import { TestimonialCarousel } from "@/components/reviewsSection/TestimonialCarousel";
+import TrustedBrand from "@/components/reviewsSection/TrustedBrand";
 import Special from "@/components/specialSection/special";
 
 
@@ -12,8 +14,14 @@ export default function Home() {
     <>
 
       <Hero /> 
+
+
+
       <div className="flex items-center justify-center">
         <div className="xl:w-[70%] lg:w-[75] md:w-[80%] w-[90%] flex flex-col items-center justify-center" >
+
+
+          {/* How it works section  */}
           <section className=" flex flex-col items-center justify-center">
 
             <div className=" pt-16 flex flex-wrap items-center justify-center" >
@@ -50,11 +58,33 @@ export default function Home() {
         </div>
           </section>
 
+
+
+
+          {/* Testimonials section  */}
+          <section className=" pt-16 w-full   ">
+            <div>
+              <TrustedBrand />
+            </div>
+            <div className=" w-full   flex items-center justify-center pt-12 " >
+              <TestimonialCarousel />
+
+            </div>
+          </section>
+
+
+          {/* Special section  */}
           <section className=" pt-16 flex items-center justify-center  ">
             <Special />
           </section>
+
+
+
+        </div>
       </div>
-      </div>
+
+
+
 
     </>
   );

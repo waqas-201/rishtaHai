@@ -104,3 +104,61 @@ export const inputAnimation = {
   animate: { scale: 1, opacity: 1 },
   transition: { type: "spring", stiffness: 300, damping: 30 },
 };
+
+export const testimonialData = [
+  {
+    id: 1,
+    name: "Jack Danial",
+    location: "New York",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  {
+    id: 2,
+    name: "Emma Wilson",
+    location: "Los Angeles",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  {
+    id: 3,
+    name: "Michael Brown",
+    location: "Chicago",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  {
+    id: 4,
+    name: "Michael Brown",
+    location: "Chicago",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  {
+    id: 5,
+    name: "Michael Brown",
+    location: "Chicago",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  {
+    id: 6,
+    name: "Michael Brown",
+    location: "Chicago",
+    image:
+      "https://images.unsplash.com/photo-1727081235232-51caa0c3f79e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    testimonial:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  },
+  // Add more testimonials as needed
+];

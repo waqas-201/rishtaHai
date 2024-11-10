@@ -20,15 +20,15 @@ export function TestimonialCarousel() {
                 opts={{
                     loop: true,
                 }}
-                className="w-full overflow-visible"
+                className="w-full overflow-visible "
             >
-                <CarouselContent className="-ml-2 md:-ml-4" >
+                <CarouselContent className="flex"  >
                     {testimonialData.map((testimonial) => (
                         <CarouselItem
                             key={testimonial.id}
-                            className=" py-8 sm:basis-1/2 lg:basis-1/3 pl-2 md:pl-4 "
+                            className=" py-8  first-line:sm:basis-1/2 lg:basis-1/3 md:basis-1/2 pl-2 md:pl-4 "
                         >
-                            <div className="p-1">
+                            <div className="p-1 ">
                                 <TestimonialCard
                                     name={testimonial.name}
                                     location={testimonial.location}

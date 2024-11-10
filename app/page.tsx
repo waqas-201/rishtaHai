@@ -67,7 +67,8 @@ export default function Home() {
               <TrustedBrand />
             </div>
             <div className=" w-full   flex items-center justify-center pt-12 " >
-              <TestimonialCarousel />
+              {/* <TestimonialCarousel /> */}
+              <TestimonialCarousel /> 
 
             </div>
           </section>

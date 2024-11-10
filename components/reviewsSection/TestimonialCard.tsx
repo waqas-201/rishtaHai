@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const TestimonialCard = ({ name, location, image, testimonial }: { name: string, location: string, image: string, testimonial: string }) => {
     return (
-        <div className="relative min-w-[350px]  max-w-sm p-6">
+        <div className="relative min-w-[350px]   p-6 ">
 
 
             <Card className="relative overflow-visible pb-12 pt-20 flex items-center justify-center">
@@ -51,3 +51,8 @@ const TestimonialCard = ({ name, location, image, testimonial }: { name: string,
 };
 
 export default TestimonialCard;
+
+
+
+
+

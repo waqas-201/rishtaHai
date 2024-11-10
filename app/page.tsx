@@ -81,12 +81,12 @@ export default function Home() {
       <SectionWrapper>
         <ControledWidthWrapper>
           {/* Folks section  */}
-          <section className="  flex items-center justify-center  ">
+          <section className="  flex items-center justify-center py-10  ">
             <Folks />
           </section>
 
           {/* Folks section  */}
-          <section className=" flex items-center justify-center w-full  ">
+          <section className=" flex items-center justify-center w-full py-10 ">
             <SecureFolks />
           </section>
 

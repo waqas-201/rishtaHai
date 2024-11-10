@@ -162,3 +162,19 @@ export const testimonialData = [
   },
   // Add more testimonials as needed
 ];
+
+export const exploreLinks = [
+  "Home",
+  "About Us",
+  "Login",
+  "Register",
+  "Sitemap",
+  "Contact Us",
+];
+export const supportLinks = [
+  "Blog",
+  "Support",
+  "Terms and Conditions",
+  "Privacy Policy",
+  "Abaya Online",
+];

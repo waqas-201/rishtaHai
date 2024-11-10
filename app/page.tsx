@@ -1,4 +1,7 @@
 import ShowApp from "@/components/appshowsection/showApp";
+import { Contacts } from "@/components/contacts/Contacts";
+import ControledWidthWrapper from "@/components/controledWidthWrapper";
+import Footer from "@/components/footer/footer";
 import Folks from "@/components/genuinefolks/folks";
 import { Hero } from "@/components/hero";
 import BoxWrapper from "@/components/howItWorks/BoxWrapper";
@@ -12,6 +15,18 @@ import Special from "@/components/specialSection/special";
 
 
 
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const SectionWrapper = ({ children, className = "" }: SectionProps) => (
+  <section className={`py-20 ${className}`}>
+    {children}
+  </section>
+);
+
+
 export default function Home() {
   return (
     <>
@@ -19,19 +34,18 @@ export default function Home() {
       <Hero /> 
 
 
+      <SectionWrapper>
+        {/* How it works section  */}
+        <ControledWidthWrapper>
 
-      <div className="flex items-center justify-center">
-        <div className="xl:w-[70%] lg:w-[75] md:w-[80%] w-[90%] flex flex-col items-center justify-center" >
-
-
-          {/* How it works section  */}
-          <section className=" flex flex-col items-center justify-center">
+          <section className=" flex flex-col items-center justify-center  w-full" >
 
             <div className=" pt-16 flex flex-wrap items-center justify-center" >
           <HeartSection />
         </div>
 
-            <div className="  pt-16 flex flex-wrap items-center justify-center   " >
+            <div className="  pt-16 flex flex-wrap items-center justify-between  w-full   " >
+
           <BoxWrapper
             h2Text1="No.1 & Trusted "
             h2Text2="Matrimonial service"
@@ -61,48 +75,66 @@ export default function Home() {
         </div>
           </section>
 
+        </ControledWidthWrapper>
+      </SectionWrapper>
+      {/* folks and secure folks */}
+      <SectionWrapper>
+        <ControledWidthWrapper>
+          {/* Folks section  */}
+          <section className="  flex items-center justify-center  ">
+            <Folks />
+          </section>
 
+          {/* Folks section  */}
+          <section className=" flex items-center justify-center w-full  ">
+            <SecureFolks />
+          </section>
 
+        </ControledWidthWrapper>
+      </SectionWrapper>
+      {/* Appshow section  */}
 
-          {/* Testimonials section  */}
+      {/* Appshow section  */}
+      <SectionWrapper>
+        <section className="   flex items-center justify-center bg-primary/30 w-full  ">
+          <ShowApp />
+        </section>
+      </SectionWrapper>
+
+      <SectionWrapper>
+        {/* Testimonials section  */}
+        <ControledWidthWrapper>
           <section className=" pt-16 w-full   ">
             <div>
               <TrustedBrand />
             </div>
             <div className=" w-full   flex items-center justify-center pt-12 " >
               {/* <TestimonialCarousel /> */}
-              <TestimonialCarousel /> 
+              <TestimonialCarousel />
 
             </div>
           </section>
-
-
+        </ControledWidthWrapper>
+      </SectionWrapper>
           {/* Special section  */}
+      <SectionWrapper>
+        <ControledWidthWrapper>
           <section className=" pt-16 flex items-center justify-center  ">
             <Special />
           </section>
-
-          {/* Folks section  */}
-          <section className=" pt-16 flex items-center justify-center  ">
-            <Folks />
-          </section>
-
-          {/* Appshow section  */}
-          <section className=" pt-16 flex items-center justify-center bg-primary/30 w-full  ">
-            <ShowApp />
-          </section>
-
-          {/* secure Folks section  */}
-          {/* Folks section  */}
-          <section className=" pt-16 flex items-center justify-center w-full  ">
-            <SecureFolks />
-          </section>
-
-        </div>
-      </div>
+        </ControledWidthWrapper>
+      </SectionWrapper>
 
 
+      <SectionWrapper>
+        <Contacts />
+      </SectionWrapper>
 
+      <SectionWrapper>
+        <ControledWidthWrapper>
+          <Footer />
+        </ControledWidthWrapper>
+      </SectionWrapper>
 
     </>
   );

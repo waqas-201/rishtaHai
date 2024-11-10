@@ -1,8 +1,11 @@
+import ShowApp from "@/components/appshowsection/showApp";
+import Folks from "@/components/genuinefolks/folks";
 import { Hero } from "@/components/hero";
 import BoxWrapper from "@/components/howItWorks/BoxWrapper";
 import { HeartSection } from "@/components/howItWorks/hearts";
 import { TestimonialCarousel } from "@/components/reviewsSection/TestimonialCarousel";
 import TrustedBrand from "@/components/reviewsSection/TrustedBrand";
+import SecureFolks from "@/components/secureData/secureFolks";
 import Special from "@/components/specialSection/special";
 
 
@@ -79,7 +82,21 @@ export default function Home() {
             <Special />
           </section>
 
+          {/* Folks section  */}
+          <section className=" pt-16 flex items-center justify-center  ">
+            <Folks />
+          </section>
 
+          {/* Appshow section  */}
+          <section className=" pt-16 flex items-center justify-center bg-primary/30 w-full  ">
+            <ShowApp />
+          </section>
+
+          {/* secure Folks section  */}
+          {/* Folks section  */}
+          <section className=" pt-16 flex items-center justify-center w-full  ">
+            <SecureFolks />
+          </section>
 
         </div>
       </div>

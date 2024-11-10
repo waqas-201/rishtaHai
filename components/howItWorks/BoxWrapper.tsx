@@ -13,7 +13,7 @@ type BoxWrapperProps = {
 const BoxWrapper = ({ h2Text1, h2Text2, pText1, pText2 }: BoxWrapperProps) => {
     return (
         <div>
-            <div className="flex flex-col items-center justify-center p-6 text-center max-w-sm mx-auto">
+            <div className="flex flex-col items-center justify-center  p-6 text-center max-w-sm mx-auto">
                 {/* Circle Icon Container */}
                 <div className="relative w-24 h-24 mb-6">
                     <div className="absolute inset-0 bg-green-100 rounded-full"></div>

@@ -6,13 +6,13 @@ const TrustedBrand = () => {
     return (
         <div className="text-center max-w-2xl mx-auto py-12">
             {/* Top text */}
-            <P className="tracking-widest uppercase mb-4 font-medium">
+            <P className="tracking-widest uppercase mb-4 text-primary font-medium">
                 Trusted Brand
             </P>
 
             {/* Main heading container */}
             <div className="relative mb-4">
-                <TypographyH1 className=" text-5xl  mb-4">
+                <TypographyH1 className=" text-5xl text-primary  mb-4">
                     <span className="font-light">Trust by </span>
                     <span className="font-bold">1500</span>
                     <span className="font-light">+ Couples</span>

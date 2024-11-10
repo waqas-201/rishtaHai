@@ -96,7 +96,7 @@ export default function Home() {
 
       {/* Appshow section  */}
       <SectionWrapper>
-        <section className="   flex items-center justify-center bg-primary/30 w-full  ">
+        <section className="  flex itemc-center justify-between md:justify-evenly bg-primary/30 w-full  ">
           <ShowApp />
         </section>
       </SectionWrapper>

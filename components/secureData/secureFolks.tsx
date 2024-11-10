@@ -13,18 +13,19 @@ export const SecureFolks = () => {
 
 
             {/* Mobiles Section */}
-            <div className="flex flex-1 justify-center lg:justify-end w-full h-full">
+            <div className="flex flex-1 justify-center lg:justify-end w-full h-full ">
 
                 <SecureMobiles className="max-w-full max-h-full" />
             </div>
 
             {/* Text Section */}
-            <div className="flex-1 text-center flex md:block flex-col items-center justify-center lg:text-left self-start px-4  sm:px-0 w-full ">
-                <TypographyH1 className="">
+            <div className=" text-center    self-center 2xl:self-start ">
+                <TypographyH1 className=" text-primary text-center">
                     Free chat and video calls
                 </TypographyH1>
 
-                <P className=" w-[75%] md:w-full">
+                <P className=" md:w-full text-center">
+
                     Use our free chat messenger and video calling services to talk to your prospect.
                 </P>
             </div>

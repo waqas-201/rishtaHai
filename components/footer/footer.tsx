@@ -14,7 +14,7 @@ const Footer = () => {
 
 
     return (
-        <footer className="bg-primary/10 py-12 px-4 md:px-8 w-full">
+        <footer className="bg-primary/30 py-12 px-4 md:px-8 w-full">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-wrap -mx-4">
                     <div className="px-4 w-full">

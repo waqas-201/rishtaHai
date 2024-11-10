@@ -9,11 +9,11 @@ import { TypographyH4 } from '../ui/typography/TypoGraphyH4'
 
 const ShowApp = () => {
     return (
-        <div className="flex flex-col 2xl:flex-row items-center justify-between  gap-8 ">
+        <div className="flex  w-[95%]   md:w-[80%]      py-6 md:p-10  flex-col 2xl:flex-row lg:items-center items-start justify-between  gap-12 "> 
 
             {/* Text Section */}
-            <div className=" flex items-center justify-center flex-col ">
-                <TypographyH1 className="px-4 text-center">
+            <div className=" flex items-center justify-center flex-col  ">
+                <TypographyH1 className="px-4 text-center text-white">
                     Happiness is just an app away!
                 </TypographyH1>
 
@@ -50,7 +50,7 @@ const ShowApp = () => {
             </div>
 
             {/* Mobiles Section */}
-            <div className="flex flex-1 justify-center lg:justify-end w-full h-full">
+            <div className="flex flex-1 justify-center  w-full h-full ">
 
                 <img src="https://www.waytonikah.com/images/waytonikah/download-app.png" alt="app preview" />
 

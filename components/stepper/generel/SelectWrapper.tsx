@@ -16,7 +16,7 @@ const SelectWrapper = ({
     values, text, className, TextclassName, containerClassName, valueAt = 0, valueIs
 }: SelectWrapperProps) => {
     return (
-        <div className={cn("flex flex-col  items-start gap-[2px]", containerClassName)} >             <P className={cn("text-sm mb-1", TextclassName)}>{text}</P>
+        <div className={cn("flex flex-col  items-start gap-[2px]", containerClassName)} >             <P className={cn("text-sm mb-1 text-white", TextclassName)}>{text}</P>
             <Select >
                 <SelectTrigger className={cn("rounded-sm text-muted-foreground", className)}
                 >

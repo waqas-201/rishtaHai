@@ -9,7 +9,7 @@ const Folks = () => {
 
             {/* Text Section */}
             <div className="flex-1 text-center flex md:block flex-col items-center justify-center lg:text-left self-start px-4  w-full  ">
-                <TypographyH1 className="text-primary text-center">
+                <TypographyH1 className="text-primary text-center text-xl">
                     Match with genuine folks with complete security!
                 </TypographyH1>
 

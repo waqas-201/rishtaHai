@@ -9,11 +9,6 @@ import { Nav } from './nav';
 type imageType = string[]
 
 const images: imageType = [
-    // '/image1.jpg',
-    // '/image2.jpg',
-    // '/image3.jpg',
-    // '/image4.jpg',
-    // '/image5.jpg'.
     '/image-6.jpeg',
 ];
 

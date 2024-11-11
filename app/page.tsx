@@ -21,7 +21,7 @@ interface SectionProps {
 }
 
 const SectionWrapper = ({ children, className = "" }: SectionProps) => (
-  <section className={`py-20 ${className}`}>
+  <section className={` py-5 md:py-10 lg:py-20  ${className}`}>
     {children}
   </section>
 );
@@ -44,7 +44,7 @@ export default function Home() {
           <HeartSection />
         </div>
 
-            <div className="  pt-16 flex flex-wrap items-center justify-between  w-full   " >
+            <div className="  pt-16 flex flex-wrap items-center sm:justify-evenly md:justify-between justify-center  w-full    " >
 
           <BoxWrapper
             h2Text1="No.1 & Trusted "

@@ -1,3 +1,5 @@
+import { TypographyH1 } from "../ui/typography/TypegraphtH1";
+
 export const HeartSection = () => {
     return (
         <div>
@@ -5,14 +7,14 @@ export const HeartSection = () => {
                 <div className="text-center">
                     <div className="flex items-center justify-center flex-wrap md:px-0 lg:px-0  px-4 ">
                         {["Get", "Ready", "With", "Us"].map((word, index, array) => (
-                            <div key={word} className="flex items-center">
-                                <span className="text-4xl md:text-5xl font-bold text-primary">
+                            <TypographyH1 key={word} className="flex items-center">
+                                <span className=" text-primary">
                                     {word}
                                 </span>
                                 {index !== array.length - 1 && (
                                     <div className="w-2 h-2 rounded-full bg-primary mx-2" />
                                 )}
-                            </div>
+                            </TypographyH1>
                         ))}
                     </div>
 

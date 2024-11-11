@@ -96,9 +96,14 @@ export default function Home() {
 
       {/* Appshow section  */}
       <SectionWrapper>
-        <section className="  flex itemc-center justify-between md:justify-evenly bg-primary/30 w-full  ">
+        <div className="bg-primary/30 py-4 md:py-8 lg:py-10" >
+          <ControledWidthWrapper>
+            <section className="  flex items-center justify-center   w-full  ">
+
           <ShowApp />
         </section>
+          </ControledWidthWrapper>
+        </div>
       </SectionWrapper>
 
       <SectionWrapper>
@@ -116,6 +121,12 @@ export default function Home() {
           </section>
         </ControledWidthWrapper>
       </SectionWrapper>
+
+
+      <SectionWrapper>
+        <Contacts />
+      </SectionWrapper>
+
           {/* Special section  */}
       <SectionWrapper>
         <ControledWidthWrapper>
@@ -126,15 +137,13 @@ export default function Home() {
       </SectionWrapper>
 
 
-      <SectionWrapper>
-        <Contacts />
-      </SectionWrapper>
 
-      <SectionWrapper>
+
+      <div className="bg-primary/30">
         <ControledWidthWrapper>
           <Footer />
         </ControledWidthWrapper>
-      </SectionWrapper>
+      </div>
 
     </>
   );

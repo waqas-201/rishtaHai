@@ -20,7 +20,7 @@ const ItemWrapper: React.FC<ItemWrapperProps> = ({ Icon, text1, text2, className
 
             <div className='flex flex-col text-sm font-thin text-pretty'>
                 <p className=''>{text1}</p>
-                <p className=' text-xl font-bold'>{text2}</p>
+                <p className=' text-lg '>{text2}</p>
             </div>
         </div>
     )

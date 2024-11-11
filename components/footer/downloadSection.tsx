@@ -1,8 +1,8 @@
 
 export const DownloadSection = () => (
-    <div className="w-full md:w-1/4 mb-6 md:mb-0">
-        <h3 className="text-lg font-semibold mb-4">Download Our App</h3>
-        <div className="flex flex-col space-y-4">
+    <div className=" border  md:basis-[20%] w-auto border-red-500">
+        <h3 className="text-lg font-semibold ">Download Our App</h3>
+        <div className="flex flex-col ">
             <a href="#" className="inline-block">
                 <img
                     src="/api/placeholder/120/40"

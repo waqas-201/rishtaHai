@@ -5,6 +5,7 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { MenuIcon } from "./ui/menuIcon";
 import Image from "next/image";
+import { ModeToggle } from "./themeSwitcher";
 
 
 
@@ -43,7 +44,11 @@ export function Nav() {
               </Link>
 
           ))}
-        </nav>
+        </nav> 
+
+        <div>
+          <ModeToggle />
+        </div>
 
         {/* Mobile Menu Button */}
         <div className="ml-auto md:hidden flex items-center space-x-4">

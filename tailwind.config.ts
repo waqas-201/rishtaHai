@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss";
 import tailwindAnimate from "tailwindcss-animate";
 
-module.exports = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -14,24 +14,11 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        screens: {
-          mobile: "350px",
-
-          sm: "640px",
-          // => @media (min-width: 640px) { ... }
-
-          md: "768px",
-          // => @media (min-width: 768px) { ... }
-
-          lg: "1024px",
-          // => @media (min-width: 1024px) { ... }
-
-          xl: "1280px",
-          // => @media (min-width: 1280px) { ... }
-
-          "2xl": "1536px",
-          // => @media (min-width: 1536px) { ... }
-        },
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
       },
     },
     extend: {
@@ -49,6 +36,10 @@ module.exports = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -56,10 +47,6 @@ module.exports = {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -70,49 +57,29 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        serif: ["Lora", "serif"],
+        sans: ["Inter", "sans-serif"],
       },
-      keyframes: {
-        "fade-in": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        "fade-out": {
-          "0%": { opacity: "1" },
-          "100%": { opacity: "0" },
-        },
-        "slide-in": {
-          "0%": { transform: "translateY(20px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
-        },
-        "slide-out": {
-          "0%": { transform: "translateY(0)", opacity: "1" },
-          "100%": { transform: "translateY(20px)", opacity: "0" },
-        },
-        "smooth-height": {
-          from: { maxHeight: "0px" },
-          to: { maxHeight: "var(--radix-dialog-content-max-height)" },
-        },
-        "bounce-on-load": {
-          "0%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.2)" },
-          "100%": { transform: "scale(1)" },
-        },
+      spacing: {
+        grid: "1.5rem",
       },
-      animation: {
-        "fade-in": "fade-in 0.5s ease-out",
-        "fade-out": "fade-out 0.5s ease-out",
-        "slide-in": "slide-in 0.5s ease-out",
-        "slide-out": "slide-out 0.5s ease-out",
-        "smooth-height": "smooth-height 0.5s ease-in-out forwards",
-        "bounce-on-load": "bounce-on-load 1s ease-out",
+      gridTemplateColumns: {
+        '12': 'repeat(12, minmax(0, 1fr))',
+      },
+      boxShadow: {
+        sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      },
+      aspectRatio: {
+        'hero': '16/9',
+        'card': '4/3',
+        'profile': '1/1',
       },
     },
   },
   plugins: [tailwindAnimate],
 };
 
-
+export default config;
